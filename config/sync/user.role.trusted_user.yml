@@ -1,0 +1,35 @@
+uuid: 91c44fba-122b-4418-a528-3ac687667ba3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.listing
+    - node.type.real_estate
+    - workflows.workflow.city_portal
+  module:
+    - comment
+    - content_moderation
+    - flag
+    - node
+    - system
+id: trusted_user
+label: 'Trusted User'
+weight: 5
+is_admin: null
+permissions:
+  - 'access content'
+  - 'access content overview'
+  - 'create listing content'
+  - 'create real_estate content'
+  - 'delete own listing content'
+  - 'delete own real_estate content'
+  - 'edit own comments'
+  - 'edit own listing content'
+  - 'edit own real_estate content'
+  - 'flag favorites'
+  - 'post comments'
+  - 'skip comment approval'
+  - 'unflag favorites'
+  - 'use city_portal transition create_new_draft'
+  - 'use city_portal transition publish'
+  - 'use city_portal transition submit_for_review'

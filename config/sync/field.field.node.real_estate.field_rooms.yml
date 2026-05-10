@@ -1,0 +1,23 @@
+uuid: 41f40289-5164-4aed-aa4c-18e22079b61a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_rooms
+    - node.type.real_estate
+id: node.real_estate.field_rooms
+field_name: field_rooms
+entity_type: node
+bundle: real_estate
+label: Кімнат
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

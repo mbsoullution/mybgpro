@@ -1,0 +1,21 @@
+uuid: fb2869ac-c865-4a83-9a0e-ef6ae177fffa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phone
+    - node.type.real_estate
+  module:
+    - telephone
+id: node.real_estate.field_phone
+field_name: field_phone
+entity_type: node
+bundle: real_estate
+label: Телефон
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

@@ -1,0 +1,23 @@
+uuid: 098ae1c9-bee0-4244-959b-efa6428fae50
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_price
+    - node.type.listing
+id: node.listing.field_price
+field_name: field_price
+entity_type: node
+bundle: listing
+label: 'Ціна (грн)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

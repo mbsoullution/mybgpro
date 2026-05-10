@@ -1,0 +1,11 @@
+uuid: 38d22293-8bbd-46d6-b29e-492a256f8acf
+langcode: en
+status: true
+dependencies: {  }
+name: Новини
+type: news
+description: 'Новини міста'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

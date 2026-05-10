@@ -1,0 +1,24 @@
+uuid: cf703074-5906-4817-a6ab-6902bad79d25
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_transaction_type
+    - node.type.listing
+    - taxonomy.vocabulary.transaction_type
+id: node.listing.field_transaction_type
+field_name: field_transaction_type
+entity_type: node
+bundle: listing
+label: 'Тип угоди'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      transaction_type: transaction_type
+field_type: entity_reference

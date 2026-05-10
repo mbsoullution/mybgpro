@@ -1,0 +1,38 @@
+uuid: 1a30b2fa-50aa-4bca-9752-f44d3d1353f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_news_image
+    - node.type.city_page
+  module:
+    - image
+id: node.city_page.field_news_image
+field_name: field_news_image
+entity_type: node
+bundle: city_page
+label: 'Головне фото'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg webp'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: null
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

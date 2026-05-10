@@ -1,0 +1,23 @@
+uuid: 342994e0-2d53-4c6e-9e4d-7ceb6d2f759f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.real_estate
+  module:
+    - node
+id: real_estate_pattern
+label: 'Real Estate URL Pattern'
+type: 'canonical_entities:node'
+pattern: '/neruhomist/[node:field_re_type]/[node:title]'
+selection_criteria:
+  node_type:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      real_estate: real_estate
+selection_logic: and
+weight: -5
+relationships: {  }

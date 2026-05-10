@@ -1,0 +1,9 @@
+uuid: 15597775-21b4-47ca-9ffc-c891477f694e
+langcode: en
+status: true
+dependencies: {  }
+name: 'City Districts'
+vid: city_districts
+description: null
+weight: 0
+new_revision: false

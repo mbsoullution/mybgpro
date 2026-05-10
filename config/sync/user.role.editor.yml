@@ -1,0 +1,45 @@
+uuid: 136fa792-ebd2-4b7f-a121-60ee2319d5f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.city_page
+    - node.type.event
+    - node.type.news
+    - node.type.organization
+    - workflows.workflow.city_portal
+  module:
+    - content_moderation
+    - node
+    - path
+    - system
+    - taxonomy
+id: editor
+label: Editor
+weight: 7
+is_admin: null
+permissions:
+  - 'access content'
+  - 'access content overview'
+  - 'administer taxonomy'
+  - 'administer url aliases'
+  - 'create city_page content'
+  - 'create event content'
+  - 'create news content'
+  - 'create organization content'
+  - 'create url aliases'
+  - 'delete any city_page content'
+  - 'delete any event content'
+  - 'delete any news content'
+  - 'delete any organization content'
+  - 'edit any city_page content'
+  - 'edit any event content'
+  - 'edit any news content'
+  - 'edit any organization content'
+  - 'use city_portal transition archive'
+  - 'use city_portal transition create_new_draft'
+  - 'use city_portal transition publish'
+  - 'use city_portal transition restore'
+  - 'use city_portal transition submit_for_review'
+  - 'view any unpublished content'
+  - 'view latest version'

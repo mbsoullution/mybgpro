@@ -1,0 +1,23 @@
+uuid: bbc4f9cd-b964-44f7-b7fd-74afb5a84bc8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_floors_total
+    - node.type.real_estate
+id: node.real_estate.field_floors_total
+field_name: field_floors_total
+entity_type: node
+bundle: real_estate
+label: Поверховість
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

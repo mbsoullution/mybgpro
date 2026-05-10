@@ -1,0 +1,21 @@
+uuid: 1cf5f3b7-9559-42d8-81a2-689c60b00b51
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_org_phone
+    - node.type.organization
+  module:
+    - telephone
+id: node.organization.field_org_phone
+field_name: field_org_phone
+entity_type: node
+bundle: organization
+label: Телефон
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

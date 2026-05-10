@@ -1,0 +1,23 @@
+uuid: c2a1334f-e2a7-45fa-b24e-5aa261e3ad8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_area_living
+    - node.type.real_estate
+id: node.real_estate.field_area_living
+field_name: field_area_living
+entity_type: node
+bundle: real_estate
+label: 'Жила площа (м²)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

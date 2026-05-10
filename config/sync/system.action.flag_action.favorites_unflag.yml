@@ -1,0 +1,15 @@
+uuid: 9536e19e-49bb-4a16-b9d6-c45c8d6e8bf3
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.favorites
+  module:
+    - flag
+id: flag_action.favorites_unflag
+label: 'Видалити з обраного'
+type: node
+plugin: 'flag_action:favorites_unflag'
+configuration:
+  flag_id: favorites
+  flag_action: unflag

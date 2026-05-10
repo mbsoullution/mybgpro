@@ -1,0 +1,19 @@
+uuid: f371355f-2b0e-4715-b021-838639da2526
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_org_working_hours
+    - node.type.organization
+id: node.organization.field_org_working_hours
+field_name: field_org_working_hours
+entity_type: node
+bundle: organization
+label: 'Години роботи'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,183 @@
+uuid: 80a9afff-c881-41a8-86b1-1f3ee9d985c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - search_api.server.city_search_server
+  module:
+    - node
+id: city_content_index
+name: 'City Content Index'
+description: 'Index for listings, real estate, news, events, organizations'
+read_only: false
+field_settings:
+  body:
+    label: Body
+    datasource_id: 'entity:node'
+    property_path: body
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.body
+  created:
+    label: 'Authored on'
+    datasource_id: 'entity:node'
+    property_path: created
+    type: date
+    dependencies:
+      module:
+        - node
+  node_grants:
+    label: 'Node access information'
+    property_path: search_api_node_grants
+    type: string
+    indexed_locked: true
+    type_locked: true
+    hidden: true
+  rendered_item:
+    label: 'Rendered HTML output'
+    property_path: rendered_item
+    type: text
+  status:
+    label: Boolean
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    dependencies:
+      module:
+        - node
+  type:
+    label: 'Content type'
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+    dependencies:
+      module:
+        - node
+  uid:
+    label: 'Entity reference'
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    indexed_locked: true
+    type_locked: true
+    dependencies:
+      module:
+        - node
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: true
+      selected: {  }
+    languages:
+      default: true
+      selected: {  }
+    plugin_id: 'entity:node'
+    settings:
+      bundles:
+        default: true
+        selected:
+          - listing
+          - real_estate
+          - news
+          - event
+          - organization
+      languages:
+        default: true
+        selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  content_access:
+    plugin_id: content_access
+    settings:
+      weights:
+        preprocess_query: -10
+  custom_value: {  }
+  entity_status:
+    plugin_id: entity_status
+    settings:
+      weights:
+        preprocess_query: -10
+  entity_type: {  }
+  language_with_fallback: {  }
+  rendered_item: {  }
+  stopwords:
+    all_fields: false
+    stopwords:
+      - a
+      - an
+      - and
+      - are
+      - as
+      - at
+      - be
+      - but
+      - by
+      - for
+      - if
+      - in
+      - into
+      - is
+      - it
+      - 'no'
+      - not
+      - of
+      - 'on'
+      - or
+      - s
+      - such
+      - t
+      - that
+      - the
+      - their
+      - then
+      - there
+      - these
+      - they
+      - this
+      - to
+      - was
+      - will
+      - with
+    plugin_id: stopwords
+    settings:
+      weights:
+        preprocess_index: -6
+        preprocess_query: -6
+      stopwords: {  }
+  tokenizer:
+    all_fields: false
+    spaces: ''
+    ignored: ._-
+    overlap_cjk: 1
+    minimum_word_size: '3'
+    plugin_id: tokenizer
+    settings:
+      weights:
+        preprocess_index: -6
+        preprocess_query: -6
+      spaces: ''
+      ignorable: ''
+tracker_settings:
+  default:
+    indexing_order: fifo
+    plugin_id: default
+    settings: {  }
+options:
+  cron_limit: 50
+  delete_on_fail: true
+  index_directly: false
+  track_changes_in_references: true
+server: city_search_server

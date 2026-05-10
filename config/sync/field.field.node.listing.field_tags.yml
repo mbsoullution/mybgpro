@@ -1,0 +1,24 @@
+uuid: 52c26016-5abf-451c-b7f4-bcdf9cb249e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tags
+    - node.type.listing
+    - taxonomy.vocabulary.tags
+id: node.listing.field_tags
+field_name: field_tags
+entity_type: node
+bundle: listing
+label: Теги
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      tags: tags
+field_type: entity_reference

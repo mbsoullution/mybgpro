@@ -1,0 +1,24 @@
+uuid: 30039f87-78d3-449a-92f5-83dc59b5937d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_re_type
+    - node.type.real_estate
+    - taxonomy.vocabulary.real_estate_type
+id: node.real_estate.field_re_type
+field_name: field_re_type
+entity_type: node
+bundle: real_estate
+label: 'Тип нерухомості'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      real_estate_type: real_estate_type
+field_type: entity_reference

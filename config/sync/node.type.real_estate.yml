@@ -1,0 +1,11 @@
+uuid: f3cd213d-1b7d-40af-bd2e-b077f66ebf80
+langcode: en
+status: true
+dependencies: {  }
+name: Нерухомість
+type: real_estate
+description: 'Продаж та оренда нерухомості'
+help: null
+new_revision: false
+preview_mode: 1
+display_submitted: true

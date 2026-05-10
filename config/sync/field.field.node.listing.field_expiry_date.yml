@@ -1,0 +1,21 @@
+uuid: e1c037f0-17cf-49d3-8870-33a2f965117f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_expiry_date
+    - node.type.listing
+  module:
+    - datetime
+id: node.listing.field_expiry_date
+field_name: field_expiry_date
+entity_type: node
+bundle: listing
+label: 'Дата закінчення'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

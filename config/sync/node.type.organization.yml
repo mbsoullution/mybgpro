@@ -1,0 +1,11 @@
+uuid: 1e59b819-1790-4e35-a081-d380190320b9
+langcode: en
+status: true
+dependencies: {  }
+name: Організація
+type: organization
+description: 'Довідник організацій, магазинів, установ'
+help: null
+new_revision: false
+preview_mode: 1
+display_submitted: true

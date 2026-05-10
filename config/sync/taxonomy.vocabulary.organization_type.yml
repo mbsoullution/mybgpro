@@ -1,0 +1,9 @@
+uuid: ac764403-1f13-4ace-8c57-fdac2f513ec5
+langcode: en
+status: true
+dependencies: {  }
+name: 'Organization Type'
+vid: organization_type
+description: null
+weight: 0
+new_revision: false

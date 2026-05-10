@@ -1,0 +1,19 @@
+uuid: 24314da4-258b-415c-b1c1-241f72c06782
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address_text
+    - node.type.organization
+id: node.organization.field_address_text
+field_name: field_address_text
+entity_type: node
+bundle: organization
+label: Адреса
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

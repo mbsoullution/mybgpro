@@ -1,0 +1,24 @@
+uuid: ede86348-8941-46aa-8b21-e9c605e5d12b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_condition
+    - node.type.listing
+    - taxonomy.vocabulary.condition
+id: node.listing.field_condition
+field_name: field_condition
+entity_type: node
+bundle: listing
+label: Стан
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      condition: condition
+field_type: entity_reference

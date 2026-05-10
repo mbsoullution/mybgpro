@@ -1,0 +1,24 @@
+uuid: 0c1d1876-644b-4078-b70c-708ecd440b05
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_district
+    - node.type.listing
+    - taxonomy.vocabulary.city_districts
+id: node.listing.field_district
+field_name: field_district
+entity_type: node
+bundle: listing
+label: 'Район міста'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      city_districts: city_districts
+field_type: entity_reference

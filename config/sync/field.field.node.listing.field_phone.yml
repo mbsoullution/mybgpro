@@ -1,0 +1,21 @@
+uuid: 9fd25399-1c5f-4db5-b250-7b31a1f5c1f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phone
+    - node.type.listing
+  module:
+    - telephone
+id: node.listing.field_phone
+field_name: field_phone
+entity_type: node
+bundle: listing
+label: Телефон
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

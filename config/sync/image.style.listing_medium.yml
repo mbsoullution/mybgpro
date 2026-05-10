@@ -1,0 +1,15 @@
+uuid: 1469ed25-e00d-474b-97c8-598d60719a3e
+langcode: en
+status: true
+dependencies: {  }
+name: listing_medium
+label: 'Listing Medium (600x450)'
+effects:
+  5402ab3e-72eb-4b3b-ab66-38832c938428:
+    uuid: 5402ab3e-72eb-4b3b-ab66-38832c938428
+    id: image_scale_and_crop
+    weight: 0
+    data:
+      width: 600
+      height: 450
+      anchor: center-center

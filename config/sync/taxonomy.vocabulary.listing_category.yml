@@ -1,0 +1,9 @@
+uuid: aa7376ad-4a68-41a5-a500-60defb7812b6
+langcode: en
+status: true
+dependencies: {  }
+name: 'Listing Category'
+vid: listing_category
+description: null
+weight: 0
+new_revision: false

@@ -1,0 +1,23 @@
+uuid: fdaeeeb4-f71a-478d-b47a-d438c38c9913
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.listing
+  module:
+    - node
+id: listing_pattern
+label: 'Listing URL Pattern'
+type: 'canonical_entities:node'
+pattern: '/ogloshenie/[node:field_listing_category]/[node:title]'
+selection_criteria:
+  node_type:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      listing: listing
+selection_logic: and
+weight: -5
+relationships: {  }

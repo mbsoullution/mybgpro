@@ -1,0 +1,21 @@
+uuid: 7988d291-71cc-4244-87e8-f2e54614977c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_price_negotiable
+    - node.type.listing
+id: node.listing.field_price_negotiable
+field_name: field_price_negotiable
+entity_type: node
+bundle: listing
+label: 'Ціна договірна'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

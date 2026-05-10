@@ -1,0 +1,11 @@
+uuid: 2239a7ab-cdb8-4b99-87a1-319c9a590d2d
+langcode: en
+status: true
+dependencies: {  }
+name: Оголошення
+type: listing
+description: 'Оголошення про продаж, обмін, послуги'
+help: null
+new_revision: false
+preview_mode: 1
+display_submitted: true

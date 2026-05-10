@@ -1,0 +1,24 @@
+uuid: 16e5b952-5fff-4a2c-92cd-9c29cd93dc49
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_org_type
+    - node.type.organization
+    - taxonomy.vocabulary.organization_type
+id: node.organization.field_org_type
+field_name: field_org_type
+entity_type: node
+bundle: organization
+label: 'Тип організації'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      organization_type: organization_type
+field_type: entity_reference

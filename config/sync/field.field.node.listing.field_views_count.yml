@@ -1,0 +1,23 @@
+uuid: 5c2321b2-175d-49b9-a2dd-3106166afb70
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_views_count
+    - node.type.listing
+id: node.listing.field_views_count
+field_name: field_views_count
+entity_type: node
+bundle: listing
+label: Переглядів
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

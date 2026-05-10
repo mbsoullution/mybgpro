@@ -1,0 +1,39 @@
+uuid: f62bbf56-886b-4fed-8bcf-1ef91f99fcca
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: favorites
+label: Обране
+bundles:
+  - event
+  - listing
+  - news
+  - organization
+  - real_estate
+entity_type: node
+global: false
+flag_short: 'Додати в обране'
+flag_long: 'Додати це до вашого списку обраного'
+flag_message: 'Додано в обране'
+unflag_short: 'Видалити з обраного'
+unflag_long: 'Видалити з вашого списку обраного'
+unflag_message: 'Видалено з обраного'
+unflag_denied_text: ''
+weight: 0
+flag_type: 'entity:node'
+link_type: reload
+flagTypeConfig:
+  show_in_links: {  }
+  show_as_field: true
+  show_on_form: false
+  show_contextual_link: false
+  extra_permissions: {  }
+  bundles:
+    - listing
+    - real_estate
+    - news
+    - event
+    - organization
+linkTypeConfig: {  }

@@ -1,0 +1,23 @@
+uuid: 2e972811-753d-43e1-b050-5ea12394dd2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_floor
+    - node.type.real_estate
+id: node.real_estate.field_floor
+field_name: field_floor
+entity_type: node
+bundle: real_estate
+label: Поверх
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

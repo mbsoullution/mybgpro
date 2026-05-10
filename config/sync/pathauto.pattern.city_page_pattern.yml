@@ -1,0 +1,23 @@
+uuid: 11cc46c4-cdae-4704-8efc-c55f41fc7151
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.city_page
+  module:
+    - node
+id: city_page_pattern
+label: 'City Page URL Pattern'
+type: 'canonical_entities:node'
+pattern: '/misto/[node:title]'
+selection_criteria:
+  node_type:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      city_page: city_page
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -1,0 +1,23 @@
+uuid: 563be421-b536-4970-97f4-6f97f4b8ae71
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_org_website
+    - node.type.organization
+  module:
+    - link
+id: node.organization.field_org_website
+field_name: field_org_website
+entity_type: node
+bundle: organization
+label: Веб-сайт
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

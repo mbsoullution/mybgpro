@@ -1,0 +1,11 @@
+uuid: 3897c4b7-1d31-42cb-988f-e070586240ab
+langcode: en
+status: true
+dependencies: {  }
+name: Подія
+type: event
+description: 'Міські події та заходи'
+help: null
+new_revision: false
+preview_mode: 1
+display_submitted: true

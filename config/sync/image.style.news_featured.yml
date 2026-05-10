@@ -1,0 +1,15 @@
+uuid: 254d60b8-62a2-4031-8219-eb6a2a596c6f
+langcode: en
+status: true
+dependencies: {  }
+name: news_featured
+label: 'News Featured (800x450)'
+effects:
+  368053a6-cf61-4347-9ab9-81c77829d9e9:
+    uuid: 368053a6-cf61-4347-9ab9-81c77829d9e9
+    id: image_scale_and_crop
+    weight: 0
+    data:
+      width: 800
+      height: 450
+      anchor: center-center

@@ -1,0 +1,20 @@
+uuid: 7e904e0f-d70f-4947-b0a7-0d437d224ab5
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_floors_total
+field_name: field_floors_total
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

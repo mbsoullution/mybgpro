@@ -1,0 +1,23 @@
+uuid: a5067308-ece6-4a1c-b351-0d6036941d7b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.news
+  module:
+    - node
+id: news_pattern
+label: 'News URL Pattern'
+type: 'canonical_entities:node'
+pattern: '/novyny/[node:created:html_year]/[node:created:html_month]/[node:title]'
+selection_criteria:
+  node_type:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      news: news
+selection_logic: and
+weight: -5
+relationships: {  }

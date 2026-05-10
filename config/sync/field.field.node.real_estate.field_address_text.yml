@@ -1,0 +1,19 @@
+uuid: a5e35586-c2e5-4053-8c37-d82b646e2dc8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address_text
+    - node.type.real_estate
+id: node.real_estate.field_address_text
+field_name: field_address_text
+entity_type: node
+bundle: real_estate
+label: Адреса
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

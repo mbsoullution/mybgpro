@@ -1,0 +1,9 @@
+uuid: a5ba14e0-df98-47c3-b35c-b1a5fd6b5c5d
+langcode: en
+status: true
+dependencies: {  }
+name: 'Real Estate Type'
+vid: real_estate_type
+description: null
+weight: 0
+new_revision: false

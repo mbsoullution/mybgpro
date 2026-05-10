@@ -1,0 +1,15 @@
+uuid: ead140b4-0f9a-425e-aa50-2200422de0c3
+langcode: en
+status: true
+dependencies: {  }
+name: org_logo
+label: 'Organization Logo (200x200)'
+effects:
+  e2b0ddde-6ce9-46fc-bd9c-c64ec4f14778:
+    uuid: e2b0ddde-6ce9-46fc-bd9c-c64ec4f14778
+    id: image_scale_and_crop
+    weight: 0
+    data:
+      width: 200
+      height: 200
+      anchor: center-center

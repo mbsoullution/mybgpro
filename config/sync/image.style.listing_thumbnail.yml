@@ -1,0 +1,15 @@
+uuid: c99f3d82-feb9-4687-950a-4cd7775fe985
+langcode: en
+status: true
+dependencies: {  }
+name: listing_thumbnail
+label: 'Listing Thumbnail (300x225)'
+effects:
+  dfd2d148-a127-436b-bd34-68410f080266:
+    uuid: dfd2d148-a127-436b-bd34-68410f080266
+    id: image_scale_and_crop
+    weight: 0
+    data:
+      width: 300
+      height: 225
+      anchor: center-center

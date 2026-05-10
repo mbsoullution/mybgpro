@@ -1,0 +1,15 @@
+uuid: f777eab3-9685-43b1-826a-df829b682995
+langcode: en
+status: true
+dependencies:
+  module:
+    - search_api_db
+id: city_search_server
+name: 'City Search Server'
+description: 'Database backend for city portal search'
+backend: search_api_db
+backend_config:
+  database: 'default:default'
+  min_chars: 2
+  prefix: ''
+  partial_matches: false

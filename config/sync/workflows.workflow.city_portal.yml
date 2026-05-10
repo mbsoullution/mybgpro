@@ -1,0 +1,79 @@
+uuid: 19cb1bca-4f2c-4a34-9eed-0a08b469afee
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.city_page
+    - node.type.event
+    - node.type.listing
+    - node.type.news
+    - node.type.organization
+    - node.type.real_estate
+  module:
+    - content_moderation
+id: city_portal
+label: 'City Portal Workflow'
+type: content_moderation
+type_settings:
+  states:
+    archived:
+      label: Archived
+      weight: 10
+      published: false
+      default_revision: true
+    draft:
+      label: Draft
+      weight: -5
+      published: false
+      default_revision: false
+    pending_review:
+      label: 'Pending Review'
+      weight: 0
+      published: false
+      default_revision: false
+    published:
+      label: Published
+      weight: 5
+      published: true
+      default_revision: true
+  transitions:
+    archive:
+      label: Archive
+      from:
+        - published
+      to: archived
+      weight: 3
+    create_new_draft:
+      label: 'Create New Draft'
+      from:
+        - draft
+        - published
+      to: draft
+      weight: 0
+    publish:
+      label: Publish
+      from:
+        - draft
+        - pending_review
+      to: published
+      weight: 2
+    restore:
+      label: Restore
+      from:
+        - archived
+      to: draft
+      weight: 4
+    submit_for_review:
+      label: 'Submit for Review'
+      from:
+        - draft
+      to: pending_review
+      weight: 1
+  entity_types:
+    node:
+      - listing
+      - real_estate
+      - news
+      - event
+      - organization
+      - city_page

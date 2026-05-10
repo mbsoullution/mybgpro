@@ -1,0 +1,23 @@
+uuid: 56343fa7-daba-4669-bb13-3e14f8408818
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.organization
+  module:
+    - node
+id: organization_pattern
+label: 'Organization URL Pattern'
+type: 'canonical_entities:node'
+pattern: '/dovidnyk/[node:field_org_type]/[node:title]'
+selection_criteria:
+  node_type:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      organization: organization
+selection_logic: and
+weight: -5
+relationships: {  }

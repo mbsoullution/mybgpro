@@ -1,0 +1,15 @@
+uuid: 34af7cad-3d42-4bb5-a6d9-2507a19a5cc4
+langcode: en
+status: true
+dependencies: {  }
+name: listing_large
+label: 'Listing Large (1200x900)'
+effects:
+  5cd70b6f-a807-4279-b4f1-6155017f5972:
+    uuid: 5cd70b6f-a807-4279-b4f1-6155017f5972
+    id: image_scale_and_crop
+    weight: 0
+    data:
+      width: 1200
+      height: 900
+      anchor: center-center

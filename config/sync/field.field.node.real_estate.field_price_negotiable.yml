@@ -1,0 +1,21 @@
+uuid: 0403accf-acfc-45c9-b765-676f5bb36ac7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_price_negotiable
+    - node.type.real_estate
+id: node.real_estate.field_price_negotiable
+field_name: field_price_negotiable
+entity_type: node
+bundle: real_estate
+label: 'Ціна договірна'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

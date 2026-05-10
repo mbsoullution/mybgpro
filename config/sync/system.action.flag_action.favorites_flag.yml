@@ -1,0 +1,15 @@
+uuid: 0a91018a-662e-45d9-89c7-1d66aab7666b
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.favorites
+  module:
+    - flag
+id: flag_action.favorites_flag
+label: 'Додати в обране'
+type: node
+plugin: 'flag_action:favorites_flag'
+configuration:
+  flag_id: favorites
+  flag_action: flag

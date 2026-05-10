@@ -1,0 +1,39 @@
+uuid: aaf24d1f-917f-4f17-9222-422f782c4c96
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.listing
+    - node.type.real_estate
+    - workflows.workflow.city_portal
+  module:
+    - comment
+    - content_moderation
+    - flag
+    - node
+    - system
+id: moderator
+label: Moderator
+weight: 6
+is_admin: null
+permissions:
+  - 'access content'
+  - 'access content overview'
+  - 'access user profiles'
+  - 'administer comments'
+  - 'delete any listing content'
+  - 'delete any real_estate content'
+  - 'edit any listing content'
+  - 'edit any real_estate content'
+  - 'flag favorites'
+  - 'post comments'
+  - 'skip comment approval'
+  - 'unflag favorites'
+  - 'use city_portal transition archive'
+  - 'use city_portal transition create_new_draft'
+  - 'use city_portal transition publish'
+  - 'use city_portal transition restore'
+  - 'use city_portal transition submit_for_review'
+  - 'view any unpublished content'
+  - 'view latest version'
+  - 'view user email addresses'

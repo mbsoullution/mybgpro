@@ -1,0 +1,23 @@
+uuid: 9658b5e2-2de6-4177-b3c9-a1e22cd181b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_area_total
+    - node.type.real_estate
+id: node.real_estate.field_area_total
+field_name: field_area_total
+entity_type: node
+bundle: real_estate
+label: 'Загальна площа (м²)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

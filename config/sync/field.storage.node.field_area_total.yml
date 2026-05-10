@@ -1,0 +1,20 @@
+uuid: 2814c601-328c-4819-83b5-64bc2c8b0ab6
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_area_total
+field_name: field_area_total
+entity_type: node
+type: decimal
+settings:
+  precision: 8
+  scale: 2
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

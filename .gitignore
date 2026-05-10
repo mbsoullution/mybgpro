@@ -1,0 +1,43 @@
+# Drupal core
+/web/core
+/web/modules/contrib
+/web/themes/contrib
+/web/profiles/contrib
+/web/libraries
+
+# Composer vendor
+/vendor
+
+# Drupal files directory
+/web/sites/default/files
+/web/sites/default/private
+
+# Drupal settings (environment-specific)
+/web/sites/default/settings.local.php
+/web/sites/default/settings.ddev.php
+
+# Drupal generated files
+/web/sites/default/settings.php.bak
+/web/.htaccess.bak
+
+# DDEV
+/.ddev/config.*.yaml
+/.ddev/db_snapshots
+/.ddev/sequelpro.spf
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Backup
+/backup
+
+# Temp scripts (setup)
+setup_*.php

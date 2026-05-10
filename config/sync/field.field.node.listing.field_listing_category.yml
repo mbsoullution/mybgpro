@@ -1,0 +1,24 @@
+uuid: b6e33a21-91c0-4523-b634-50acd7aa9fef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_listing_category
+    - node.type.listing
+    - taxonomy.vocabulary.listing_category
+id: node.listing.field_listing_category
+field_name: field_listing_category
+entity_type: node
+bundle: listing
+label: Категорія
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      listing_category: listing_category
+field_type: entity_reference
