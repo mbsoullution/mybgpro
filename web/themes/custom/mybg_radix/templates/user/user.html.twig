@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Theme override to present all user data.
+ */
+#}
+<article{{ attributes }}>
+  {% if is_own_profile %}
+    <div class="mybg-profile-toolbar">
+      <a href="{{ edit_url }}" class="mybg-profile-toolbar__edit btn btn-primary">
+        <span class="mybg-profile-toolbar__icon" aria-hidden="true">✎</span>
+        {{ 'Редагувати профіль'|t }}
+      </a>
+    </div>
+  {% endif %}
+  {{ content }}
+</article>

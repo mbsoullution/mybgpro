@@ -1,0 +1,40 @@
+site_uuid: ad757282-75e2-400c-a379-f92e35525510
+uuid: d4990401-6a86-4451-aa3c-8e390b2b6cbf
+entity_type: config_pages
+bundle: site_contacts
+base_fields:
+  label:
+    -
+      value: 'Контакти сайту'
+  context:
+    -
+      value: 'a:0:{}'
+  changed:
+    -
+      value: '1780708376'
+  metatag:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: '| Моє місто'
+    -
+      tag: link
+      attributes:
+        rel: canonical
+        href: 'https://mybgpro.ddev.site/node'
+custom_fields:
+  field_site_address:
+    -
+      value: 'м. Богуслав, Київська область'
+  field_site_email:
+    -
+      value: info@mybg.local
+  field_site_facebook: null
+  field_site_hours:
+    -
+      value: 'Пн–Пт: 9:00–18:00'
+  field_site_phone:
+    -
+      value: '+380 (XX) XXX-XX-XX'
+  field_site_telegram: null

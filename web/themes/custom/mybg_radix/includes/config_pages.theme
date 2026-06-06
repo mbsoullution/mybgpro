@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Config Pages preprocessors.
+ */
+
+declare(strict_types=1);
+
+/**
+ * Implements hook_preprocess_config_pages().
+ */
+function mybg_radix_preprocess_config_pages(array &$variables): void {
+  if (($variables['config_pages']->bundle() ?? '') !== 'site_contacts') {
+    return;
+  }
+
+  /** @var \Drupal\config_pages\Entity\ConfigPages $entity */
+  $entity = $variables['config_pages'];
+  $variables['site_phone'] = $entity->get('field_site_phone')->value ?? '';
+  $variables['site_phone_tel'] = preg_replace('/[^\d+]/', '', $variables['site_phone']) ?? '';
+  $variables['site_email'] = $entity->get('field_site_email')->value ?? '';
+  $variables['site_address'] = $entity->get('field_site_address')->value ?? '';
+  $variables['site_hours'] = $entity->get('field_site_hours')->value ?? '';
+  $variables['site_telegram'] = $entity->get('field_site_telegram')->value ?? '';
+
+  $variables['site_facebook_url'] = '';
+  if (!$entity->get('field_site_facebook')->isEmpty()) {
+    $variables['site_facebook_url'] = $entity->get('field_site_facebook')->first()->getUrl()->toString();
+  }
+}

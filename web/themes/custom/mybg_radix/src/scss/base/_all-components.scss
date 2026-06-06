@@ -1,0 +1,1262 @@
+// =============================================================================
+// My Boguslav — Components
+// =============================================================================
+
+// =============================================================================
+// HEADER
+// =============================================================================
+
+.site-header {
+  background: $nav-bg;
+  border-bottom: 1px solid $nav-border-color;
+  position: sticky;
+  top: 0;
+  z-index: $z-nav;
+  height: $nav-height-mobile;
+  @include flex-between;
+  padding: 0 $spacing-md;
+  box-shadow: $shadow-xs;
+
+  @include lg {
+    height: $nav-height-desktop;
+    padding: 0 $spacing-xl;
+  }
+}
+
+.site-logo {
+  @include heading-font($font-size-md, $font-weight-semibold);
+  color: $color-primary;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    background: $color-accent;
+    border-radius: $radius-full;
+    flex-shrink: 0;
+  }
+
+  @include lg {
+    font-size: $font-size-lg;
+  }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+// Mobile burger toggle
+.nav-toggle {
+  @include btn-ghost;
+  padding: $spacing-xs;
+  font-size: 22px;
+  display: flex;
+
+  @include lg {
+    display: none;
+  }
+}
+
+
+// =============================================================================
+// NAVIGATION
+// =============================================================================
+
+.site-nav {
+  // Mobile — off-canvas drawer menu
+  position: fixed;
+  inset: 0 0 0 auto;
+  width: 280px;
+  background: $color-surface;
+  border-left: 1px solid $color-border;
+  padding: $spacing-2xl $spacing-lg $spacing-lg;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: $z-modal;
+  overflow-y: auto;
+
+  &.is-open {
+    transform: translateX(0);
+  }
+
+  @include lg {
+    position: static;
+    width: auto;
+    border: none;
+    padding: 0;
+    transform: none;
+    display: flex;
+    align-items: center;
+    gap: $spacing-2xs;
+    overflow: visible;
+  }
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $nav-link-radius;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $nav-link-color;
+  text-decoration: none;
+  transition: $transition-fast;
+  margin-bottom: $spacing-2xs;
+
+  @include lg {
+    padding: $nav-link-padding;
+    margin-bottom: 0;
+    font-size: $font-size-sm;
+  }
+
+  &:hover,
+  &.is-active,
+  &--active {
+    background: $nav-link-active-bg;
+    color: $nav-link-active-color;
+  }
+}
+
+// "Add listing" button
+.btn-add-listing {
+  @include btn-primary;
+  font-size: $font-size-sm;
+  padding: 8px $spacing-md;
+
+  @include mobile-only {
+    display: none; // hidden on mobile; use floating button instead
+  }
+}
+
+// Floating button on mobile
+.btn-add-floating {
+  @include btn-primary;
+  position: fixed;
+  bottom: calc(#{$spacing-lg} + env(safe-area-inset-bottom, 0px));
+  right: $spacing-md;
+  z-index: $z-sticky;
+  border-radius: $radius-full;
+  padding: 14px $spacing-lg;
+  box-shadow: $shadow-lg;
+  font-size: $font-size-sm;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  border: none;
+  text-decoration: none;
+
+  @include lg {
+    display: none;
+  }
+}
+
+.mybg-create-fab__plus {
+  font-size: 1.25rem;
+  line-height: 1;
+  font-weight: $font-weight-semibold;
+}
+
+// Bottom sheet when multiple content types available.
+.mybg-create-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+
+  &[hidden] {
+    display: none;
+  }
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba($color-text, 0.45);
+  }
+
+  &__panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $color-surface;
+    border-radius: $radius-lg $radius-lg 0 0;
+    padding: $spacing-md $spacing-md calc(#{$spacing-lg} + env(safe-area-inset-bottom, 0px));
+    box-shadow: 0 -8px 32px rgba($color-text, 0.12);
+  }
+
+  &__handle {
+    width: 40px;
+    height: 4px;
+    background: $color-border;
+    border-radius: $radius-full;
+    margin: 0 auto $spacing-md;
+  }
+
+  &__title {
+    @include heading-font($font-size-md, $font-weight-semibold);
+    margin: 0 0 $spacing-md;
+    text-align: center;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: $spacing-sm;
+  }
+
+  &__link {
+    display: block;
+    padding: $spacing-md;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    text-decoration: none;
+    color: $color-text;
+    background: $color-surface;
+    min-height: 56px;
+    transition: $transition-base;
+
+    &:hover {
+      border-color: $color-primary;
+      background: $color-primary-light;
+    }
+
+    &--listing {
+      border-left: 4px solid $color-cat-sell;
+    }
+
+    &--real-estate {
+      border-left: 4px solid $color-cat-realty;
+    }
+  }
+
+  &__link-title {
+    display: block;
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-md;
+  }
+
+  &__link-sub {
+    display: block;
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+    margin-top: 2px;
+  }
+}
+
+body.mybg-create-sheet-open {
+  overflow: hidden;
+}
+
+
+// =============================================================================
+// HERO / SEARCH
+// =============================================================================
+
+.site-hero {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+  padding: $spacing-xl $spacing-md;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  // Decorative circle
+  &::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 160px;
+    height: 160px;
+    background: rgba($color-accent, 0.15);
+    border-radius: 50%;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: -20px;
+    width: 100px;
+    height: 100px;
+    background: rgba(#fff, 0.06);
+    border-radius: 50%;
+  }
+
+  @include md {
+    padding: $spacing-2xl $spacing-xl;
+  }
+  @include xl {
+    padding: $spacing-3xl $spacing-2xl;
+  }
+}
+
+.hero-title {
+  @include heading-font($font-size-xl, $font-weight-semibold);
+  color: #fff;
+  margin-bottom: $spacing-xs;
+
+  @include md {
+    font-size: $font-size-2xl;
+  }
+  @include xl {
+    font-size: $font-size-3xl;
+  }
+}
+
+.hero-subtitle {
+  color: rgba(#fff, 0.72);
+  font-size: $font-size-sm;
+  margin-bottom: $spacing-lg;
+
+  @include md {
+    font-size: $font-size-md;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+// Search bar
+.search-bar {
+  display: flex;
+  gap: $spacing-xs;
+  background: $color-surface;
+  border-radius: $radius-lg;
+  padding: 6px 6px 6px $spacing-md;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: $shadow-md;
+
+  &__input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-family: $font-body;
+    font-size: $font-size-md;
+    color: $color-text;
+    background: transparent;
+    min-width: 0;
+
+    &::placeholder {
+      color: $color-text-light;
+    }
+  }
+
+  &__btn {
+    @include btn-accent;
+    font-size: $font-size-sm;
+    padding: 8px $spacing-md;
+    flex-shrink: 0;
+  }
+}
+
+
+// =============================================================================
+// CATEGORIES
+// =============================================================================
+
+.categories-grid {
+  @include cards-grid(2, 3, 6, $spacing-sm);
+
+  @include xl {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+
+.category-card {
+  @include card-interactive;
+  padding: $spacing-md $spacing-sm;
+  text-align: center;
+  text-decoration: none;
+
+  &__icon {
+    font-size: 26px;
+    color: $color-primary;
+    display: block;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__label {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: $color-text-muted;
+    display: block;
+  }
+
+  &__count {
+    font-size: 10px;
+    color: $color-text-light;
+    margin-top: 3px;
+    display: block;
+  }
+
+  // Variants by listing type
+  &--sell    { --cat-color: #{$color-cat-sell}; }
+  &--give    { --cat-color: #{$color-cat-give}; }
+  &--buy     { --cat-color: #{$color-cat-buy}; }
+  &--service { --cat-color: #{$color-cat-service}; }
+  &--realty  { --cat-color: #{$color-cat-realty}; }
+  &--exchange{ --cat-color: #{$color-cat-exchange}; }
+
+  &--sell, &--give, &--buy, &--service, &--realty, &--exchange {
+    .category-card__icon {
+      color: var(--cat-color);
+    }
+    &:hover {
+      border-color: var(--cat-color);
+    }
+  }
+}
+
+
+// =============================================================================
+// LISTING CARDS
+// =============================================================================
+
+.listings-grid {
+  @include cards-grid(1, 2, 3, $spacing-md);
+
+  @include xl {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.listing-card {
+  @include card-interactive;
+
+  &__image {
+    position: relative;
+    height: $card-img-height-mobile;
+    background: $color-primary-light;
+    overflow: hidden;
+    @include flex-center;
+
+    @include md {
+      height: $card-img-height-tablet;
+    }
+    @include lg {
+      height: $card-img-height-desktop;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.04);
+    }
+
+    &-placeholder {
+      font-size: 40px;
+      color: $color-primary;
+      opacity: 0.3;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: $spacing-xs;
+    left: $spacing-xs;
+  }
+
+  &__favorite {
+    position: absolute;
+    top: $spacing-xs;
+    right: $spacing-xs;
+    width: 32px;
+    height: 32px;
+    background: rgba(#fff, 0.9);
+    border-radius: $radius-full;
+    @include flex-center;
+    cursor: pointer;
+    transition: $transition-fast;
+    border: none;
+
+    &:hover, &.is-active {
+      background: $color-danger-bg;
+      color: $color-danger;
+    }
+  }
+
+  &__body {
+    padding: $spacing-md;
+  }
+
+  &__price {
+    @include heading-font($font-size-lg, $font-weight-semibold);
+    color: $color-primary;
+    margin-bottom: $spacing-2xs;
+  }
+
+  &__title {
+    @include body-font($font-size-sm, $font-weight-medium);
+    @include text-clamp(2);
+    color: $color-text;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__meta {
+    @include flex-start($spacing-sm);
+    font-size: $font-size-xs;
+    color: $color-text-light;
+    flex-wrap: wrap;
+  }
+
+  &__phone-btn {
+    @include btn-outline;
+    width: 100%;
+    margin-top: $spacing-sm;
+    font-size: $font-size-sm;
+    padding: 8px;
+  }
+}
+
+
+// =============================================================================
+// NEWS
+// =============================================================================
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.news-item {
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  display: flex;
+  gap: $spacing-md;
+  align-items: flex-start;
+  cursor: pointer;
+  text-decoration: none;
+  transition: $transition-base;
+
+  &:hover {
+    border-color: $color-primary;
+    background: $color-primary-light;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    background: $color-accent;
+    border-radius: $radius-full;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  &__content { flex: 1; }
+
+  &__title {
+    @include body-font($font-size-md, $font-weight-semibold);
+    @include text-clamp(2);
+    color: $color-text;
+    margin-bottom: $spacing-2xs;
+  }
+
+  &__date {
+    font-size: $font-size-xs;
+    color: $color-text-light;
+  }
+
+  // With image — horizontal card layout
+  &--with-image {
+    @include md {
+      .news-item__image {
+        width: 140px;
+        height: 90px;
+        border-radius: $radius-sm;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+    }
+  }
+}
+
+
+// =============================================================================
+// LISTING TYPE BADGES
+// =============================================================================
+
+.badge {
+  @include badge($color-primary-light, $color-primary-dark);
+
+  &--sell    { @include badge($color-primary-light, $color-primary-dark); }
+  &--give    { @include badge($color-accent-light, $color-accent-dark); }
+  &--buy     { @include badge($color-info-bg, $color-info); }
+  &--exchange{ @include badge(#E6F7F5, #2A7A70); }
+  &--service { @include badge(#F0EBF8, #6A4A98); }
+  &--realty  { @include badge($color-danger-bg, $color-danger); }
+  &--new     { @include badge($color-success-bg, $color-success); }
+  &--hot     { @include badge($color-warning-bg, $color-warning); }
+}
+
+
+// =============================================================================
+// SECTION HEADER
+// =============================================================================
+
+.section-header {
+  @include flex-between;
+  margin-bottom: $spacing-md;
+
+  &__title {
+    @include heading-font($font-size-md, $font-weight-semibold);
+    color: $color-text;
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 18px;
+      background: $color-accent;
+      border-radius: $radius-xs;
+      margin-left: $spacing-xs;
+    }
+  }
+
+  &__link {
+    font-size: $font-size-sm;
+    color: $color-primary;
+    text-decoration: none;
+    font-weight: $font-weight-medium;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+// =============================================================================
+// SOCIAL AUTH (login / register buttons)
+// =============================================================================
+
+.social-auth-login {
+  margin-bottom: $spacing-lg;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-md;
+    border: 1px solid $color-border;
+    background: $color-surface;
+    text-decoration: none;
+    font-weight: $font-weight-semibold;
+    color: $color-text;
+    transition: $transition-base;
+
+    &:hover {
+      border-color: $color-primary;
+      background: $color-primary-light;
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.path-user {
+  .social-auth-login {
+    max-width: 400px;
+    margin: 0 auto $spacing-lg;
+  }
+
+  // Horizontal scroll for View / Edit tabs on small screens.
+  .tabs-wrapper,
+  nav.tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-bottom: $spacing-md;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    ul {
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      gap: $spacing-xs;
+      padding-bottom: 2px;
+    }
+
+    a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      padding: $spacing-sm $spacing-md;
+      border-radius: $radius-full;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+    }
+  }
+}
+
+// Profile view — prominent edit entry on mobile.
+.mybg-profile-toolbar {
+  margin-bottom: $spacing-lg;
+
+  &__edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-sm;
+    width: 100%;
+    min-height: 48px;
+    font-weight: $font-weight-semibold;
+    border-radius: $radius-lg;
+  }
+
+  &__icon {
+    font-size: 1.1em;
+  }
+
+  @include md {
+    &__edit {
+      width: auto;
+      min-width: 220px;
+    }
+  }
+}
+
+.mybg-user-profile {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: $spacing-md 0 $spacing-xl;
+
+  @include md {
+    padding: $spacing-lg 0;
+  }
+
+  .field {
+    margin-bottom: $spacing-md;
+  }
+
+  .field--label-inline {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2xs;
+
+    @include sm {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: $spacing-xs $spacing-sm;
+    }
+
+    .field__label {
+      font-weight: $font-weight-semibold;
+      color: $color-text-muted;
+      font-size: $font-size-sm;
+
+      @include sm {
+        min-width: 120px;
+      }
+    }
+  }
+
+  .field--name-user-picture {
+    text-align: center;
+    margin-bottom: $spacing-lg;
+
+    img {
+      width: 96px;
+      height: 96px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid $color-primary-light;
+    }
+  }
+
+  .field--name-field-profile-bio {
+    padding: $spacing-md;
+    background: $color-surface;
+    border-radius: $radius-lg;
+    border: 1px solid $color-border;
+  }
+}
+
+// Profile edit form — mobile-first.
+.page-user-edit {
+  .page-title,
+  .block-page-title-block {
+    @include mobile-only {
+      display: none;
+    }
+  }
+
+  .layout-content,
+  main .container,
+  .page-content {
+    @include mobile-only {
+      padding-left: $spacing-md;
+      padding-right: $spacing-md;
+    }
+  }
+}
+
+.mybg-user-profile-form {
+  max-width: 560px;
+  margin: 0 auto;
+  padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+
+  @include md {
+    padding-bottom: $spacing-xl;
+  }
+
+  &__header {
+    margin-bottom: $spacing-lg;
+    text-align: center;
+
+    @include md {
+      text-align: left;
+    }
+  }
+
+  &__title {
+    @include heading-font($font-size-xl, $font-weight-semibold);
+    margin: 0 0 $spacing-xs;
+    color: $color-text;
+  }
+
+  &__lead {
+    margin: 0;
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+    line-height: 1.5;
+  }
+
+  .form-item,
+  .field--type-image {
+    margin-bottom: $spacing-lg;
+  }
+
+  label,
+  .fieldset-legend,
+  summary {
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-sm;
+    color: $color-text;
+    margin-bottom: $spacing-xs;
+    display: block;
+  }
+
+  .form-control,
+  .form-select,
+  textarea.form-control {
+    width: 100%;
+    min-height: 48px;
+    font-size: 16px; // Prevents iOS zoom on focus.
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-md;
+    border: 1px solid $color-border;
+    background: $color-surface;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+    &:focus {
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.15);
+      outline: none;
+    }
+  }
+
+  textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .description,
+  .form-text {
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+    margin-top: $spacing-2xs;
+  }
+
+  .mybg-profile-form__photo {
+    text-align: center;
+    padding: $spacing-lg $spacing-md;
+    margin-bottom: $spacing-lg;
+    background: $color-primary-light;
+    border-radius: $radius-lg;
+    border: none;
+
+    .form-item {
+      margin-bottom: 0;
+    }
+
+    img {
+      width: 88px;
+      height: 88px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid $color-surface;
+      margin-bottom: $spacing-sm;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto;
+      font-size: $font-size-sm;
+    }
+  }
+
+  .mybg-profile-form__account {
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    padding: $spacing-sm $spacing-md;
+    margin-top: $spacing-md;
+    background: $color-surface;
+
+    summary {
+      cursor: pointer;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      list-style: none;
+      font-size: $font-size-md;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &::after {
+        content: "›";
+        margin-left: auto;
+        font-size: 1.25rem;
+        color: $color-text-muted;
+        transition: transform 0.2s ease;
+      }
+    }
+
+    &[open] summary::after {
+      transform: rotate(90deg);
+    }
+
+    .form-item {
+      margin-bottom: $spacing-md;
+    }
+  }
+
+  .mybg-profile-form__actions {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: $z-nav - 1;
+    display: flex;
+    gap: $spacing-sm;
+    padding: $spacing-sm $spacing-md calc(#{$spacing-sm} + env(safe-area-inset-bottom, 0px));
+    background: rgba($color-surface, 0.96);
+    border-top: 1px solid $color-border;
+    box-shadow: 0 -4px 20px rgba($color-text, 0.08);
+    backdrop-filter: blur(8px);
+
+    @include md {
+      position: static;
+      padding: 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      backdrop-filter: none;
+      margin-top: $spacing-xl;
+    }
+  }
+
+  .mybg-profile-form__submit {
+    flex: 1;
+    min-height: 48px;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    border-radius: $radius-lg;
+
+    @include md {
+      flex: none;
+      min-width: 200px;
+    }
+  }
+}
+
+
+// Node create/edit forms — mobile-first.
+.page-node-form {
+  .page-title,
+  .block-page-title-block {
+    @include mobile-only {
+      display: none;
+    }
+  }
+}
+
+.mybg-node-form {
+  max-width: 560px;
+  margin: 0 auto;
+  padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+
+  @include md {
+    padding-bottom: $spacing-xl;
+  }
+
+  &__header {
+    margin-bottom: $spacing-lg;
+    text-align: center;
+
+    @include md {
+      text-align: left;
+    }
+  }
+
+  &__title {
+    @include heading-font($font-size-xl, $font-weight-semibold);
+    margin: 0 0 $spacing-xs;
+    color: $color-text;
+  }
+
+  &__lead {
+    margin: 0;
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+    line-height: 1.5;
+  }
+
+  .form-item,
+  .field--type-image {
+    margin-bottom: $spacing-lg;
+  }
+
+  label,
+  .fieldset-legend,
+  summary {
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-sm;
+    color: $color-text;
+    margin-bottom: $spacing-xs;
+    display: block;
+  }
+
+  .form-control,
+  .form-select,
+  textarea.form-control,
+  input[type="number"],
+  input[type="tel"],
+  input[type="text"] {
+    width: 100%;
+    min-height: 48px;
+    font-size: 16px;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-md;
+    border: 1px solid $color-border;
+    background: $color-surface;
+
+    &:focus {
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.15);
+      outline: none;
+    }
+  }
+
+  &__title-input {
+    font-weight: $font-weight-semibold;
+  }
+
+  &__photos {
+    text-align: center;
+    padding: $spacing-lg $spacing-md;
+    background: $color-primary-light;
+    border-radius: $radius-lg;
+
+    .form-item {
+      margin-bottom: $spacing-sm;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      font-size: $font-size-sm;
+    }
+  }
+
+  .form-check {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  .form-check-input {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .description,
+  .form-text {
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+    margin-top: $spacing-2xs;
+  }
+
+  &__actions {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: $z-nav - 1;
+    display: flex;
+    gap: $spacing-sm;
+    padding: $spacing-sm $spacing-md calc(#{$spacing-sm} + env(safe-area-inset-bottom, 0px));
+    background: rgba($color-surface, 0.96);
+    border-top: 1px solid $color-border;
+    box-shadow: 0 -4px 20px rgba($color-text, 0.08);
+    backdrop-filter: blur(8px);
+
+    @include md {
+      position: static;
+      padding: 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      backdrop-filter: none;
+      margin-top: $spacing-xl;
+    }
+  }
+
+  &__submit {
+    flex: 1;
+    min-height: 48px;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    border-radius: $radius-lg;
+
+    @include md {
+      flex: none;
+      min-width: 220px;
+    }
+  }
+}
+
+
+.site-contacts {
+  &__title {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: rgba(#fff, 0.85);
+    margin-bottom: $spacing-sm;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 11px;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    font-size: $font-size-sm;
+    padding: 3px 0;
+    color: rgba(#fff, 0.55);
+
+    a {
+      color: rgba(#fff, 0.75);
+      text-decoration: none;
+      transition: $transition-fast;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    &--phone a {
+      font-weight: $font-weight-semibold;
+      font-size: $font-size-md;
+      color: #fff;
+    }
+  }
+}
+
+
+.site-footer {
+  background: $color-text;
+  color: rgba(#fff, 0.65);
+  padding: $spacing-2xl $spacing-md;
+
+  @include md {
+    padding: $spacing-2xl $spacing-xl;
+  }
+
+  &__logo {
+    @include heading-font($font-size-md, $font-weight-semibold);
+    color: #fff;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__grid {
+    @include cards-grid(1, 2, 4, $spacing-xl);
+    margin-bottom: $spacing-xl;
+  }
+
+  &__title {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: rgba(#fff, 0.85);
+    margin-bottom: $spacing-sm;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 11px;
+  }
+
+  &__link {
+    display: block;
+    color: rgba(#fff, 0.55);
+    text-decoration: none;
+    font-size: $font-size-sm;
+    padding: 3px 0;
+    transition: $transition-fast;
+
+    &:hover {
+      color: rgba(#fff, 0.9);
+    }
+  }
+
+  &__bottom {
+    border-top: 1px solid rgba(#fff, 0.12);
+    padding-top: $spacing-md;
+    @include flex-between;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+    font-size: $font-size-xs;
+  }
+}

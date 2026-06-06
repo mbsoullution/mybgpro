@@ -1,0 +1,22 @@
+uuid: d0e1f2a3-b4c5-4678-d0ef-a01234567890
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_profile_bio
+  module:
+    - text
+    - user
+id: user.user.field_profile_bio
+field_name: field_profile_bio
+entity_type: user
+bundle: user
+label: 'Про себе'
+description: 'Коротко про вас — до 500 символів.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Mobile-friendly node create/edit form (listing, real estate).
+ */
+#}
+<form{{ attributes.addClass('mybg-node-form') }}>
+  <div class="mybg-node-form__header">
+    <h2 class="mybg-node-form__title">{{ mybg_form_title }}</h2>
+    {% if mybg_form_lead %}
+      <p class="mybg-node-form__lead">{{ mybg_form_lead }}</p>
+    {% endif %}
+  </div>
+  {{ children }}
+</form>

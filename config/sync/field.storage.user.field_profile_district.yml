@@ -1,0 +1,20 @@
+uuid: d4e5f6a7-b8c9-4012-d4ef-a45678901234
+langcode: uk
+status: true
+dependencies:
+  module:
+    - taxonomy
+    - user
+id: user.field_profile_district
+field_name: field_profile_district
+entity_type: user
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

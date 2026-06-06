@@ -1,0 +1,20 @@
+uuid: b8c9d0e1-f2a3-4456-b8cd-e89012345678
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_profile_messenger
+  module:
+    - user
+id: user.user.field_profile_messenger
+field_name: field_profile_messenger
+entity_type: user
+bundle: user
+label: 'Telegram / Viber'
+description: 'Нік або номер для швидкого звʼязку (необовʼязково).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

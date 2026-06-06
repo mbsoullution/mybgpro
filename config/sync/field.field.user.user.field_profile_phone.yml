@@ -1,0 +1,21 @@
+uuid: a7b8c9d0-e1f2-4345-a7bc-d78901234567
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_profile_phone
+  module:
+    - telephone
+    - user
+id: user.user.field_profile_phone
+field_name: field_profile_phone
+entity_type: user
+bundle: user
+label: Телефон
+description: 'Використовується в оголошеннях. На публічній сторінці профілю видно лише вам.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

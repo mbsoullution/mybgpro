@@ -1,0 +1,27 @@
+uuid: 7a3c1e92-4f8b-4d2a-9c1e-8b4f2a6d3e01
+langcode: uk
+status: true
+dependencies:
+  module:
+    - social_auth
+    - system
+  theme:
+    - mybg_radix
+id: mybg_radix_socialauthlogin
+theme: mybg_radix
+region: content
+weight: -10
+provider: null
+plugin: social_auth_login
+settings:
+  id: social_auth_login
+  label: 'Social Auth Login'
+  label_display: '0'
+  provider: social_auth
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: |
+      /user/login
+      /user/register

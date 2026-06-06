@@ -4,6 +4,11 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.user.compact
+    - field.field.user.user.field_profile_bio
+    - field.field.user.user.field_profile_district
+    - field.field.user.user.field_profile_full_name
+    - field.field.user.user.field_profile_messenger
+    - field.field.user.user.field_profile_phone
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
@@ -20,12 +25,18 @@ content:
     type: image
     label: hidden
     settings:
-      image_style: thumbnail
       image_link: content
+      image_style: thumbnail
       image_loading:
         attribute: lazy
     third_party_settings: {  }
     weight: 0
     region: content
 hidden:
+  field_profile_bio: true
+  field_profile_district: true
+  field_profile_full_name: true
+  field_profile_messenger: true
+  field_profile_phone: true
   member_for: true
+  search_api_excerpt: true

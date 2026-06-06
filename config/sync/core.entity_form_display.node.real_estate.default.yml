@@ -1,0 +1,150 @@
+uuid: b2c3d4e5-f6a7-8901-bcde-f12345678901
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.field.node.real_estate.field_address_text
+    - field.field.node.real_estate.field_area_living
+    - field.field.node.real_estate.field_area_total
+    - field.field.node.real_estate.field_district
+    - field.field.node.real_estate.field_floor
+    - field.field.node.real_estate.field_floors_total
+    - field.field.node.real_estate.field_images
+    - field.field.node.real_estate.field_phone
+    - field.field.node.real_estate.field_price
+    - field.field.node.real_estate.field_price_negotiable
+    - field.field.node.real_estate.field_re_type
+    - field.field.node.real_estate.field_rooms
+    - field.field.node.real_estate.field_transaction_type
+    - node.type.real_estate
+  module:
+    - image
+    - telephone
+id: node.real_estate.default
+targetEntityType: node
+bundle: real_estate
+mode: default
+content:
+  field_address_text:
+    type: string_textfield
+    weight: 12
+    region: content
+    settings:
+      size: 60
+      placeholder: 'Адреса або орієнтир'
+    third_party_settings: {  }
+  field_area_living:
+    type: number
+    weight: 8
+    region: content
+    settings:
+      placeholder: м²
+    third_party_settings: {  }
+  field_area_total:
+    type: number
+    weight: 7
+    region: content
+    settings:
+      placeholder: м²
+    third_party_settings: {  }
+  field_district:
+    type: options_select
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_floor:
+    type: number
+    weight: 9
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_floors_total:
+    type: number
+    weight: 10
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_images:
+    type: image_image
+    weight: 1
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_phone:
+    type: telephone_default
+    weight: 13
+    region: content
+    settings:
+      placeholder: +380...
+    third_party_settings: {  }
+  field_price:
+    type: number
+    weight: 4
+    region: content
+    settings:
+      placeholder: '0'
+    third_party_settings: {  }
+  field_price_negotiable:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_re_type:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_rooms:
+    type: number
+    weight: 6
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_transaction_type:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  scheduler_settings:
+    weight: 50
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: 'Наприклад: 2-кімнатна квартира, центр'
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  path: true
+  promote: true
+  publish_on: true
+  status: true
+  sticky: true
+  uid: true
+  unpublish_on: true

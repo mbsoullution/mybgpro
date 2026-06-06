@@ -9,6 +9,7 @@ dependencies:
     - node.type.organization
     - workflows.workflow.city_portal
   module:
+    - config_pages
     - content_moderation
     - node
     - path
@@ -36,10 +37,12 @@ permissions:
   - 'edit any event content'
   - 'edit any news content'
   - 'edit any organization content'
+  - 'edit config_pages entity'
   - 'use city_portal transition archive'
   - 'use city_portal transition create_new_draft'
   - 'use city_portal transition publish'
   - 'use city_portal transition restore'
   - 'use city_portal transition submit_for_review'
   - 'view any unpublished content'
+  - 'view config_pages entity'
   - 'view latest version'

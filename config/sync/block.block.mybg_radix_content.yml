@@ -1,0 +1,20 @@
+uuid: 8b4d2f03-59c5-4e3b-8d2f-9c503b7e4f12
+langcode: uk
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - mybg_radix
+id: mybg_radix_content
+theme: mybg_radix
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

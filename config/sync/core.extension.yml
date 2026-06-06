@@ -14,6 +14,7 @@ module:
   ckeditor5: 0
   comment: 0
   config: 0
+  config_pages: 0
   contact: 0
   content_moderation: 0
   contextual: 0
@@ -42,6 +43,7 @@ module:
   menu_link_content: 0
   menu_ui: 0
   metatag: 0
+  mybg_admin: 0
   mysql: 0
   node: 0
   options: 0
@@ -54,7 +56,11 @@ module:
   search_api: 0
   search_api_db: 0
   shortcut: 0
+  single_content_sync: 0
   smtp: 0
+  social_api: 0
+  social_auth: 0
+  social_auth_facebook: 0
   system: 0
   taxonomy: 0
   telephone: 0
@@ -75,4 +81,6 @@ theme:
   olivero: 0
   claro: 0
   gin: 0
+  radix: 0
+  mybg_radix: 0
 profile: standard

@@ -1,0 +1,19 @@
+uuid: aba61916-93bb-484e-8af4-7284c9a93be8
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.site_contacts
+    - field.storage.config_pages.field_site_telegram
+id: config_pages.site_contacts.field_site_telegram
+field_name: field_site_telegram
+entity_type: config_pages
+bundle: site_contacts
+label: Telegram
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

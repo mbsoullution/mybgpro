@@ -1,0 +1,69 @@
+uuid: 45abb3f5-ee7c-482f-a346-81a8405934a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.site_contacts
+    - field.field.config_pages.site_contacts.field_site_address
+    - field.field.config_pages.site_contacts.field_site_email
+    - field.field.config_pages.site_contacts.field_site_facebook
+    - field.field.config_pages.site_contacts.field_site_hours
+    - field.field.config_pages.site_contacts.field_site_phone
+    - field.field.config_pages.site_contacts.field_site_telegram
+  module:
+    - link
+    - telephone
+id: config_pages.site_contacts.default
+targetEntityType: config_pages
+bundle: site_contacts
+mode: default
+content:
+  field_site_address:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: 'м. Богуслав, ...'
+    third_party_settings: {  }
+  field_site_email:
+    type: email_default
+    weight: 1
+    region: content
+    settings:
+      placeholder: info@example.com
+      size: 60
+    third_party_settings: {  }
+  field_site_facebook:
+    type: link_default
+    weight: 5
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_site_hours:
+    type: string_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: 'Пн–Пт: 9:00–18:00'
+    third_party_settings: {  }
+  field_site_phone:
+    type: telephone_default
+    weight: 0
+    region: content
+    settings:
+      placeholder: '+380 (XX) XXX-XX-XX'
+    third_party_settings: {  }
+  field_site_telegram:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: '@username'
+    third_party_settings: {  }
+hidden:
+  label: true

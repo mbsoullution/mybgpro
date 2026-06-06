@@ -1,0 +1,50 @@
+# Aligned with Bootstrap 5 ($grid-breakpoints in base/_variables.scss).
+# Mobile-first in SCSS; here: non-overlapping bands for Drupal (responsive images, etc.).
+
+default.xs:
+  label: XS
+  mediaQuery: '(max-width: 575.98px)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+
+default.sm:
+  label: SM
+  mediaQuery: '(min-width: 576px) and (max-width: 767.98px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+
+default.md:
+  label: MD
+  mediaQuery: '(min-width: 768px) and (max-width: 991.98px)'
+  weight: 2
+  multipliers:
+    - 1x
+    - 2x
+
+default.lg:
+  label: LG
+  mediaQuery: '(min-width: 992px) and (max-width: 1199.98px)'
+  weight: 3
+  multipliers:
+    - 1x
+    - 2x
+
+default.xl:
+  label: XL
+  mediaQuery: '(min-width: 1200px) and (max-width: 1399.98px)'
+  weight: 4
+  multipliers:
+    - 1x
+    - 2x
+
+default.xxl:
+  label: XXL
+  mediaQuery: '(min-width: 1400px)'
+  weight: 5
+  multipliers:
+    - 1x
+    - 2x

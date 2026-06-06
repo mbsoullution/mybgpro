@@ -1,0 +1,4 @@
+gin_sidebar_right:
+  css:
+    theme:
+      css/gin-sidebar-right.css: {}

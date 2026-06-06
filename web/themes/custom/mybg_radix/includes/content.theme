@@ -1,0 +1,219 @@
+<?php
+
+/**
+ * @file
+ * Theme and preprocess functions for nodes.
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\user\Entity\User;
+
+/**
+ * Returns create-content links available to the current user.
+ *
+ * @return array<int, array{title: \Drupal\Core\StringTranslation\TranslatableMarkup, url: string, icon: string}>
+ *   Link definitions for FAB / menus.
+ */
+function mybg_radix_get_create_content_links(): array {
+  $account = \Drupal::currentUser();
+  if ($account->isAnonymous()) {
+    return [];
+  }
+
+  $links = [];
+  if ($account->hasPermission('create listing content')) {
+    $links[] = [
+      'title' => t('Оголошення'),
+      'subtitle' => t('Продаж, обмін, послуги'),
+      'url' => Url::fromRoute('node.add', ['node_type' => 'listing'])->toString(),
+      'icon' => 'listing',
+    ];
+  }
+  if ($account->hasPermission('create real_estate content')) {
+    $links[] = [
+      'title' => t('Нерухомість'),
+      'subtitle' => t('Квартири, будинки, оренда'),
+      'url' => Url::fromRoute('node.add', ['node_type' => 'real_estate'])->toString(),
+      'icon' => 'real-estate',
+    ];
+  }
+
+  return $links;
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function mybg_radix_preprocess_html(array &$variables): void {
+  $route = \Drupal::routeMatch()->getRouteName();
+  if ($route === 'entity.user.edit_form') {
+    $variables['html_attributes']['class'][] = 'page-user-edit';
+  }
+  if (in_array($route, ['entity.node.add_form', 'entity.node.edit_form'], TRUE)) {
+    $variables['html_attributes']['class'][] = 'page-node-form';
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function mybg_radix_preprocess_page(array &$variables): void {
+  $route = \Drupal::routeMatch()->getRouteName();
+  $hide_fab = in_array($route, [
+    'entity.node.add_form',
+    'entity.node.edit_form',
+    'entity.user.edit_form',
+    'user.login',
+    'user.register',
+  ], TRUE);
+
+  if (!$hide_fab) {
+    $variables['mybg_create_links'] = mybg_radix_get_create_content_links();
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_form_alter().
+ */
+function mybg_radix_theme_suggestions_form_alter(array &$suggestions, array $variables): void {
+  $form_id = $variables['element']['#form_id'] ?? '';
+  if (preg_match('/^node_(listing|real_estate)(_edit)?_form$/', $form_id)) {
+    $suggestions[] = 'form__node_content';
+  }
+}
+
+/**
+ * Implements hook_preprocess_form().
+ */
+function mybg_radix_preprocess_form(array &$variables): void {
+  $form_id = $variables['element']['#form_id'] ?? '';
+
+  if ($form_id === 'user_form') {
+    $variables['attributes']['class'][] = 'mybg-user-profile-form';
+    return;
+  }
+
+  if (!preg_match('/^node_(listing|real_estate)(_edit)?_form$/', $form_id, $matches)) {
+    return;
+  }
+
+  $bundle = $matches[1];
+  $is_edit = !empty($matches[2]);
+  $variables['attributes']['class'][] = 'mybg-node-form';
+  $variables['attributes']['class'][] = 'mybg-node-form--' . $bundle;
+
+  $titles = [
+    'listing' => [
+      'add' => t('Нове оголошення'),
+      'edit' => t('Редагувати оголошення'),
+    ],
+    'real_estate' => [
+      'add' => t('Нова нерухомість'),
+      'edit' => t('Редагувати нерухомість'),
+    ],
+  ];
+  $mode = $is_edit ? 'edit' : 'add';
+  $variables['mybg_form_title'] = $titles[$bundle][$mode];
+  $variables['mybg_form_lead'] = $is_edit
+    ? t('Оновіть дані та збережіть зміни.')
+    : t('Заповніть основні поля — решту можна додати пізніше.');
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function mybg_radix_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  if (!preg_match('/^node_(listing|real_estate)(_edit)?_form$/', $form_id, $matches)) {
+    return;
+  }
+
+  /** @var \Drupal\Core\Entity\EntityFormInterface $form_object */
+  $form_object = $form_state->getFormObject();
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $form_object->getEntity();
+  $is_new = $node->isNew();
+  $account = \Drupal::currentUser();
+
+  $hide = ['created', 'uid', 'path', 'promote', 'sticky', 'status'];
+  foreach ($hide as $key) {
+    if (isset($form[$key])) {
+      $form[$key]['#access'] = FALSE;
+    }
+  }
+
+  if (isset($form['moderation_state'])) {
+    $form['moderation_state']['#access'] = FALSE;
+  }
+
+  if (isset($form['field_views_count'])) {
+    $form['field_views_count']['#access'] = FALSE;
+  }
+  if (isset($form['field_expiry_date'])) {
+    $form['field_expiry_date']['#access'] = FALSE;
+  }
+
+  if (isset($form['title']['widget'][0]['value'])) {
+    $form['title']['widget'][0]['value']['#attributes']['class'][] = 'mybg-node-form__title-input';
+  }
+
+  if (isset($form['field_phone']['widget'][0]['value'])) {
+    $form['field_phone']['widget'][0]['value']['#attributes']['inputmode'] = 'tel';
+    $form['field_phone']['widget'][0]['value']['#attributes']['autocomplete'] = 'tel';
+    if ($is_new && $form['field_phone']['widget'][0]['value']['#default_value'] === NULL) {
+      $phone = mybg_radix_get_user_profile_phone((int) $account->id());
+      if ($phone !== '') {
+        $form['field_phone']['widget'][0]['value']['#default_value'] = $phone;
+      }
+    }
+  }
+
+  if (isset($form['field_price']['widget'][0]['value'])) {
+    $form['field_price']['widget'][0]['value']['#attributes']['inputmode'] = 'decimal';
+  }
+
+  $numeric_fields = ['field_rooms', 'field_area_total', 'field_area_living', 'field_floor', 'field_floors_total'];
+  foreach ($numeric_fields as $field_name) {
+    if (isset($form[$field_name]['widget'][0]['value'])) {
+      $form[$field_name]['widget'][0]['value']['#attributes']['inputmode'] = 'numeric';
+    }
+  }
+
+  if (isset($form['field_images'])) {
+    $form['field_images']['#attributes']['class'][] = 'mybg-node-form__photos';
+  }
+
+  if (isset($form['actions']['submit'])) {
+    if ($is_new) {
+      $form['actions']['submit']['#value'] = $account->hasPermission('use city_portal transition publish')
+        ? t('Опублікувати')
+        : t('Надіслати на перевірку');
+    }
+    else {
+      $form['actions']['submit']['#value'] = t('Зберегти зміни');
+    }
+    $form['actions']['submit']['#attributes']['class'][] = 'mybg-node-form__submit';
+  }
+
+  if (isset($form['actions'])) {
+    $form['actions']['#attributes']['class'][] = 'mybg-node-form__actions';
+  }
+}
+
+/**
+ * Gets profile phone for pre-filling listing contact fields.
+ */
+function mybg_radix_get_user_profile_phone(int $uid): string {
+  if ($uid <= 0) {
+    return '';
+  }
+
+  $user = User::load($uid);
+  if (!$user instanceof User || !$user->hasField('field_profile_phone') || $user->get('field_profile_phone')->isEmpty()) {
+    return '';
+  }
+
+  return (string) $user->get('field_profile_phone')->value;
+}

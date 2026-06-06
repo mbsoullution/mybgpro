@@ -1,0 +1,31 @@
+uuid: c9d0e1f2-a3b4-4567-c9de-f90123456789
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_profile_district
+    - taxonomy.vocabulary.city_districts
+  module:
+    - taxonomy
+    - user
+id: user.user.field_profile_district
+field_name: field_profile_district
+entity_type: user
+bundle: user
+label: 'Район міста'
+description: 'Допомагає показувати релевантні оголошення поруч.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      city_districts: city_districts
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

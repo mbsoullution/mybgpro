@@ -1,0 +1,21 @@
+uuid: a3a6f2f4-3ac2-4fb7-9a55-d3423c35ff66
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.site_contacts
+    - field.storage.config_pages.field_site_phone
+  module:
+    - telephone
+id: config_pages.site_contacts.field_site_phone
+field_name: field_site_phone
+entity_type: config_pages
+bundle: site_contacts
+label: Телефон
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

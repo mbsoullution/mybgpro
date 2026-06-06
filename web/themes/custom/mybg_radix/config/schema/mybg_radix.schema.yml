@@ -1,0 +1,5 @@
+# Schema for the configuration files of the mybg_radix theme.
+
+mybg_radix.settings:
+  type: theme_settings
+  label: 'mybg_radix settings'

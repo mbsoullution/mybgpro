@@ -1,0 +1,61 @@
+/**
+ * Move Gin "New Drupal Navigation" sidebar to the right.
+ *
+ * html[dir=rtl] makes Gin use data-offset-right for Drupal.displace().
+ * Content areas are reset to LTR so text and forms read normally.
+ */
+
+html.mybg-gin-sidebar-right .dialog-off-canvas-main-canvas,
+html.mybg-gin-sidebar-right .admin-toolbar,
+html.mybg-gin-sidebar-right .gin-secondary-toolbar,
+html.mybg-gin-sidebar-right .gin-secondary-toolbar *,
+html.mybg-gin-sidebar-right .region-sticky,
+html.mybg-gin-sidebar-right .block-local-tasks-block,
+html.mybg-gin-sidebar-right .page-content,
+html.mybg-gin-sidebar-right .views-element-container,
+html.mybg-gin-sidebar-right form {
+  direction: ltr;
+}
+
+@media (min-width: 61em) {
+  html.mybg-gin-sidebar-right {
+    --gin-toolbar-x-offset: var(--drupal-displace-offset-right, var(--sidebar-width, 64px));
+  }
+
+  html.mybg-gin-sidebar-right.admin-toolbar-expanded {
+    --gin-toolbar-x-offset: var(--drupal-displace-offset-right, var(--sidebar-width, 264px));
+  }
+
+  html.mybg-gin-sidebar-right .admin-toolbar {
+    inset-inline-start: auto;
+    inset-inline-end: 0;
+    border-inline-end: 0;
+    border-inline-start: 1px solid var(--color-gray-100, #dedfe4);
+  }
+
+  html.mybg-gin-sidebar-right .admin-toolbar__displace-placeholder {
+    inset-inline-start: auto;
+    inset-inline-end: 0;
+  }
+
+  html.mybg-gin-sidebar-right .admin-toolbar ~ .dialog-off-canvas-main-canvas {
+    margin-inline-start: 0;
+    margin-inline-end: var(--drupal-displace-offset-right, var(--sidebar-width, 64px));
+  }
+
+  html.mybg-gin-sidebar-right.admin-toolbar-expanded .admin-toolbar ~ .dialog-off-canvas-main-canvas {
+    margin-inline-end: var(--drupal-displace-offset-right, var(--sidebar-width, 264px));
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html.mybg-gin-sidebar-right .admin-toolbar ~ .dialog-off-canvas-main-canvas {
+      transition: margin-inline-end 0.2s linear;
+    }
+  }
+
+  /* Collapsed mode: flyout submenus open toward the content (left). */
+  html.mybg-gin-sidebar-right:not(.admin-toolbar-expanded) .cloned-flyout {
+    inset-inline-start: auto;
+    inset-inline-end: calc(100% + var(--gin-spacing-xs, 8px));
+  }
+}

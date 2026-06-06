@@ -1,0 +1,25 @@
+mybg_admin.create_listing:
+  title: 'Додати оголошення'
+  route_name: node.add
+  route_parameters:
+    node_type: listing
+  menu_name: account
+  weight: -20
+  options:
+    attributes:
+      class:
+        - 'mybg-menu-create'
+        - 'mybg-menu-create--listing'
+
+mybg_admin.create_real_estate:
+  title: 'Додати нерухомість'
+  route_name: node.add
+  route_parameters:
+    node_type: real_estate
+  menu_name: account
+  weight: -19
+  options:
+    attributes:
+      class:
+        - 'mybg-menu-create'
+        - 'mybg-menu-create--real-estate'

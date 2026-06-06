@@ -8,6 +8,7 @@ dependencies:
     - workflows.workflow.city_portal
   module:
     - comment
+    - config_pages
     - content_moderation
     - flag
     - node
@@ -25,6 +26,7 @@ permissions:
   - 'delete any real_estate content'
   - 'edit any listing content'
   - 'edit any real_estate content'
+  - 'edit config_pages entity'
   - 'flag favorites'
   - 'post comments'
   - 'skip comment approval'
@@ -35,5 +37,6 @@ permissions:
   - 'use city_portal transition restore'
   - 'use city_portal transition submit_for_review'
   - 'view any unpublished content'
+  - 'view config_pages entity'
   - 'view latest version'
   - 'view user email addresses'

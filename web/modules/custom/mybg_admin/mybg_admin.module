@@ -1,0 +1,105 @@
+<?php
+
+/**
+ * @file
+ * Admin UX customizations for My Boguslav.
+ */
+
+declare(strict_types=1);
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function mybg_admin_preprocess_html(array &$variables): void {
+  if (\Drupal::theme()->getActiveTheme()->getName() !== 'gin') {
+    return;
+  }
+
+  $variables['html_attributes']['class'][] = 'mybg-gin-sidebar-right';
+  // Gin navigation.js uses document dir to pick displace edge (left vs right).
+  $variables['html_attributes']['dir'] = 'rtl';
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function mybg_admin_page_attachments(array &$attachments): void {
+  if (\Drupal::theme()->getActiveTheme()->getName() !== 'gin') {
+    return;
+  }
+
+  $attachments['#attached']['library'][] = 'mybg_admin/gin_sidebar_right';
+}
+
+/**
+ * Implements hook_user_presave().
+ *
+ * Match Facebook sign-ups with "admin approval required" registration policy.
+ */
+function mybg_admin_user_presave(\Drupal\user\UserInterface $user): void {
+  if (!$user->isNew()) {
+    return;
+  }
+
+  $register = \Drupal::config('user.settings')->get('register');
+  if ($register !== 'visitors_admin_approval') {
+    return;
+  }
+
+  $route = \Drupal::routeMatch()->getRouteName();
+  if ($route === 'social_auth_facebook.callback') {
+    $user->block();
+  }
+}
+
+/**
+ * Implements hook_entity_view_alter().
+ *
+ * Hide phone number on public profiles (owner and admins still see it).
+ */
+function mybg_admin_entity_view_alter(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display): void {
+  if ($entity->getEntityTypeId() !== 'user') {
+    return;
+  }
+
+  if (!isset($build['field_profile_phone'])) {
+    return;
+  }
+
+  $account = \Drupal::currentUser();
+  $is_owner = (int) $account->id() === (int) $entity->id();
+  if ($is_owner || $account->hasPermission('administer users')) {
+    return;
+  }
+
+  unset($build['field_profile_phone']);
+}
+
+/**
+ * Implements hook_entity_presave().
+ *
+ * Set moderation state for new user-submitted listings.
+ */
+function mybg_admin_entity_presave(\Drupal\Core\Entity\EntityInterface $entity): void {
+  if ($entity->getEntityTypeId() !== 'node' || !$entity->isNew()) {
+    return;
+  }
+
+  if (!in_array($entity->bundle(), ['listing', 'real_estate'], TRUE)) {
+    return;
+  }
+
+  if (!$entity->hasField('moderation_state')) {
+    return;
+  }
+
+  $account = \Drupal::currentUser();
+  if ($account->hasPermission('use city_portal transition publish')) {
+    $entity->set('moderation_state', 'published');
+    return;
+  }
+
+  if ($account->hasPermission('use city_portal transition submit_for_review')) {
+    $entity->set('moderation_state', 'pending_review');
+  }
+}

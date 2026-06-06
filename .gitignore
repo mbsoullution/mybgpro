@@ -1,43 +1,147 @@
-# Drupal core
-/web/core
-/web/modules/contrib
-/web/themes/contrib
-/web/profiles/contrib
-/web/libraries
+# =============================================================================
+# Drupal recommended-project (Composer-managed)
+# https://www.drupal.org/docs/develop/using-composer/starting-a-site-using-drupal-composer
+# =============================================================================
 
-# Composer vendor
-/vendor
+# Composer dependencies (reinstall: composer install)
+/vendor/
+/web/core/
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
+/web/libraries/
 
-# Drupal files directory
-/web/sites/default/files
-/web/sites/default/private
+# =============================================================================
+# Site-specific secrets & generated settings (NEVER commit)
+# =============================================================================
+/web/sites/*/settings.local.php
+/web/sites/*/settings.ddev.php
+/web/sites/*/services.local.yml
 
-# Drupal settings (environment-specific)
-/web/sites/default/settings.local.php
-/web/sites/default/settings.ddev.php
+# Per-environment overrides; use settings.local.example.php as template.
+# settings.php is tracked with empty $databases — DDEV/prod fill via includes above.
 
-# Drupal generated files
-/web/sites/default/settings.php.bak
-/web/.htaccess.bak
+# =============================================================================
+# User-generated files
+# =============================================================================
+/web/sites/*/files/
+/web/sites/*/private/
+/web/sites/*/tmp/
 
-# DDEV
-/.ddev/config.*.yaml
-/.ddev/db_snapshots
-/.ddev/sequelpro.spf
+# =============================================================================
+# Config sync — TRACK config/sync/ (do not ignore)
+# Exported content (Single Content Sync) — TRACK web/content/
+# =============================================================================
 
-# OS
-.DS_Store
-Thumbs.db
-*.swp
-*~
+# =============================================================================
+# Custom theme build (mybg_radix)
+# =============================================================================
+/web/themes/custom/*/node_modules/
+/web/themes/custom/*/hot
 
-# IDE
+# Commit compiled CSS/JS for deploy without Node; ignore source maps only.
+/web/themes/custom/*/build/**/*.map
+
+/web/themes/custom/*/.env
+/web/themes/custom/*/.env.local
+/web/themes/custom/*/.env.*.local
+
+# =============================================================================
+# DDEV — track .ddev/config.yaml; ignore local/machine-specific files
+# =============================================================================
+.ddev/.homeadditions
+.ddev/.global_commands
+.ddev/db_snapshots/
+.ddev/mutagen/
+.ddev/sequelpro.spf
+.ddev/import-db/
+.ddev/.webimageBuild/
+.ddev/addon-metadata/
+.ddev/providers/
+.ddev/.gitignore
+
+/.ddev/config.local.yaml
+/.ddev/config.*.local.yaml
+/.ddev/docker-compose.*.yaml
+
+# =============================================================================
+# Node / front-end tooling
+# =============================================================================
+/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.sass-cache/
+.cache/
+dist/
+
+# =============================================================================
+# PHP / Drush / tests
+# =============================================================================
+.phpunit.result.cache
+.phpunit.cache
+/phpunit.xml
+/phpcs.xml
+/phpcs.xml.dist
+/phpstan.neon
+/phpstan.neon.dist
+
+/drush/Backups/
+/.drush/
+
+/web/sites/simpletest/
+
+# =============================================================================
+# Environment & secrets
+# =============================================================================
+.env
+.env.local
+.env.*.local
+!.env.example
+!.env.*.example
+
+# =============================================================================
+# IDE, OS, backups, dumps
+# =============================================================================
 .idea/
 .vscode/
 *.iml
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.swp
+*~
+*.bak
+*.tmp
+*.sql
+*.sql.gz
+*.zip
+*.tar
+*.tar.gz
+*.tgz
 
-# Backup
-/backup
+/backup/
+/patch-files/
 
-# Temp scripts (setup)
-setup_*.php
+# AI / editor local state (optional team rules can live in docs instead)
+.claude/
+.cursor/
+
+# =============================================================================
+# Logs & one-off local scripts (project root only)
+# =============================================================================
+*.log
+logs/
+
+/setup_*.php
+/test_*.php
+
+# =============================================================================
+# Scaffold note
+# =============================================================================
+# This project commits web scaffold (index.php, .htaccess, sites/default/* templates)
+# for hosting without Composer on the server. After core updates run:
+#   composer install
+# and commit any intentional scaffold changes.

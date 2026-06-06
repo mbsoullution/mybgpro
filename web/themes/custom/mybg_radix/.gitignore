@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Laravel Mix — commit for production cache-busting when rebuilding assets.
+# mix-manifest.json
+
+# Source maps (CSS/JS in build/ are committed for deploy without Node)
+build/**/*.map
+src/**/*.map
+components/**/*.map
+
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Cache
+.sass-cache/
+.cache/
+dist/
+build/temp/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.bak
+*.tmp
+*~

@@ -1,0 +1,19 @@
+uuid: dcde270e-ea4c-482c-9b45-cf934d046343
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+    - telephone
+id: config_pages.field_site_phone
+field_name: field_site_phone
+entity_type: config_pages
+type: telephone
+settings: {  }
+module: telephone
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

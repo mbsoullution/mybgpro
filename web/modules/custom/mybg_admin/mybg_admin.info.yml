@@ -1,0 +1,5 @@
+name: 'MyBG Admin'
+type: module
+description: 'Admin UX and site settings for the city portal.'
+core_version_requirement: ^10
+package: MyBG

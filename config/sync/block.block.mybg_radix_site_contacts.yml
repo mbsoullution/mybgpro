@@ -1,0 +1,22 @@
+uuid: 6a6c1097-a3f9-48df-9486-d45868fc66c9
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+  theme:
+    - mybg_radix
+id: mybg_radix_site_contacts
+theme: mybg_radix
+region: footer
+weight: -10
+provider: null
+plugin: config_pages_block
+settings:
+  id: config_pages_block
+  label: Контакти
+  label_display: '0'
+  provider: config_pages
+  config_page_view_mode: default
+  config_page: site_contacts
+visibility: {  }

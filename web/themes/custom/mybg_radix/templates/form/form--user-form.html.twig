@@ -1,0 +1,13 @@
+{#
+/**
+ * @file
+ * User profile edit form — mobile-friendly layout.
+ */
+#}
+<form{{ attributes.addClass('mybg-user-profile-form') }}>
+  <div class="mybg-profile-form__header">
+    <h2 class="mybg-profile-form__title">{{ 'Мій профіль'|t }}</h2>
+    <p class="mybg-profile-form__lead">{{ 'Заповніть дані — вони допоможуть іншим знайти вас у оголошеннях.'|t }}</p>
+  </div>
+  {{ children }}
+</form>

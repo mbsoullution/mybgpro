@@ -1,0 +1,19 @@
+uuid: 1a0ec824-d94c-4377-8bc6-aa8e8c3b3123
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.site_contacts
+    - field.storage.config_pages.field_site_email
+id: config_pages.site_contacts.field_site_email
+field_name: field_site_email
+entity_type: config_pages
+bundle: site_contacts
+label: Email
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

@@ -1,0 +1,35 @@
+{# 
+/**
+ * @file
+ * Site contacts from Config Pages — footer display.
+ */
+#}
+<div class="site-contacts">
+  <h3 class="site-contacts__title">{{ 'Контакти'|t }}</h3>
+  <ul class="site-contacts__list">
+    {% if site_phone %}
+      <li class="site-contacts__item site-contacts__item--phone">
+        <a href="tel:{{ site_phone_tel }}">{{ site_phone }}</a>
+      </li>
+    {% endif %}
+    {% if site_email %}
+      <li class="site-contacts__item site-contacts__item--email">
+        <a href="mailto:{{ site_email }}">{{ site_email }}</a>
+      </li>
+    {% endif %}
+    {% if site_address %}
+      <li class="site-contacts__item site-contacts__item--address">{{ site_address }}</li>
+    {% endif %}
+    {% if site_hours %}
+      <li class="site-contacts__item site-contacts__item--hours">{{ site_hours }}</li>
+    {% endif %}
+    {% if site_telegram %}
+      <li class="site-contacts__item site-contacts__item--telegram">{{ site_telegram }}</li>
+    {% endif %}
+    {% if site_facebook_url %}
+      <li class="site-contacts__item site-contacts__item--facebook">
+        <a href="{{ site_facebook_url }}" target="_blank" rel="noopener noreferrer">Facebook</a>
+      </li>
+    {% endif %}
+  </ul>
+</div>

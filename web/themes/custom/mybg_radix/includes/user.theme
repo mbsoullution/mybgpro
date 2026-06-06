@@ -1,0 +1,90 @@
+<?php
+
+/**
+ * @file
+ * Theme and preprocess functions for users.
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_preprocess_user().
+ */
+function mybg_radix_preprocess_user(array &$variables): void {
+  /** @var \Drupal\user\UserInterface $account */
+  $account = $variables['user'];
+  $variables['attributes']['class'][] = 'mybg-user-profile';
+
+  if ($account->hasField('field_profile_full_name') && !$account->get('field_profile_full_name')->isEmpty()) {
+    $variables['display_name'] = $account->get('field_profile_full_name')->value;
+  }
+
+  $current_user = \Drupal::currentUser();
+  $variables['is_own_profile'] = (int) $current_user->id() === (int) $account->id();
+  $variables['edit_url'] = Url::fromRoute('entity.user.edit_form', [
+    'user' => $account->id(),
+  ])->toString();
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function mybg_radix_form_user_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  /** @var \Drupal\user\UserForm $form_object */
+  $form_object = $form_state->getFormObject();
+  $account = $form_object->getEntity();
+  $current_user = \Drupal::currentUser();
+
+  $is_self_edit = (int) $current_user->id() === (int) $account->id();
+  if (!$is_self_edit && !$current_user->hasPermission('administer users')) {
+    return;
+  }
+
+  if (isset($form['account'])) {
+    $form['account']['#type'] = 'details';
+    $form['account']['#title'] = t('Email та пароль');
+    $form['account']['#open'] = FALSE;
+    $form['account']['#weight'] = 20;
+    $form['account']['#attributes']['class'][] = 'mybg-profile-form__account';
+  }
+
+  if (isset($form['user_picture'])) {
+    $form['user_picture']['#weight'] = -10;
+    $form['user_picture']['#attributes']['class'][] = 'mybg-profile-form__photo';
+  }
+
+  $profile_fields = [
+    'field_profile_full_name',
+    'field_profile_phone',
+    'field_profile_messenger',
+    'field_profile_district',
+    'field_profile_bio',
+  ];
+  foreach ($profile_fields as $field_name) {
+    if (!isset($form[$field_name])) {
+      continue;
+    }
+    $form[$field_name]['widget'][0]['#attributes']['class'][] = 'mybg-profile-form__field';
+  }
+
+  if (isset($form['field_profile_phone']['widget'][0]['value'])) {
+    $form['field_profile_phone']['widget'][0]['value']['#attributes']['inputmode'] = 'tel';
+    $form['field_profile_phone']['widget'][0]['value']['#attributes']['autocomplete'] = 'tel';
+  }
+
+  if (isset($form['field_profile_full_name']['widget'][0]['value'])) {
+    $form['field_profile_full_name']['widget'][0]['value']['#attributes']['autocomplete'] = 'name';
+  }
+
+  if (isset($form['actions']['submit'])) {
+    $form['actions']['submit']['#value'] = t('Зберегти профіль');
+    $form['actions']['submit']['#attributes']['class'][] = 'mybg-profile-form__submit';
+  }
+
+  if (isset($form['actions'])) {
+    $form['actions']['#attributes']['class'][] = 'mybg-profile-form__actions';
+  }
+}

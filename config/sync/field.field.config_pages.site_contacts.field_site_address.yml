@@ -1,0 +1,19 @@
+uuid: cf7fa9f4-f6f8-4e36-a8f8-b68cd968dfb4
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.site_contacts
+    - field.storage.config_pages.field_site_address
+id: config_pages.site_contacts.field_site_address
+field_name: field_site_address
+entity_type: config_pages
+bundle: site_contacts
+label: Адреса
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

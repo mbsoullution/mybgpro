@@ -1,0 +1,20 @@
+uuid: f6a7b8c9-d0e1-4234-f6ab-c67890123456
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_profile_full_name
+  module:
+    - user
+id: user.user.field_profile_full_name
+field_name: field_profile_full_name
+entity_type: user
+bundle: user
+label: "Ім'я для відображення"
+description: 'Як вас бачать інші на сайті (може відрізнятися від логіну).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

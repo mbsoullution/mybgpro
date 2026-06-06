@@ -1,0 +1,142 @@
+// =============================================================================
+// My Boguslav — Base: Typography + Layout
+// =============================================================================
+
+// =============================================================================
+// TYPOGRAPHY
+// =============================================================================
+
+// Google Fonts — loaded via mybg_radix.libraries.yml (fonts library)
+// <link rel="preconnect" href="https://fonts.googleapis.com">
+// <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600&family=Nunito:wght@400;500;600&display=swap" rel="stylesheet">
+
+html {
+  font-size: $font-size-base;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: $font-body;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-base;
+  color: $color-text;
+  background: $color-bg;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, .h1 {
+  @include heading-font($font-size-2xl, $font-weight-semibold);
+  margin-bottom: $spacing-md;
+
+  @include lg { font-size: $font-size-3xl; }
+}
+
+h2, .h2 {
+  @include heading-font($font-size-xl, $font-weight-semibold);
+  margin-bottom: $spacing-sm;
+
+  @include lg { font-size: $font-size-2xl; }
+}
+
+h3, .h3 {
+  @include heading-font($font-size-lg, $font-weight-semibold);
+  margin-bottom: $spacing-sm;
+}
+
+h4, .h4 {
+  @include heading-font($font-size-md, $font-weight-semibold);
+  margin-bottom: $spacing-xs;
+}
+
+h5, h6, .h5, .h6 {
+  font-family: $font-body;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  margin-bottom: $spacing-xs;
+}
+
+p {
+  margin-bottom: $spacing-md;
+  &:last-child { margin-bottom: 0; }
+}
+
+a {
+  color: $color-primary;
+  transition: $transition-fast;
+  &:hover { color: $color-primary-dark; }
+}
+
+strong, b { font-weight: $font-weight-semibold; }
+
+
+// =============================================================================
+// LAYOUT / GRID (Bootstrap .container via $container-max-widths)
+// =============================================================================
+
+.container--narrow {
+  max-width: 800px;
+}
+
+// Main two-column page layout (content + sidebar)
+.page-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+
+  @include lg {
+    grid-template-columns: 1fr 300px;
+  }
+  @include xl {
+    grid-template-columns: 1fr 320px;
+    gap: $spacing-xl;
+  }
+}
+
+.main-content { min-width: 0; }
+
+.sidebar {
+  @include mobile-only {
+    order: -1; // Filters above content on mobile
+  }
+}
+
+// Section vertical spacing
+.section {
+  padding: $spacing-xl 0;
+
+  @include md { padding: $spacing-2xl 0; }
+  @include xl { padding: $spacing-3xl 0; }
+
+  &--bg-light {
+    background: $color-primary-light;
+    margin: $spacing-xl 0;
+    border-radius: $radius-lg;
+    padding: $spacing-xl;
+
+    @include md {
+      padding: $spacing-2xl;
+    }
+  }
+}
+
+
+// =============================================================================
+// UTILITIES (mybg- prefix — avoids Bootstrap conflicts)
+// =============================================================================
+
+.text-clamp-2 { @include text-clamp(2); }
+.text-clamp-3 { @include text-clamp(3); }
+
+.mybg-mt-sm { margin-top: $spacing-sm !important; }
+.mybg-mt-md { margin-top: $spacing-md !important; }
+.mybg-mt-lg { margin-top: $spacing-lg !important; }
+
+.mybg-mb-sm { margin-bottom: $spacing-sm !important; }
+.mybg-mb-md { margin-bottom: $spacing-md !important; }
+.mybg-mb-lg { margin-bottom: $spacing-lg !important; }
+
+.mybg-hidden-mobile  { @include mobile-only { display: none !important; } }
+.mybg-hidden-tablet  { @include tablet-only { display: none !important; } }
+.mybg-hidden-desktop { @include desktop-only { display: none !important; } }

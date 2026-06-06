@@ -1,0 +1,40 @@
+uuid: e1f2a3b4-c5d6-4789-e1f2-b123456789ab
+langcode: uk
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.user.register
+    - field.field.user.user.field_profile_bio
+    - field.field.user.user.field_profile_district
+    - field.field.user.user.field_profile_full_name
+    - field.field.user.user.field_profile_messenger
+    - field.field.user.user.field_profile_phone
+    - field.field.user.user.user_picture
+  module:
+    - user
+id: user.user.register
+targetEntityType: user
+bundle: user
+mode: register
+content:
+  account:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  contact: true
+  field_profile_bio: true
+  field_profile_district: true
+  field_profile_full_name: true
+  field_profile_messenger: true
+  field_profile_phone: true
+  language: true
+  timezone: true
+  user_picture: true

@@ -1,0 +1,14 @@
+uuid: 41e1ed67-9165-41e5-becb-ddabbef2da1b
+langcode: en
+status: true
+dependencies: {  }
+id: site_contacts
+label: 'Контакти сайту'
+token: true
+context:
+  language: false
+  theme: false
+menu:
+  path: /admin/config/mybg/site-contacts
+  weight: 0
+  description: 'Телефон, email та інші контакти для шапки і футера.'

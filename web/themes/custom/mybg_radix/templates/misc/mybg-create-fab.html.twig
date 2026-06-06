@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * Floating action button for creating content on mobile.
+ */
+#}
+{% if mybg_create_links %}
+  <div class="mybg-create-fab" data-mybg-create-fab>
+    {% if mybg_create_links|length == 1 %}
+      <a href="{{ mybg_create_links[0].url }}" class="mybg-create-fab__button btn-add-floating">
+        <span class="mybg-create-fab__plus" aria-hidden="true">+</span>
+        {{ 'Додати'|t }}
+      </a>
+    {% else %}
+      <button type="button" class="mybg-create-fab__button btn-add-floating" data-mybg-create-fab-toggle aria-expanded="false" aria-controls="mybg-create-sheet">
+        <span class="mybg-create-fab__plus" aria-hidden="true">+</span>
+        {{ 'Додати'|t }}
+      </button>
+      <div class="mybg-create-sheet" id="mybg-create-sheet" data-mybg-create-sheet hidden>
+        <div class="mybg-create-sheet__backdrop" data-mybg-create-fab-close></div>
+        <div class="mybg-create-sheet__panel" role="dialog" aria-label="{{ 'Створити'|t }}">
+          <div class="mybg-create-sheet__handle" aria-hidden="true"></div>
+          <h3 class="mybg-create-sheet__title">{{ 'Що хочете додати?'|t }}</h3>
+          <ul class="mybg-create-sheet__list">
+            {% for link in mybg_create_links %}
+              <li>
+                <a href="{{ link.url }}" class="mybg-create-sheet__link mybg-create-sheet__link--{{ link.icon }}">
+                  <span class="mybg-create-sheet__link-title">{{ link.title }}</span>
+                  {% if link.subtitle %}
+                    <span class="mybg-create-sheet__link-sub">{{ link.subtitle }}</span>
+                  {% endif %}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

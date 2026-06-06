@@ -1,0 +1,89 @@
+# Deploy to shared hosting (SSH) on push to main.
+#
+# Required GitHub repository secrets:
+#   SSH_HOST       — e.g. mysite.com.ua or server IP
+#   SSH_USER       — SSH login
+#   SSH_KEY        — private key (full PEM contents)
+#   SSH_PORT       — optional, default 22
+#   DEPLOY_PATH    — absolute path on server, e.g. /home/user/mybgpro
+#   WEB_ROOT       — public docroot relative to DEPLOY_PATH, usually "web"
+#
+# Server must have: PHP 8.3+, Composer 2, MariaDB/MySQL.
+# Document root on hosting must point to: $DEPLOY_PATH/web
+
+name: Deploy to production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+          coverage: none
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: web/themes/custom/mybg_radix/package-lock.json
+
+      - name: Composer install
+        run: composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
+
+      - name: Build theme assets
+        working-directory: web/themes/custom/mybg_radix
+        run: |
+          npm ci
+          npm run production
+
+      - name: Deploy via SSH
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          source: "vendor,web,config,composer.json,composer.lock"
+          target: ${{ secrets.DEPLOY_PATH }}
+          strip_components: 0
+          overwrite: true
+          rm: false
+
+      - name: Post-deploy (Drush)
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          script: |
+            set -e
+            cd "${{ secrets.DEPLOY_PATH }}"
+            if [ -f vendor/bin/drush ]; then
+              vendor/bin/drush cache:rebuild -y
+              vendor/bin/drush updatedb -y
+              vendor/bin/drush config:import -y || true
+              for f in web/content/site_contacts/config_pages-*.yml; do
+                if [ -f "$f" ]; then
+                  vendor/bin/drush content:import "$f" -y || true
+                fi
+              done
+            fi

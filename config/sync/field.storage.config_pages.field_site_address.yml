@@ -1,0 +1,21 @@
+uuid: 868bfa0f-1895-40f5-a1ba-107e5dafde59
+langcode: en
+status: true
+dependencies:
+  module:
+    - config_pages
+id: config_pages.field_site_address
+field_name: field_site_address
+entity_type: config_pages
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
