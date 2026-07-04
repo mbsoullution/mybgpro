@@ -1,0 +1,38 @@
+uuid: 34171814-455b-41ad-93d0-e462377e5e59
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.dashboard_settings
+    - field.storage.config_pages.field_dash_poster
+  module:
+    - image
+id: config_pages.dashboard_settings.field_dash_poster
+field_name: field_dash_poster
+entity_type: config_pages
+bundle: dashboard_settings
+label: 'Постер / фото-фон'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg webp'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: null
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

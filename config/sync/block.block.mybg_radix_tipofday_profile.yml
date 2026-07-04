@@ -1,0 +1,25 @@
+uuid: 00daad81-8bae-4c71-90b6-e84e7393c8c2
+langcode: en
+status: true
+dependencies:
+  module:
+    - mybg_help
+    - system
+  theme:
+    - mybg_radix
+id: mybg_radix_tipofday_profile
+theme: mybg_radix
+region: content
+weight: -8
+provider: null
+plugin: mybg_tip_of_day
+settings:
+  id: mybg_tip_of_day
+  label: 'Порада дня'
+  label_display: '0'
+  provider: mybg_help
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/user/*'

@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Newsletter subscription block in footer.
+ */
+#}
+{%
+  set classes = [
+    'block',
+    'block-simplenews',
+    'site-footer__col',
+    'site-footer__col--newsletter',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  <h3 class="site-footer__title">{{ 'Підписка на оновлення порталу'|t }}</h3>
+  {% block content %}
+    {{ content }}
+    <div class="site-footer__telegram">
+      <span class="site-footer__telegram-label">{{ 'Телеграм канал'|t }}</span>
+      {% if mybg_telegram_url and mybg_telegram_name %}
+        <a href="{{ mybg_telegram_url }}" class="site-footer__telegram-link" target="_blank" rel="noopener noreferrer">{{ mybg_telegram_name }}</a>
+      {% elseif mybg_telegram_name %}
+        <span class="site-footer__telegram-name">{{ mybg_telegram_name }}</span>
+      {% else %}
+        <span class="site-footer__telegram-name site-footer__telegram-name--placeholder">{{ 'Назва каналу'|t }}</span>
+      {% endif %}
+    </div>
+  {% endblock %}
+</div>

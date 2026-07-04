@@ -1,0 +1,23 @@
+uuid: da1b5196-6b53-43a7-88e0-0a237251e791
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_doc_faq
+    - node.type.documentation
+id: node.documentation.field_doc_faq
+field_name: field_doc_faq
+entity_type: node
+bundle: documentation
+label: FAQ
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

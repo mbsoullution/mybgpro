@@ -1,0 +1,15 @@
+uuid: a1086c0a-e027-4338-a512-334d63c3f80d
+langcode: en
+status: true
+dependencies: {  }
+id: section_backgrounds
+label: 'Фони розділів'
+token: null
+context:
+  show_warning: false
+  language: false
+  theme: false
+menu:
+  path: /admin/config/mybg/section-backgrounds
+  weight: 2
+  description: 'Фонові зображення для сторінок розділів порталу.'

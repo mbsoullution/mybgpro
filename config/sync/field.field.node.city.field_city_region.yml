@@ -1,0 +1,19 @@
+uuid: 2a8cee49-8a51-4195-8c58-830aef1c4ede
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_city_region
+    - node.type.city
+id: node.city.field_city_region
+field_name: field_city_region
+entity_type: node
+bundle: city
+label: Область
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

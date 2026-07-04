@@ -1,0 +1,19 @@
+help_ui:
+  version: 1.x
+  css:
+    theme:
+      css/help.css: {}
+  js:
+    js/onboarding-tour.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+
+help_forms:
+  version: 1.x
+  css:
+    theme:
+      css/help-forms.css: {}
+  dependencies:
+    - mybg_help/help_ui

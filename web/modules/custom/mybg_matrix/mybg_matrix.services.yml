@@ -1,0 +1,34 @@
+services:
+  mybg_matrix.city_context:
+    class: Drupal\mybg_matrix\CityContext
+    arguments: ['@entity_type.manager', '@config.factory']
+
+  mybg_matrix.dashboard_settings:
+    class: Drupal\mybg_matrix\DashboardSettings
+    arguments: ['@entity_type.manager', '@config.factory', '@file_url_generator']
+
+  mybg_matrix.section_registry:
+    class: Drupal\mybg_matrix\SectionRegistry
+    arguments: ['@current_user', '@current_route_match']
+
+  mybg_matrix.section_settings:
+    class: Drupal\mybg_matrix\SectionSettings
+    arguments: ['@entity_type.manager', '@file_url_generator', '@extension.list.theme']
+
+  mybg_matrix.section_hero_builder:
+    class: Drupal\mybg_matrix\SectionHeroBuilder
+    arguments:
+      - '@mybg_matrix.dashboard_settings'
+      - '@mybg_matrix.section_registry'
+      - '@mybg_matrix.section_settings'
+      - '@config.factory'
+      - '@file_url_generator'
+      - '@extension.list.theme'
+
+  mybg_matrix.site_stats:
+    class: Drupal\mybg_matrix\SiteStatsService
+    arguments:
+      - '@entity_type.manager'
+      - '@database'
+      - '@state'
+      - '@cache.default'

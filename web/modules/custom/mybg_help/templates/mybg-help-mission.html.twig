@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Mission and values page.
+ */
+#}
+<article class="mybg-help-mission">
+  <nav class="mybg-doc-breadcrumb">
+    <a href="/dopomoga">Центр допомоги</a> → <span>{{ title }}</span>
+  </nav>
+  <h1>{{ title }}</h1>
+  {% if body %}
+    <div class="mybg-help-mission__body">{{ body|raw }}</div>
+  {% else %}
+    <p>«Мій Богуслав» — соціальна матриця міста. Найрідніше місто у світі.</p>
+  {% endif %}
+</article>

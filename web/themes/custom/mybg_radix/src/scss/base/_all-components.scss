@@ -44,6 +44,27 @@
   }
 }
 
+.mybg-branding {
+  gap: $spacing-sm;
+
+  &__logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    @include heading-font($font-size-md, $font-weight-semibold);
+    color: $color-primary;
+    line-height: 1.2;
+
+    @include lg {
+      font-size: $font-size-lg;
+    }
+  }
+}
+
 .header-actions {
   display: flex;
   align-items: center;
@@ -1167,6 +1188,60 @@ body.mybg-create-sheet-open {
 }
 
 
+.page__footer {
+  background: $color-text;
+  color: rgba(#fff, 0.65);
+  padding: $spacing-xl $spacing-md;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  @include md {
+    padding: $spacing-xl $spacing-xl;
+  }
+}
+
+
+.site-footer-stack {
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+.site-footer-help {
+  padding: 0 $spacing-md $spacing-lg;
+  background: transparent;
+
+  @include md {
+    padding: 0 $spacing-xl $spacing-lg;
+  }
+
+  .container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .mybg-help-fab {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin: 0;
+    width: 56px;
+    height: 56px;
+    font-size: 1.625rem;
+    transform: none;
+  }
+}
+
+.site-footer-group {
+  margin-top: 0;
+  flex-shrink: 0;
+  background: $color-text;
+
+  &__help {
+    display: none;
+  }
+}
+
+
 .site-contacts {
   &__title {
     font-size: $font-size-sm;
@@ -1205,37 +1280,102 @@ body.mybg-create-sheet-open {
       color: #fff;
     }
   }
+
+  &__developer {
+    margin-top: $spacing-md;
+    padding-top: $spacing-sm;
+    border-top: 1px solid rgba(#fff, 0.12);
+  }
+
+  &__developer-line {
+    margin: 0 0 4px;
+    font-size: $font-size-xs;
+    color: rgba(#fff, 0.5);
+    line-height: 1.45;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: rgba(#fff, 0.72);
+      text-decoration: none;
+      transition: $transition-fast;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  &__developer-name {
+    color: rgba(#fff, 0.75);
+    font-weight: $font-weight-semibold;
+  }
+
+  &__copyright {
+    margin: $spacing-md 0 0;
+    padding-top: $spacing-sm;
+    border-top: 1px solid rgba(#fff, 0.12);
+    font-size: $font-size-xs;
+    line-height: 1.3;
+    color: rgba(#fff, 0.4);
+  }
 }
 
 
 .site-footer {
   background: $color-text;
   color: rgba(#fff, 0.65);
-  padding: $spacing-2xl $spacing-md;
+  padding: $spacing-xl $spacing-md $spacing-md;
+  margin: 0;
 
   @include md {
-    padding: $spacing-2xl $spacing-xl;
-  }
-
-  &__logo {
-    @include heading-font($font-size-md, $font-weight-semibold);
-    color: #fff;
-    margin-bottom: $spacing-sm;
+    padding: $spacing-xl $spacing-xl $spacing-md;
   }
 
   &__grid {
-    @include cards-grid(1, 2, 4, $spacing-xl);
-    margin-bottom: $spacing-xl;
+    display: grid;
+    gap: $spacing-xl;
+    grid-template-columns: 1fr;
+
+    @include md {
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr) minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+
+  &__col {
+    min-width: 0;
   }
 
   &__title {
-    font-size: $font-size-sm;
+    font-size: 11px;
     font-weight: $font-weight-semibold;
     color: rgba(#fff, 0.85);
     margin-bottom: $spacing-sm;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    font-size: 11px;
+  }
+
+  &__intro {
+    font-size: $font-size-sm;
+    color: rgba(#fff, 0.55);
+    margin-bottom: $spacing-md;
+    line-height: 1.5;
+  }
+
+  &__nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    column-count: 2;
+    column-gap: $spacing-lg;
+  }
+
+  &__nav-item {
+    margin: 0;
+    break-inside: avoid;
   }
 
   &__link {
@@ -1243,12 +1383,135 @@ body.mybg-create-sheet-open {
     color: rgba(#fff, 0.55);
     text-decoration: none;
     font-size: $font-size-sm;
-    padding: 3px 0;
+    padding: 4px 0;
     transition: $transition-fast;
 
     &:hover {
       color: rgba(#fff, 0.9);
     }
+  }
+
+  &__col--newsletter {
+    .site-footer__email-label,
+    .form-item-message {
+      margin: 0 0 $spacing-xs;
+      padding: 0;
+
+      .form-item__label {
+        display: none;
+      }
+
+      .form-item__content,
+      .field__item {
+        font-size: 11px;
+        font-weight: $font-weight-semibold;
+        color: rgba(#fff, 0.85);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        line-height: 1.3;
+      }
+    }
+
+    .form-item-mail-0-value {
+      margin-bottom: $spacing-xs;
+
+      .description {
+        display: none;
+      }
+    }
+
+    label {
+      font-size: $font-size-xs;
+      color: rgba(#fff, 0.65);
+    }
+
+    input[type="email"],
+    input[type="text"] {
+      background: rgba(#fff, 0.08);
+      border: 1px solid rgba(#fff, 0.18);
+      color: #fff;
+      border-radius: $border-radius-sm;
+
+      &::placeholder {
+        color: rgba(#fff, 0.35);
+      }
+
+      &:focus {
+        background: rgba(#fff, 0.12);
+        border-color: rgba(#fff, 0.35);
+        box-shadow: none;
+        color: #fff;
+      }
+    }
+
+    .form-check-label {
+      color: rgba(#fff, 0.65);
+      font-size: $font-size-xs;
+    }
+
+    .form-actions {
+      margin-top: $spacing-sm;
+      margin-bottom: 0;
+    }
+
+    .button,
+    .btn,
+    input[type="submit"] {
+      width: 100%;
+
+      @include md {
+        width: auto;
+      }
+    }
+
+    .simplenews-subscriber-form__message,
+    .messages {
+      font-size: $font-size-xs;
+    }
+  }
+
+  &__telegram {
+    margin: $spacing-lg 0 0;
+  }
+
+  &__telegram-label {
+    display: block;
+    font-size: 11px;
+    font-weight: $font-weight-semibold;
+    color: rgba(#fff, 0.85);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__telegram-name {
+    display: block;
+    font-size: $font-size-sm;
+    color: rgba(#fff, 0.72);
+    line-height: 1.4;
+
+    &--placeholder {
+      color: rgba(#fff, 0.45);
+      font-style: italic;
+    }
+  }
+
+  &__telegram-link {
+    display: inline-block;
+    font-size: $font-size-sm;
+    color: rgba(#fff, 0.72);
+    text-decoration: none;
+    transition: $transition-fast;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  &__logo {
+    @include heading-font($font-size-md, $font-weight-semibold);
+    color: #fff;
+    margin-bottom: $spacing-sm;
   }
 
   &__bottom {

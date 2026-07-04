@@ -1,0 +1,9 @@
+uuid: 48a5dd23-fbbf-4296-a8e2-3a6475f50930
+langcode: en
+status: true
+dependencies: {  }
+name: 'Категорії роботи'
+vid: job_category
+description: null
+weight: 0
+new_revision: false

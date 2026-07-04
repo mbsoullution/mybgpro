@@ -3,6 +3,7 @@ langcode: uk
 status: true
 dependencies:
   config:
+    - field.field.user.user.field_onboarding_done
     - field.field.user.user.field_profile_bio
     - field.field.user.user.field_profile_district
     - field.field.user.user.field_profile_full_name
@@ -12,6 +13,7 @@ dependencies:
     - image.style.thumbnail
   module:
     - image
+    - path
     - telephone
     - text
     - user
@@ -80,5 +82,6 @@ content:
     third_party_settings: {  }
 hidden:
   contact: true
+  field_onboarding_done: true
   language: true
   timezone: true

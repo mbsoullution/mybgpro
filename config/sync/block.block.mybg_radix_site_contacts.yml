@@ -1,5 +1,5 @@
 uuid: 6a6c1097-a3f9-48df-9486-d45868fc66c9
-langcode: en
+langcode: uk
 status: true
 dependencies:
   module:
@@ -17,6 +17,6 @@ settings:
   label: Контакти
   label_display: '0'
   provider: config_pages
+  config_page_type: site_contacts
   config_page_view_mode: default
-  config_page: site_contacts
 visibility: {  }

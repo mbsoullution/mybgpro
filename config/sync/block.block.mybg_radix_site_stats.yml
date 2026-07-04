@@ -1,0 +1,20 @@
+uuid: db49045b-269d-4cbc-b175-ba172101f960
+langcode: en
+status: true
+dependencies:
+  module:
+    - mybg_matrix
+  theme:
+    - mybg_radix
+id: mybg_radix_site_stats
+theme: mybg_radix
+region: page_bottom
+weight: 0
+provider: null
+plugin: mybg_site_stats_bar
+settings:
+  id: mybg_site_stats_bar
+  label: 'Статистика порталу'
+  label_display: '0'
+  provider: mybg_matrix
+visibility: {  }

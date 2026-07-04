@@ -1,0 +1,14 @@
+uuid: 4ab99983-9a50-475f-b92a-0e19968fd335
+langcode: en
+status: true
+dependencies:
+  module:
+    - comment
+    - system
+id: education_owner
+label: 'Навчальний заклад'
+weight: 7
+is_admin: null
+permissions:
+  - 'access content'
+  - 'post comments'

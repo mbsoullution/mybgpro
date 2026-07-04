@@ -1,0 +1,21 @@
+uuid: 34ea4383-7bf0-4810-8ead-5dc2dc4e74b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_doc_module
+    - node.type.documentation
+  module:
+    - options
+id: node.documentation.field_doc_module
+field_name: field_doc_module
+entity_type: node
+bundle: documentation
+label: 'Повʼязаний модуль'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

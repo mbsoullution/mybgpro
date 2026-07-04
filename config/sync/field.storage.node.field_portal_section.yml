@@ -1,0 +1,45 @@
+uuid: d85aa440-eaf6-45bd-b69a-d82bfdc4d058
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_portal_section
+field_name: field_portal_section
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: news
+      label: Новини
+    -
+      value: listings
+      label: Оголошення
+    -
+      value: jobs
+      label: Робота
+    -
+      value: business
+      label: Бізнес
+    -
+      value: events
+      label: Події
+    -
+      value: community
+      label: Спільнота
+    -
+      value: city
+      label: Місто
+    -
+      value: map
+      label: Карта
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

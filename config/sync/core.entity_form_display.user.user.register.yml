@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.user.register
+    - field.field.user.user.field_onboarding_done
     - field.field.user.user.field_profile_bio
     - field.field.user.user.field_profile_district
     - field.field.user.user.field_profile_full_name
@@ -11,6 +12,7 @@ dependencies:
     - field.field.user.user.field_profile_phone
     - field.field.user.user.user_picture
   module:
+    - path
     - user
 id: user.user.register
 targetEntityType: user
@@ -30,6 +32,7 @@ content:
     third_party_settings: {  }
 hidden:
   contact: true
+  field_onboarding_done: true
   field_profile_bio: true
   field_profile_district: true
   field_profile_full_name: true

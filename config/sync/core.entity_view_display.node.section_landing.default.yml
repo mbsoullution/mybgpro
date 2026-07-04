@@ -1,0 +1,46 @@
+uuid: 63a46944-705a-4d3d-ac3d-7ec29b8fdc21
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.section_landing.body
+    - field.field.node.section_landing.field_portal_section
+    - node.type.section_landing
+  module:
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          425357cf-ed3b-4d87-b8b9-36438bf70d44:
+            uuid: 425357cf-ed3b-4d87-b8b9-36438bf70d44
+            region: content
+            configuration:
+              id: 'extra_field_block:node:section_landing:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+id: node.section_landing.default
+targetEntityType: node
+bundle: section_landing
+mode: default
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  body: true
+  field_portal_section: true
+  search_api_excerpt: true

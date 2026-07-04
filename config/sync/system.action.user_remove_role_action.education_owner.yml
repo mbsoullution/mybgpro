@@ -1,0 +1,14 @@
+uuid: 74bd5420-e264-4bf4-b5f7-2de176582145
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.education_owner
+  module:
+    - user
+id: user_remove_role_action.education_owner
+label: 'Remove the Навчальний заклад role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: education_owner

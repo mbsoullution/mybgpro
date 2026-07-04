@@ -1,0 +1,21 @@
+uuid: fc3ff0e1-6ced-47de-bc98-d52296fa28e2
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: wg5cCxB554rXZx4TIzUACcXRXe-VSodwqcq-_QS4Tv0
+name: 'Default newsletter'
+id: default
+description: 'This is an example newsletter. Change it.'
+format: plain
+priority: 0
+receipt: true
+from_name: 'Мій Богуслав'
+subject: '[[simplenews-newsletter:name]] [node:title]'
+from_address: admin@mybgpro.local
+hyperlinks: false
+allowed_handlers: {  }
+new_account: none
+access: default
+reason: ''
+weight: 0

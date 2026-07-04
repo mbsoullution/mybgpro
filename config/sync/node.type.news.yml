@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 name: Новини
 type: news
-description: 'Новини міста'
+description: 'Новини міста та громади'
 help: null
 new_revision: true
 preview_mode: 1

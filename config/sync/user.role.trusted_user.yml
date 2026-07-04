@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.job
     - node.type.listing
     - node.type.real_estate
     - workflows.workflow.city_portal
@@ -13,17 +14,20 @@ dependencies:
     - node
     - system
 id: trusted_user
-label: 'Trusted User'
+label: 'Довірений мешканець'
 weight: 5
 is_admin: null
 permissions:
   - 'access content'
   - 'access content overview'
+  - 'create job content'
   - 'create listing content'
   - 'create real_estate content'
+  - 'delete own job content'
   - 'delete own listing content'
   - 'delete own real_estate content'
   - 'edit own comments'
+  - 'edit own job content'
   - 'edit own listing content'
   - 'edit own real_estate content'
   - 'flag favorites'

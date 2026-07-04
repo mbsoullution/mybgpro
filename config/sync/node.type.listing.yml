@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 name: Оголошення
 type: listing
-description: 'Оголошення про продаж, обмін, послуги'
+description: 'Продам, куплю, обміняю, віддам, послуги'
 help: null
 new_revision: false
 preview_mode: 1

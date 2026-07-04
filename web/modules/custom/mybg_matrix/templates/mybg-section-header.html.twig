@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Section intro: description and optional add-content button.
+ */
+#}
+<div class="mybg-section-header{% if section_key %} mybg-section-header--{{ section_key|clean_class }}{% endif %}">
+  <p class="mybg-section-header__desc">{{ description }}</p>
+  {% if add_url %}
+    <a href="{{ add_url }}" class="mybg-section-header__add btn btn-primary btn-sm">
+      {{ add_label }}
+    </a>
+  {% endif %}
+</div>

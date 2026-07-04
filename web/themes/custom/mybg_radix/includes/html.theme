@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * User display name overrides.
+ */
+
+declare(strict_types=1);
+
+/**
+ * Implements hook_user_format_name_alter().
+ */
+function mybg_radix_user_format_name_alter(string &$name, $account): void {
+  if ((int) $account->id() === 1) {
+    if ($account->hasField('field_profile_full_name') && !$account->get('field_profile_full_name')->isEmpty()) {
+      $name = $account->get('field_profile_full_name')->value;
+    }
+    else {
+      $name = 'Мій Богуслав';
+    }
+  }
+}

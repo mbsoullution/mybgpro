@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Documentation article with breadcrumbs.
+ */
+#}
+<article{{ attributes.addClass('mybg-help-doc-article') }}>
+  {% if mybg_doc_breadcrumb %}
+    <nav class="mybg-doc-breadcrumb" aria-label="Breadcrumb">
+      {% for crumb in mybg_doc_breadcrumb %}
+        {% if crumb.url %}
+          <a href="{{ crumb.url }}">{{ crumb.title }}</a>{% if not loop.last %} → {% endif %}
+        {% else %}
+          <span>{{ crumb.title }}</span>
+        {% endif %}
+      {% endfor %}
+    </nav>
+  {% endif %}
+
+  {{ title_prefix }}
+  <h1{{ title_attributes }}>{{ label }}</h1>
+  {{ title_suffix }}
+
+  <div class="mybg-help-doc-article__body">
+    {{ content.body }}
+  </div>
+
+  {% if mybg_module_help_url %}
+    <a class="mybg-help-doc-article__module-link" href="{{ mybg_module_help_url }}">
+      Довідка по модулю →
+    </a>
+  {% endif %}
+</article>

@@ -1,0 +1,27 @@
+uuid: 0a4b9fb9-001c-41cc-839f-23b49d8f6522
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - mybg_radix
+id: mybg_radix_branding
+theme: mybg_radix
+region: navbar_branding
+weight: -1
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: false
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: "<front>\r\n/novyny\r\n/ogoloshennya\r\n/robota\r\n/biznes\r\n/podii\r\n/karta\r\n/spilnota\r\n/misto"

@@ -1,0 +1,111 @@
+uuid: f05eab36-56fc-4177-8789-b63588c7bb63
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.section_backgrounds
+    - field.field.config_pages.section_backgrounds.field_bg_business
+    - field.field.config_pages.section_backgrounds.field_bg_city
+    - field.field.config_pages.section_backgrounds.field_bg_community
+    - field.field.config_pages.section_backgrounds.field_bg_events
+    - field.field.config_pages.section_backgrounds.field_bg_jobs
+    - field.field.config_pages.section_backgrounds.field_bg_listings
+    - field.field.config_pages.section_backgrounds.field_bg_map
+    - field.field.config_pages.section_backgrounds.field_bg_news
+  module:
+    - image
+id: config_pages.section_backgrounds.default
+targetEntityType: config_pages
+bundle: section_backgrounds
+mode: default
+content:
+  field_bg_business:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_bg_city:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_bg_community:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_bg_events:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_bg_jobs:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_bg_listings:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_bg_map:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_bg_news:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 8
+    region: content
+hidden:
+  search_api_excerpt: true

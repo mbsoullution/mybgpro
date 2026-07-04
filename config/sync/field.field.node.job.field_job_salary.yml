@@ -1,0 +1,19 @@
+uuid: 0d720e3d-5160-40c3-95ba-5fa812224352
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_job_salary
+    - node.type.job
+id: node.job.field_job_salary
+field_name: field_job_salary
+entity_type: node
+bundle: job
+label: Оплата
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

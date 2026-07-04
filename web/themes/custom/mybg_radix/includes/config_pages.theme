@@ -28,4 +28,63 @@ function mybg_radix_preprocess_config_pages(array &$variables): void {
   if (!$entity->get('field_site_facebook')->isEmpty()) {
     $variables['site_facebook_url'] = $entity->get('field_site_facebook')->first()->getUrl()->toString();
   }
+
+  $variables['mybg_copyright_year'] = (int) date('Y');
+  $variables['mybg_site_name'] = (string) \Drupal::config('system.site')->get('name');
+}
+
+/**
+ * Telegram channel data from site contacts config page.
+ *
+ * @return array{name: string, url: string}
+ *   Channel display name and public URL.
+ */
+function mybg_radix_site_telegram_data(): array {
+  if (!function_exists('config_pages_config')) {
+    return ['name' => '', 'url' => ''];
+  }
+
+  $entity = config_pages_config('site_contacts');
+  if (!$entity || $entity->get('field_site_telegram')->isEmpty()) {
+    return ['name' => '', 'url' => ''];
+  }
+
+  $name = trim((string) $entity->get('field_site_telegram')->value);
+  if ($name === '') {
+    return ['name' => '', 'url' => ''];
+  }
+
+  return [
+    'name' => $name,
+    'url' => mybg_radix_telegram_url($name),
+  ];
+}
+
+/**
+ * Builds a t.me URL from a handle or returns an absolute URL unchanged.
+ */
+function mybg_radix_telegram_url(string $value): string {
+  if (str_starts_with($value, 'http://') || str_starts_with($value, 'https://')) {
+    return $value;
+  }
+
+  $handle = ltrim($value, '@');
+  return $handle !== '' ? 'https://t.me/' . rawurlencode($handle) : '';
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function mybg_radix_preprocess_block(array &$variables): void {
+  if (($variables['plugin_id'] ?? '') !== 'simplenews_subscription_block') {
+    return;
+  }
+
+  if (($variables['configuration']['unique_id'] ?? '') !== 'footer_newsletter') {
+    return;
+  }
+
+  $telegram = mybg_radix_site_telegram_data();
+  $variables['mybg_telegram_name'] = $telegram['name'];
+  $variables['mybg_telegram_url'] = $telegram['url'];
 }

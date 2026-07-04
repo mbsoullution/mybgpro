@@ -83,19 +83,9 @@ datasource_settings:
     languages:
       default: true
       selected: {  }
-    plugin_id: 'entity:node'
-    settings:
-      bundles:
-        default: true
-        selected:
-          - listing
-          - real_estate
-          - news
-          - event
-          - organization
-      languages:
-        default: true
-        selected: {  }
+    default: false
+    selected:
+      documentation: documentation
 processor_settings:
   add_url: {  }
   aggregated_field: {  }

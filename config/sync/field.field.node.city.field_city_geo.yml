@@ -1,0 +1,21 @@
+uuid: 1acf67e3-a3fe-4350-8415-4db23ada0222
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_city_geo
+    - node.type.city
+  module:
+    - geofield
+id: node.city.field_city_geo
+field_name: field_city_geo
+entity_type: node
+bundle: city
+label: 'Координати центру'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geofield

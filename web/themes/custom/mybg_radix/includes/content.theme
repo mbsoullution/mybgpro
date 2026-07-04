@@ -40,6 +40,14 @@ function mybg_radix_get_create_content_links(): array {
       'icon' => 'real-estate',
     ];
   }
+  if ($account->hasPermission('create job content')) {
+    $links[] = [
+      'title' => t('Робота'),
+      'subtitle' => t('Вакансія або резюме'),
+      'url' => Url::fromRoute('node.add', ['node_type' => 'job'])->toString(),
+      'icon' => 'job',
+    ];
+  }
 
   return $links;
 }
@@ -73,6 +81,18 @@ function mybg_radix_preprocess_page(array &$variables): void {
   if (!$hide_fab) {
     $variables['mybg_create_links'] = mybg_radix_get_create_content_links();
   }
+
+  // Contextual help «?» — above the main footer, not in the stats bar row.
+  if (!empty($variables['page']['page_bottom']['mybg_radix_contextualhelp'])) {
+    $variables['mybg_contextual_help'] = $variables['page']['page_bottom']['mybg_radix_contextualhelp'];
+    unset($variables['page']['page_bottom']['mybg_radix_contextualhelp']);
+  }
+
+  // Hero / section pages: no top navbar, no main vertical padding.
+  $matcher = \Drupal::service('path.matcher');
+  $registry = \Drupal::service('mybg_matrix.section_registry');
+  $variables['mybg_hide_site_navbar'] = $matcher->isFrontPage() || $registry->isSectionPage();
+  $variables['page_main_utility_classes'] = $variables['mybg_hide_site_navbar'] ? [] : ['py-5'];
 }
 
 /**

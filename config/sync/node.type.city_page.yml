@@ -2,9 +2,9 @@ uuid: f481debc-5b1b-4c3e-aecb-ba2722e27975
 langcode: en
 status: true
 dependencies: {  }
-name: 'Сторінка міста'
+name: Місце
 type: city_page
-description: 'Сторінки про місто: історія, памʼятки, галерея'
+description: 'Історичні, туристичні та цікаві місця міста'
 help: null
 new_revision: true
 preview_mode: 1

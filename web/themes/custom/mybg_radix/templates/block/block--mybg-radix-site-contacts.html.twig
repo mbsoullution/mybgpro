@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Site contacts block wrapper for footer column.
+ */
+#}
+{%
+  set classes = [
+    'block',
+    'block-config-pages',
+    'site-footer__col',
+    'site-footer__col--contacts',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</div>

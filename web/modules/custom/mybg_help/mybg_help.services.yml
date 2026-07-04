@@ -1,0 +1,8 @@
+services:
+  mybg_help.context:
+    class: Drupal\mybg_help\HelpContext
+    arguments: ['@current_route_match', '@entity_type.manager']
+
+  mybg_help.documentation:
+    class: Drupal\mybg_help\DocumentationRepository
+    arguments: ['@entity_type.manager']

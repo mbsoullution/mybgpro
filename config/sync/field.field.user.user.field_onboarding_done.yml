@@ -1,0 +1,24 @@
+uuid: d9c5e503-44d7-4f23-8f71-b5ed62b94778
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_onboarding_done
+  module:
+    - user
+id: user.user.field_onboarding_done
+field_name: field_onboarding_done
+entity_type: user
+bundle: user
+label: 'Onboarding пройдено'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

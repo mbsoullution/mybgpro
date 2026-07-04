@@ -1,0 +1,14 @@
+uuid: 262932cc-3718-48b9-83f4-7c1d8a97355d
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.resident
+  module:
+    - user
+id: user_remove_role_action.resident
+label: 'Remove the Мешканець role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: resident

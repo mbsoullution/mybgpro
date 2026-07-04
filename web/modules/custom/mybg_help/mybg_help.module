@@ -1,0 +1,239 @@
+<?php
+
+/**
+ * @file
+ * Help Center integration for «Мій Богуслав».
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_entity_presave().
+ *
+ * Documentation must not appear on the site front page.
+ */
+function mybg_help_entity_presave(\Drupal\Core\Entity\EntityInterface $entity): void {
+  if (!$entity instanceof NodeInterface || $entity->bundle() !== 'documentation') {
+    return;
+  }
+  $entity->setPromoted(FALSE);
+  $entity->setSticky(FALSE);
+}
+
+/**
+ * Implements hook_theme().
+ */
+function mybg_help_theme(array $existing, string $type, string $theme, string $path): array {
+  return [
+    'mybg_help_center' => [
+      'variables' => [
+        'faq' => [],
+        'encyclopedia_url' => '',
+        'mission_url' => '',
+        'roadmap_url' => '',
+        'search_url' => '',
+        'modules' => [],
+      ],
+    ],
+    'mybg_help_encyclopedia' => [
+      'variables' => [
+        'tree' => [],
+        'search_url' => '',
+      ],
+    ],
+    'mybg_help_search' => [
+      'variables' => [
+        'query' => '',
+        'results' => [],
+      ],
+    ],
+    'mybg_help_mission' => [
+      'variables' => [
+        'title' => '',
+        'body' => '',
+      ],
+    ],
+    'mybg_help_roadmap' => [
+      'variables' => [
+        'phases' => [],
+      ],
+    ],
+    'mybg_help_contextual_button' => [
+      'variables' => [
+        'label' => '',
+        'url' => '',
+      ],
+    ],
+    'mybg_help_tip' => [
+      'variables' => [
+        'title' => '',
+        'text' => '',
+        'url' => '',
+      ],
+    ],
+    'mybg_help_fallback' => [
+      'variables' => [
+        'module_label' => '',
+        'center_url' => '',
+        'encyclopedia_url' => '',
+      ],
+    ],
+    'mybg_documentation' => [
+      'variables' => [
+        'node' => NULL,
+        'breadcrumb' => [],
+        'module_help_url' => NULL,
+        'children' => [],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function mybg_help_preprocess_node(array &$variables): void {
+  $node = $variables['node'];
+  if ($node->bundle() !== 'documentation') {
+    return;
+  }
+
+  $variables['#attached']['library'][] = 'mybg_help/help_ui';
+
+  $breadcrumb = [
+    ['title' => 'Центр допомоги', 'url' => '/dopomoga'],
+    ['title' => 'Енциклопедія', 'url' => '/encyklopediya'],
+  ];
+
+  if ($node->hasField('field_doc_parent') && !$node->get('field_doc_parent')->isEmpty()) {
+    $parent = $node->get('field_doc_parent')->entity;
+    if ($parent) {
+      $breadcrumb[] = ['title' => $parent->label(), 'url' => $parent->toUrl()->toString()];
+    }
+  }
+
+  $breadcrumb[] = ['title' => $node->label(), 'url' => ''];
+
+  $variables['mybg_doc_breadcrumb'] = $breadcrumb;
+
+  if ($node->hasField('field_doc_module') && !$node->get('field_doc_module')->isEmpty()) {
+    $module = $node->get('field_doc_module')->value;
+    $variables['mybg_module_help_url'] = '/dopomoga/modul/' . $module;
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Contextual field tooltips (ⓘ) on content forms.
+ */
+function mybg_help_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  if (!preg_match('/^node_(listing|real_estate|job|organization|event|news)_(edit_)?form$/', $form_id, $m)) {
+    return;
+  }
+
+  $bundle = $m[1];
+  $tips = mybg_help_field_tooltips($bundle);
+  $form['#attached']['library'][] = 'mybg_help/help_forms';
+
+  foreach ($tips as $field_name => $tip) {
+    if (!isset($form[$field_name])) {
+      continue;
+    }
+    $form[$field_name]['#description'] = ($form[$field_name]['#description'] ?? '') . ' ' . $tip;
+    $form[$field_name]['#attributes']['class'][] = 'mybg-field-with-tip';
+    $form[$field_name]['#wrapper_attributes']['data-tip'] = strip_tags($tip);
+  }
+}
+
+/**
+ * Field tooltip texts per content type.
+ */
+function mybg_help_field_tooltips(string $bundle): array {
+  $common = [
+    'title' => 'Коротка зрозуміла назва — так її легше знайти через пошук.',
+    'field_city' => 'Оберіть місто, до якого відноситься матеріал.',
+  ];
+
+  $specific = [
+    'listing' => [
+      'field_listing_category' => 'Оберіть категорію, що найкраще описує оголошення.',
+      'field_price' => 'Вкажіть ціну в гривнях або залиште порожнім, якщо домовитесь на місці.',
+      'field_phone' => 'Номер для звʼязку. На публічному профілі телефон прихований.',
+      'field_address_text' => 'Район або вулиця — допоможе покупцям зорієнтуватися.',
+      'field_images' => 'Додайте якісні фото — оголошення з фото отримують більше переглядів.',
+    ],
+    'real_estate' => [
+      'field_re_type' => 'Тип нерухомості: квартира, будинок, ділянка тощо.',
+      'field_area_total' => 'Загальна площа в м².',
+      'field_price' => 'Ціна в гривнях. Можна позначити «договірна».',
+    ],
+    'job' => [
+      'field_job_type' => 'Вакансія — ви шукаєте працівника. Резюме — ви шукаєте роботу.',
+      'field_job_salary' => 'Орієнтовна оплата або «за домовленістю».',
+      'field_job_contact' => 'Телефон або месенджер для відгуку.',
+    ],
+    'organization' => [
+      'field_org_type' => 'Категорія бізнесу для каталогу та карти.',
+      'field_geolocation' => 'Вкажіть точку на карті — бізнес зʼявиться в розділі «Карта».',
+      'field_org_working_hours' => 'Наприклад: Пн–Пт 9:00–18:00, Сб 10:00–15:00.',
+    ],
+    'event' => [
+      'field_event_date' => 'Дата та час початку події.',
+      'field_event_location' => 'Адреса або назва місця проведення.',
+    ],
+    'news' => [
+      'field_news_source' => 'Джерело інформації, якщо це не авторський матеріал.',
+    ],
+  ];
+
+  return array_merge($common, $specific[$bundle] ?? []);
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function mybg_help_page_attachments(array &$attachments): void {
+  $account = \Drupal::currentUser();
+  if ($account->isAnonymous()) {
+    return;
+  }
+
+  $needs_tour = FALSE;
+  $user = \Drupal\user\Entity\User::load($account->id());
+  if ($user && $user->hasField('field_onboarding_done') && (int) $user->get('field_onboarding_done')->value !== 1) {
+    $route = \Drupal::routeMatch()->getRouteName();
+    if ($route === 'view.frontpage.page_1' || \Drupal::service('path.matcher')->isFrontPage()) {
+      $needs_tour = TRUE;
+    }
+  }
+
+  if ($needs_tour) {
+    $attachments['#attached']['library'][] = 'mybg_help/help_ui';
+    $attachments['#attached']['drupalSettings']['mybgHelpTour'] = [
+      'enabled' => TRUE,
+      'steps' => mybg_help_tour_steps(),
+      'completeUrl' => '/mybg-help/onboarding-complete',
+      'token' => \Drupal::csrfToken()->get('mybg_help_onboarding'),
+    ];
+  }
+}
+
+/**
+ * Onboarding tour steps (5–7 steps per spec).
+ */
+function mybg_help_tour_steps(): array {
+  return [
+    ['target' => '.mybg-dashboard__search', 'title' => 'Пошук', 'text' => 'Шукайте новини, бізнеси, оголошення та події в одному місці.'],
+    ['target' => '.mybg-dashboard__quick-nav', 'title' => 'Розділи', 'text' => 'Основні модулі порталу — новини, робота, бізнес, спільнота.'],
+    ['target' => '.mybg-dashboard__cta', 'title' => 'Карта', 'text' => 'Переглядайте бізнеси та місця міста на інтерактивній карті.'],
+    ['target' => '.mybg-help-fab', 'title' => 'Довідка', 'text' => 'Кнопка «?» на кожній сторінці — контекстна допомога по модулю.'],
+    ['target' => 'a[href="/dopomoga"]', 'title' => 'Центр допомоги', 'text' => 'Енциклопедія, FAQ, місія та roadmap розвитку порталу.'],
+    ['target' => '.mybg-create-fab', 'title' => 'Створити', 'text' => 'Додавайте оголошення, вакансії та інший контент для громади.'],
+  ];
+}

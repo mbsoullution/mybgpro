@@ -1,0 +1,25 @@
+uuid: 67de2c50-fc20-41e9-9b37-94ac008fcd31
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer
+  module:
+    - system
+  theme:
+    - mybg_radix
+id: mybg_radix_footer_menu
+theme: mybg_radix
+region: footer
+weight: -20
+provider: null
+plugin: 'system_menu_block:footer'
+settings:
+  id: 'system_menu_block:footer'
+  label: Навігація
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

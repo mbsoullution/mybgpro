@@ -1,0 +1,14 @@
+uuid: c04006d8-cbef-48eb-92ce-eea55e79636d
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.education_owner
+  module:
+    - user
+id: user_add_role_action.education_owner
+label: 'Add the Навчальний заклад role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: education_owner

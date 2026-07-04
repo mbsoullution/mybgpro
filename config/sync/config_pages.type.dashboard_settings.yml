@@ -1,0 +1,15 @@
+uuid: a1204f89-16ed-48be-b40d-06cce65c761d
+langcode: en
+status: true
+dependencies: {  }
+id: dashboard_settings
+label: 'Міський дашборд'
+token: true
+context:
+  show_warning: false
+  language: false
+  theme: false
+menu:
+  path: /admin/config/mybg/dashboard
+  weight: 1
+  description: 'Заголовок, слоган, відео-фон головної сторінки.'

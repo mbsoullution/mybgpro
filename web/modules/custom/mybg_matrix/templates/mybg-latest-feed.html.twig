@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Latest 10 publications on homepage.
+ */
+#}
+<section class="mybg-latest-feed">
+  <header class="mybg-latest-feed__header">
+    <h2>Останні публікації</h2>
+    <p>10 найновіших матеріалів на порталі</p>
+  </header>
+
+  {% if items %}
+    <div class="mybg-latest-feed__list">
+      {% for item in items %}
+        <article class="mybg-latest-feed__item">
+          {% if item.image_url %}
+            <a class="mybg-latest-feed__thumb" href="{{ item.url }}" style="background-image: url('{{ item.image_url }}')"></a>
+          {% endif %}
+          <div class="mybg-latest-feed__body">
+            <span class="mybg-latest-feed__type">{{ item.type }}</span>
+            <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+            {% if item.author %}
+              <p class="mybg-latest-feed__meta">{{ item.author }}</p>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="mybg-dashboard__empty">Поки немає публікацій. Будьте першими!</p>
+  {% endif %}
+</section>

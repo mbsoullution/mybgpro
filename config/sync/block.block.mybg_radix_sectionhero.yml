@@ -1,0 +1,20 @@
+uuid: 8f2a1c4e-9b3d-4a7f-b2e1-6d5c8a9f0e3b
+langcode: uk
+status: true
+dependencies:
+  module:
+    - mybg_matrix
+  theme:
+    - mybg_radix
+id: mybg_radix_sectionhero
+theme: mybg_radix
+region: content
+weight: -15
+provider: null
+plugin: mybg_section_page_hero
+settings:
+  id: mybg_section_page_hero
+  label: 'Hero розділу'
+  label_display: '0'
+  provider: mybg_matrix
+visibility: {  }

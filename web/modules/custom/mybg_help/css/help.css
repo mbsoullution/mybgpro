@@ -1,0 +1,280 @@
+/* Help Center UI */
+.mybg-help-center__hero,
+.mybg-help-encyclopedia__header {
+  background: linear-gradient(135deg, #1a5c43, #2e7d5e);
+  color: #fff;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.mybg-help-center__hero h1,
+.mybg-help-encyclopedia__header h1 {
+  margin: 0 0 0.5rem;
+  font-family: 'Unbounded', sans-serif;
+}
+
+.mybg-help-center__search {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 480px;
+  margin-top: 1rem;
+}
+
+.mybg-help-center__search input {
+  flex: 1;
+  border: none;
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+}
+
+.mybg-help-center__search button {
+  border: none;
+  border-radius: 999px;
+  background: #f5a623;
+  font-weight: 700;
+  padding: 0.65rem 1.1rem;
+}
+
+.mybg-help-center__nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.mybg-help-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem;
+  border: 1px solid #d6ebe0;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+}
+
+.mybg-help-card:hover {
+  border-color: #2e7d5e;
+  box-shadow: 0 4px 16px rgba(46, 125, 94, 0.1);
+}
+
+.mybg-help-card__icon {
+  font-size: 1.5rem;
+}
+
+.mybg-help-card span:last-child {
+  font-size: 0.85rem;
+  color: #5c7a69;
+}
+
+.mybg-help-module-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.mybg-help-module-list a {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  background: #e8f5ef;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #1a5c43;
+  font-size: 0.875rem;
+}
+
+.mybg-help-center__faq ul {
+  list-style: none;
+  padding: 0;
+}
+
+.mybg-help-center__faq li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #d6ebe0;
+}
+
+.mybg-help-fab {
+  position: relative;
+  z-index: 5;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #2e7d5e;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.375rem;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(46, 125, 94, 0.35);
+}
+
+.mybg-help-fab:hover {
+  background: #1a5c43;
+  color: #fff;
+}
+
+.site-footer-help .mybg-help-fab {
+  position: relative;
+  bottom: auto;
+  right: auto;
+  width: 56px;
+  height: 56px;
+  font-size: 1.625rem;
+}
+
+.mybg-help-tip {
+  background: #fef4e1;
+  border: 1px solid #f5a623;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.mybg-help-tip__badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #d4881a;
+  margin-bottom: 0.35rem;
+}
+
+.mybg-help-tip__text {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.mybg-help-tip__link {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.mybg-doc-breadcrumb {
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  color: #5c7a69;
+}
+
+.mybg-doc-breadcrumb a {
+  color: #2e7d5e;
+}
+
+.mybg-help-doc-article {
+  max-width: 720px;
+}
+
+.mybg-help-doc-article__module-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.mybg-help-roadmap__timeline {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.mybg-help-roadmap__phase {
+  border: 1px solid #d6ebe0;
+  border-radius: 12px;
+  padding: 1.25rem;
+  background: #fff;
+}
+
+.mybg-help-roadmap__phase--done {
+  border-left: 4px solid #2e7d5e;
+}
+
+.mybg-help-roadmap__phase--progress {
+  border-left: 4px solid #f5a623;
+}
+
+.mybg-help-roadmap__phase--planned {
+  border-left: 4px solid #b2d4c2;
+  opacity: 0.9;
+}
+
+.mybg-help-roadmap__version {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #5c7a69;
+}
+
+.mybg-help-roadmap__status {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: #e8f5ef;
+  margin-bottom: 0.5rem;
+}
+
+/* Onboarding tour overlay */
+.mybg-tour-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 43, 34, 0.55);
+  z-index: 9000;
+}
+
+.mybg-tour-popover {
+  position: absolute;
+  z-index: 9001;
+  max-width: 320px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.mybg-tour-popover h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.mybg-tour-popover p {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  color: #5c7a69;
+}
+
+.mybg-tour-popover__actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.mybg-tour-popover button {
+  border: none;
+  border-radius: 8px;
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.mybg-tour-popover .mybg-tour-next {
+  background: #2e7d5e;
+  color: #fff;
+}
+
+.mybg-tour-popover .mybg-tour-skip {
+  background: transparent;
+  color: #5c7a69;
+}
+
+.mybg-tour-highlight {
+  position: relative;
+  z-index: 9002 !important;
+  box-shadow: 0 0 0 4px #f5a623, 0 0 0 9999px rgba(28, 43, 34, 0.55) !important;
+  border-radius: 8px;
+}
+
+.mybg-help-tip {

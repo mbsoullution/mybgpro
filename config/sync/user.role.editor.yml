@@ -3,7 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.article
     - node.type.city_page
+    - node.type.documentation
     - node.type.event
     - node.type.news
     - node.type.organization
@@ -24,16 +26,22 @@ permissions:
   - 'access content overview'
   - 'administer taxonomy'
   - 'administer url aliases'
+  - 'create article content'
   - 'create city_page content'
+  - 'create documentation content'
   - 'create event content'
   - 'create news content'
   - 'create organization content'
   - 'create url aliases'
+  - 'delete any article content'
   - 'delete any city_page content'
+  - 'delete any documentation content'
   - 'delete any event content'
   - 'delete any news content'
   - 'delete any organization content'
+  - 'edit any article content'
   - 'edit any city_page content'
+  - 'edit any documentation content'
   - 'edit any event content'
   - 'edit any news content'
   - 'edit any organization content'

@@ -6,9 +6,11 @@ dependencies:
     - filter.format.restricted_html
   module:
     - comment
+    - config_pages
     - contact
     - filter
     - search
+    - simplenews
     - system
 _core:
   default_config_hash: 6WavjUYXIegP9AAg2zXGx54MWIVoomC3SZhNiqe-Dyk
@@ -21,4 +23,6 @@ permissions:
   - 'access content'
   - 'access site-wide contact form'
   - 'search content'
+  - 'subscribe to newsletters'
   - 'use text format restricted_html'
+  - 'view site_contacts config page entity'

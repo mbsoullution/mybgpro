@@ -1,0 +1,23 @@
+mybg_matrix.front:
+  path: '/home'
+  defaults:
+    _controller: '\Drupal\mybg_matrix\Controller\HomeController::front'
+    _title: 'Мій Богуслав'
+  requirements:
+    _access: 'TRUE'
+
+mybg_matrix.map:
+  path: '/karta'
+  defaults:
+    _controller: '\Drupal\mybg_matrix\Controller\CityMapController::mapPage'
+    _title: 'Карта міста'
+  requirements:
+    _permission: 'access content'
+
+mybg_matrix.search:
+  path: '/poshuk'
+  defaults:
+    _controller: '\Drupal\mybg_matrix\Controller\CitySearchController::searchPage'
+    _title: 'Пошук'
+  requirements:
+    _permission: 'access content'

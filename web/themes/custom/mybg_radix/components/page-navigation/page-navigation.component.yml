@@ -1,0 +1,7 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Page Navigation
+status: stable
+description: Site navbar (hidden on hero and section pages).
+props:
+  type: object
+  properties: {}

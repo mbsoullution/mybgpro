@@ -17,12 +17,6 @@
         <a href="mailto:{{ site_email }}">{{ site_email }}</a>
       </li>
     {% endif %}
-    {% if site_address %}
-      <li class="site-contacts__item site-contacts__item--address">{{ site_address }}</li>
-    {% endif %}
-    {% if site_hours %}
-      <li class="site-contacts__item site-contacts__item--hours">{{ site_hours }}</li>
-    {% endif %}
     {% if site_telegram %}
       <li class="site-contacts__item site-contacts__item--telegram">{{ site_telegram }}</li>
     {% endif %}
@@ -32,4 +26,16 @@
       </li>
     {% endif %}
   </ul>
+  <div class="site-contacts__developer">
+    <p class="site-contacts__developer-line">
+      {{ 'Розроблено на'|t }}
+      <a href="https://www.drupal.org" target="_blank" rel="noopener noreferrer">Drupal</a>
+    </p>
+    <p class="site-contacts__developer-line">
+      {{ 'Розробник'|t }}: <span class="site-contacts__developer-name">MB_SOUL_Lution</span>
+    </p>
+  </div>
+  {% if mybg_site_name %}
+    <p class="site-contacts__copyright">© {{ mybg_copyright_year }} {{ mybg_site_name }}</p>
+  {% endif %}
 </div>

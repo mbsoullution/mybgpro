@@ -1,0 +1,46 @@
+{#
+/**
+ * @file
+ * Compact section page header (NOT the front-page hero).
+ */
+#}
+<header class="mybg-section-header mybg-section-header--{{ section_key|clean_class }}" style="--mybg-section-bg: url('{{ poster_url }}')">
+  <div class="mybg-section-header__media" aria-hidden="true">
+    <div class="mybg-section-header__overlay"></div>
+  </div>
+  <div class="container mybg-section-header__inner">
+
+    <div class="mybg-section-header__row mybg-section-header__row--top">
+      {% if logo_url %}
+        <a href="{{ links.home }}" class="mybg-section-header__logo-link">
+          <img src="{{ logo_url }}" alt="" class="mybg-section-header__logo" width="48" height="48">
+        </a>
+      {% endif %}
+      <a href="{{ links.home }}" class="mybg-section-header__site-name">{{ title }}</a>
+      <nav class="mybg-section-header__nav" aria-label="Розділи порталу">
+        {% for key, item in nav_items %}
+          <a href="{{ item.url }}" class="mybg-section-header__nav-link{{ active_link == key ? ' is-active' : '' }}">{{ item.label }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+
+    {% if show_search and search_action %}
+      <div class="mybg-section-header__row mybg-section-header__row--search">
+        <form class="mybg-section-header__search" action="{{ search_action }}" method="get">
+          <input type="search" name="q" value="{{ search_query }}" placeholder="{{ search_placeholder }}" aria-label="{{ search_placeholder }}" />
+          <button type="submit">Знайти</button>
+        </form>
+      </div>
+    {% endif %}
+
+    {% if section_description %}
+      <div class="mybg-section-header__row mybg-section-header__row--intro">
+        <p class="mybg-section-header__desc">{{ section_description }}</p>
+        {% if add_url %}
+          <a href="{{ add_url }}" class="mybg-section-header__add">{{ add_label }}</a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+  </div>
+</header>

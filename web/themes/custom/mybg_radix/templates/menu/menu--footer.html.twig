@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Vertical footer navigation.
+ */
+#}
+{% import _self as menus %}
+
+{{ menus.menu_links(items, attributes.addClass('site-footer__nav', 'list-unstyled', 'mb-0'), 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      <ul{{ attributes }}>
+    {% else %}
+      <ul class="site-footer__nav-sub list-unstyled mb-0">
+    {% endif %}
+    {% for item in items %}
+      <li{{ item.attributes.addClass('site-footer__nav-item') }}>
+        {% set link_classes = ['site-footer__link'] %}
+        {% if item.in_active_trail %}
+          {% set link_classes = link_classes|merge(['is-active']) %}
+        {% endif %}
+        {{ link(item.title, item.url, { 'class': link_classes }) }}
+        {% if item.below %}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}

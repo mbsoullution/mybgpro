@@ -1,0 +1,19 @@
+uuid: bccdee4b-82be-41cd-8283-db484c822bbf
+langcode: en
+status: true
+dependencies: {  }
+name: 'Оновлення порталу'
+id: portal_updates
+description: 'Новини та оновлення ресурсу «Мій Богуслав».'
+format: html
+priority: 0
+receipt: true
+from_name: 'Мій Богуслав'
+subject: '[[simplenews-newsletter:name]] — [node:title]'
+from_address: admin@mybgpro.local
+hyperlinks: true
+allowed_handlers: {  }
+new_account: none
+access: default
+reason: ''
+weight: 0

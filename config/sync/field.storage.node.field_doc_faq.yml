@@ -1,0 +1,18 @@
+uuid: 9abb7f70-7e87-4da1-96e3-1a3adb2ff52a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_doc_faq
+field_name: field_doc_faq
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

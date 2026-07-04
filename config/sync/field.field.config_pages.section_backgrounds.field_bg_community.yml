@@ -1,0 +1,38 @@
+uuid: 0fa29e71-cb5f-4b7d-bf19-baa701cfc0bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.section_backgrounds
+    - field.storage.config_pages.field_bg_community
+  module:
+    - image
+id: config_pages.section_backgrounds.field_bg_community
+field_name: field_bg_community
+entity_type: config_pages
+bundle: section_backgrounds
+label: 'Фон: Спільнота'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: sections/backgrounds
+  file_extensions: 'png gif jpg jpeg webp'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: null
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

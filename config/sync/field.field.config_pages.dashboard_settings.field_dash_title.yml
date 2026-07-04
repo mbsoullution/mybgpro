@@ -1,0 +1,19 @@
+uuid: f5e24d4a-0a9c-4442-a065-eaec2ddc28fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.dashboard_settings
+    - field.storage.config_pages.field_dash_title
+id: config_pages.dashboard_settings.field_dash_title
+field_name: field_dash_title
+entity_type: config_pages
+bundle: dashboard_settings
+label: Заголовок
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

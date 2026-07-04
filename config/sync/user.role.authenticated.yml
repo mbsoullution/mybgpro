@@ -4,14 +4,22 @@ status: true
 dependencies:
   config:
     - filter.format.basic_html
+    - node.type.job
+    - node.type.listing
+    - node.type.real_estate
+    - workflows.workflow.city_portal
   module:
     - comment
+    - config_pages
     - contact
+    - content_moderation
     - file
     - filter
     - flag
+    - node
     - search
     - shortcut
+    - simplenews
     - system
 _core:
   default_config_hash: cFrlqjtkTfvY3RGccjJkPf1SGIfJ942IrxTLWAO4mgA
@@ -25,10 +33,20 @@ permissions:
   - 'access shortcuts'
   - 'access site-wide contact form'
   - 'access user profiles'
+  - 'create job content'
+  - 'create listing content'
+  - 'create real_estate content'
   - 'delete own files'
+  - 'edit own job content'
+  - 'edit own listing content'
+  - 'edit own real_estate content'
   - 'flag favorites'
   - 'post comments'
   - 'search content'
   - 'skip comment approval'
+  - 'subscribe to newsletters'
   - 'unflag favorites'
+  - 'use city_portal transition create_new_draft'
+  - 'use city_portal transition submit_for_review'
   - 'use text format basic_html'
+  - 'view site_contacts config page entity'

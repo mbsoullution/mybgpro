@@ -85,7 +85,7 @@ function mybg_admin_entity_presave(\Drupal\Core\Entity\EntityInterface $entity):
     return;
   }
 
-  if (!in_array($entity->bundle(), ['listing', 'real_estate'], TRUE)) {
+  if (!in_array($entity->bundle(), ['listing', 'real_estate', 'job'], TRUE)) {
     return;
   }
 

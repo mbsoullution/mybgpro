@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * City map page template.
+ */
+#}
+<div class="mybg-map-page">
+  <div id="mybg-city-map" class="mybg-map-page__canvas" role="application" aria-label="Карта міста"></div>
+  {% if markers %}
+    <ul class="mybg-map-page__list">
+      {% for marker in markers %}
+        <li><a href="{{ marker.url }}">{{ marker.title }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="mybg-map-page__empty">Об'єкти з геоточками з'являться тут після додавання локацій до бізнесів і подій.</p>
+  {% endif %}
+</div>

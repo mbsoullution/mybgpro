@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Encyclopedia index.
+ */
+#}
+<div class="mybg-help-encyclopedia">
+  <header class="mybg-help-encyclopedia__header">
+    <h1>Енциклопедія порталу</h1>
+    <p>Структурована база знань «Мій Богуслав»</p>
+    <form class="mybg-help-center__search" action="{{ search_url }}" method="get">
+      <input type="search" name="q" placeholder="Пошук..." />
+      <button type="submit">Шукати</button>
+    </form>
+  </header>
+
+  {% for section in tree %}
+    <section class="mybg-help-encyclopedia__section">
+      <h2>{{ section.category }}</h2>
+      <ul class="mybg-help-doc-list">
+        {% for item in section.items %}
+          <li>
+            <a href="{{ item.url }}">{{ item.title }}</a>
+            {% if item.summary %}<p>{{ item.summary }}</p>{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% else %}
+    <p>Документація ще наповнюється. Перегляньте <a href="/dopomoga">центр допомоги</a>.</p>
+  {% endfor %}
+
+  <p class="mybg-help-encyclopedia__back"><a href="/dopomoga">← Центр допомоги</a></p>
+</div>

@@ -1,0 +1,88 @@
+uuid: beb5984a-c49e-48a7-8860-0230545068ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.section_backgrounds
+    - field.field.config_pages.section_backgrounds.field_bg_business
+    - field.field.config_pages.section_backgrounds.field_bg_city
+    - field.field.config_pages.section_backgrounds.field_bg_community
+    - field.field.config_pages.section_backgrounds.field_bg_events
+    - field.field.config_pages.section_backgrounds.field_bg_jobs
+    - field.field.config_pages.section_backgrounds.field_bg_listings
+    - field.field.config_pages.section_backgrounds.field_bg_map
+    - field.field.config_pages.section_backgrounds.field_bg_news
+    - image.style.thumbnail
+  module:
+    - image
+id: config_pages.section_backgrounds.default
+targetEntityType: config_pages
+bundle: section_backgrounds
+mode: default
+content:
+  field_bg_business:
+    type: image_image
+    weight: 3
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_bg_city:
+    type: image_image
+    weight: 6
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_bg_community:
+    type: image_image
+    weight: 5
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_bg_events:
+    type: image_image
+    weight: 4
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_bg_jobs:
+    type: image_image
+    weight: 2
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_bg_listings:
+    type: image_image
+    weight: 1
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_bg_map:
+    type: image_image
+    weight: 7
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_bg_news:
+    type: image_image
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+hidden:
+  label: true

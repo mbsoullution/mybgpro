@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Footer navigation block wrapper.
+ */
+#}
+{%
+  set classes = [
+    'block',
+    'block-menu',
+    'site-footer__col',
+    'site-footer__col--nav',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  <h3 class="site-footer__title">{{ 'Навігація'|t }}</h3>
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</div>

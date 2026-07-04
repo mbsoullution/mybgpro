@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.listing.field_address_text
+    - field.field.node.listing.field_city
     - field.field.node.listing.field_condition
     - field.field.node.listing.field_district
+    - field.field.node.listing.field_expiry_date
     - field.field.node.listing.field_images
     - field.field.node.listing.field_listing_category
     - field.field.node.listing.field_phone
@@ -13,8 +15,12 @@ dependencies:
     - field.field.node.listing.field_price_negotiable
     - field.field.node.listing.field_tags
     - field.field.node.listing.field_transaction_type
+    - field.field.node.listing.field_views_count
+    - image.style.thumbnail
     - node.type.listing
+    - workflows.workflow.city_portal
   module:
+    - content_moderation
     - image
     - telephone
 id: node.listing.default
@@ -119,6 +125,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_city: true
   field_expiry_date: true
   field_views_count: true
   path: true

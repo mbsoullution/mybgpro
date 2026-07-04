@@ -1,0 +1,19 @@
+uuid: 54478f44-44bb-4337-82b2-b978699760e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_job_schedule
+    - node.type.job
+id: node.job.field_job_schedule
+field_name: field_job_schedule
+entity_type: node
+bundle: job
+label: Графік
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

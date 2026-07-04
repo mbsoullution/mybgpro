@@ -1,0 +1,11 @@
+uuid: b74301f4-b7b2-4fd4-9a5a-b201f0a4af39
+langcode: en
+status: true
+dependencies: {  }
+name: 'Сторінка розділу'
+type: section_landing
+description: 'Landing-сторінка розділу порталу з Layout Builder. Привʼязується до одного з розділів (Новини, Оголошення тощо).'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

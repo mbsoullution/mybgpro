@@ -1,0 +1,21 @@
+uuid: f47a0099-1a41-4f89-a2cc-6f5bdea02ade
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_city
+    - node.type.event
+id: node.event.field_city
+field_name: field_city
+entity_type: node
+bundle: event
+label: Місто
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings: {  }
+field_type: entity_reference

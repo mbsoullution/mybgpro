@@ -1,0 +1,9 @@
+uuid: df0e5372-1914-4cb6-a9cb-f4d70bad89a4
+langcode: en
+status: true
+dependencies: {  }
+name: 'Розділи довідки'
+vid: help_category
+description: null
+weight: 0
+new_revision: false

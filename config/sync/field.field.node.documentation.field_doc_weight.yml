@@ -1,0 +1,25 @@
+uuid: 859a195d-5c77-4041-b3a2-34d7cd76f8a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_doc_weight
+    - node.type.documentation
+id: node.documentation.field_doc_weight
+field_name: field_doc_weight
+entity_type: node
+bundle: documentation
+label: 'Вага сортування'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

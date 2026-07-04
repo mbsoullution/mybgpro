@@ -1,0 +1,25 @@
+uuid: db0991ff-141b-4657-842f-cd2fdb80e5e5
+langcode: en
+status: true
+dependencies:
+  module:
+    - mybg_matrix
+    - system
+  theme:
+    - mybg_radix
+id: mybg_radix_citydashboard
+theme: mybg_radix
+region: content
+weight: -10
+provider: null
+plugin: mybg_city_dashboard
+settings:
+  id: mybg_city_dashboard
+  label: 'Міський дашборд'
+  label_display: '0'
+  provider: mybg_matrix
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

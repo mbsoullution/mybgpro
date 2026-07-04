@@ -2,9 +2,9 @@ uuid: 1e59b819-1790-4e35-a081-d380190320b9
 langcode: en
 status: true
 dependencies: {  }
-name: Організація
+name: Бізнес
 type: organization
-description: 'Довідник організацій, магазинів, установ'
+description: 'Бізнес-сторінки: магазини, заклади, послуги'
 help: null
 new_revision: false
 preview_mode: 1

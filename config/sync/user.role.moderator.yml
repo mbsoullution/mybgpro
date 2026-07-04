@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.documentation
     - node.type.listing
     - node.type.real_estate
     - workflows.workflow.city_portal
@@ -22,8 +23,11 @@ permissions:
   - 'access content overview'
   - 'access user profiles'
   - 'administer comments'
+  - 'create documentation content'
+  - 'delete any documentation content'
   - 'delete any listing content'
   - 'delete any real_estate content'
+  - 'edit any documentation content'
   - 'edit any listing content'
   - 'edit any real_estate content'
   - 'edit config_pages entity'

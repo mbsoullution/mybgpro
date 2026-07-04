@@ -1,0 +1,14 @@
+uuid: f1781599-3da7-4c2c-a69b-91413e703c8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.platform_developer
+  module:
+    - user
+id: user_remove_role_action.platform_developer
+label: 'Remove the Головний розробник role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: platform_developer

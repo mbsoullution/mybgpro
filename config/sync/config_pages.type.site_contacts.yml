@@ -6,6 +6,7 @@ id: site_contacts
 label: 'Контакти сайту'
 token: true
 context:
+  show_warning: false
   language: false
   theme: false
 menu:

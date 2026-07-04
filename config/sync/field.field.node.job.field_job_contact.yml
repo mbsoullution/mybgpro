@@ -1,0 +1,21 @@
+uuid: c6e69a9d-60cc-4a85-8794-90c102c5fef8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_job_contact
+    - node.type.job
+  module:
+    - telephone
+id: node.job.field_job_contact
+field_name: field_job_contact
+entity_type: node
+bundle: job
+label: Контакт
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

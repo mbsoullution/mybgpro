@@ -1,0 +1,52 @@
+{#
+/**
+ * @file
+ * Front page dashboard hero only.
+ */
+#}
+<div class="mybg-dashboard">
+  <section class="mybg-dashboard__hero{% if not video_url %} mybg-dashboard__hero--animated{% endif %}">
+    {% if video_url %}
+      <video class="mybg-dashboard__video" autoplay muted loop playsinline poster="{{ poster_url }}">
+        <source src="{{ video_url }}" type="video/mp4">
+      </video>
+    {% else %}
+      <div class="mybg-dashboard__video-fallback" style="background-image: url('{{ poster_url }}')"></div>
+    {% endif %}
+    <div class="mybg-dashboard__hero-overlay"></div>
+    <div class="mybg-dashboard__hero-inner">
+      <div class="mybg-dashboard__brand">
+        {% if logo_url %}
+          <img src="{{ logo_url }}" alt="" class="mybg-dashboard__logo" width="72" height="72">
+        {% endif %}
+        <div class="mybg-dashboard__brand-text">
+          <p class="mybg-dashboard__tagline">{{ tagline }}</p>
+          <div class="mybg-dashboard__title-row">
+            <h1 class="mybg-dashboard__title">{{ title }}</h1>
+            {% if slogan %}
+              <span class="mybg-dashboard__slogan">{{ slogan }}</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      {% if show_search and search_action %}
+        <form class="mybg-dashboard__search" action="{{ search_action }}" method="get">
+          <input type="search" name="q" value="{{ search_query }}" placeholder="{{ search_placeholder }}" aria-label="{{ search_placeholder }}" />
+          <button type="submit">Знайти</button>
+        </form>
+      {% endif %}
+
+      <div class="mybg-dashboard__quick-nav">
+        <a href="{{ links.news }}">Новини</a>
+        <a href="{{ links.listings }}">Оголошення</a>
+        <a href="{{ links.jobs }}">Робота</a>
+        <a href="{{ links.businesses }}">Бізнес</a>
+        <a href="{{ links.events }}">Події</a>
+        <a href="{{ links.map }}">Карта</a>
+        <a href="{{ links.community }}">Спільнота</a>
+        <a href="{{ links.city }}">Місто</a>
+      </div>
+    </div>
+  </section>
+</div>

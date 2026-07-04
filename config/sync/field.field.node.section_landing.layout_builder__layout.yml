@@ -1,0 +1,21 @@
+uuid: aaa8be9f-ae9a-42ec-bb38-18632537c30a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.layout_builder__layout
+    - node.type.section_landing
+  module:
+    - layout_builder
+id: node.section_landing.layout_builder__layout
+field_name: layout_builder__layout
+entity_type: node
+bundle: section_landing
+label: Layout
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: layout_section

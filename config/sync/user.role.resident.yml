@@ -1,0 +1,14 @@
+uuid: c05b4456-bc9f-45df-8d93-bc46e82fb299
+langcode: en
+status: true
+dependencies:
+  module:
+    - comment
+    - system
+id: resident
+label: Мешканець
+weight: 4
+is_admin: null
+permissions:
+  - 'access content'
+  - 'post comments'

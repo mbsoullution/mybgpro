@@ -1,0 +1,26 @@
+uuid: 9ca2c8af-f5b9-41e4-86e5-3e5fa591d9a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.job
+    - node.type.organization
+    - workflows.workflow.city_portal
+  module:
+    - comment
+    - content_moderation
+    - node
+    - system
+id: business_owner
+label: Бізнес
+weight: 6
+is_admin: null
+permissions:
+  - 'access content'
+  - 'create job content'
+  - 'create organization content'
+  - 'edit own job content'
+  - 'edit own organization content'
+  - 'post comments'
+  - 'use city_portal transition create_new_draft'
+  - 'use city_portal transition submit_for_review'

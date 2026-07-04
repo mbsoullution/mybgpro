@@ -32,18 +32,23 @@ module:
   filter: 0
   flag: 0
   focal_point: 0
+  geofield: 0
   help: 0
   history: 0
   honeypot: 0
   image: 0
   image_widget_crop: 0
   inline_entity_form: 0
+  layout_builder: 0
+  layout_discovery: 0
   link: 0
   mailsystem: 0
   menu_link_content: 0
   menu_ui: 0
   metatag: 0
   mybg_admin: 0
+  mybg_help: 0
+  mybg_matrix: 0
   mysql: 0
   node: 0
   options: 0
@@ -56,6 +61,7 @@ module:
   search_api: 0
   search_api_db: 0
   shortcut: 0
+  simplenews: 0
   single_content_sync: 0
   smtp: 0
   social_api: 0

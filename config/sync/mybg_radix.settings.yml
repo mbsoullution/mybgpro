@@ -1,0 +1,3 @@
+logo:
+  path: 'public://branding/logo.png'
+  use_default: false

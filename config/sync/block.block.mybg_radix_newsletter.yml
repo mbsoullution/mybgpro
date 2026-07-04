@@ -1,0 +1,27 @@
+uuid: 3f90e687-fce6-40a0-832c-bc6778b3ac0d
+langcode: en
+status: true
+dependencies:
+  module:
+    - simplenews
+  theme:
+    - mybg_radix
+id: mybg_radix_newsletter
+theme: mybg_radix
+region: footer
+weight: -30
+provider: null
+plugin: simplenews_subscription_block
+settings:
+  id: simplenews_subscription_block
+  label: Підписка на оновлення порталу
+  label_display: '0'
+  provider: simplenews
+  newsletters:
+    portal_updates: portal_updates
+  default_newsletters:
+    portal_updates: portal_updates
+  message: 'Електронна пошта'
+  show_manage: false
+  unique_id: footer_newsletter
+visibility: {  }

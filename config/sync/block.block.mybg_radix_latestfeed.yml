@@ -1,0 +1,25 @@
+uuid: e91e87f7-f8b6-4d7f-92f5-6984fa2b16c0
+langcode: en
+status: true
+dependencies:
+  module:
+    - mybg_matrix
+    - system
+  theme:
+    - mybg_radix
+id: mybg_radix_latestfeed
+theme: mybg_radix
+region: content
+weight: -8
+provider: null
+plugin: mybg_latest_feed
+settings:
+  id: mybg_latest_feed
+  label: 'Останні публікації'
+  label_display: '0'
+  provider: mybg_matrix
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

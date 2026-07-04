@@ -1,0 +1,38 @@
+city_map:
+  version: 1.x
+  css:
+    theme:
+      css/city-map.css: {}
+  js:
+    js/city-map.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+city_dashboard:
+  version: 1.x
+  css:
+    theme:
+      css/city-dashboard.css: {}
+  dependencies:
+    - mybg_radix/style
+
+section_header:
+  version: 1.x
+  css:
+    theme:
+      css/section-header.css: {}
+
+section_page_header:
+  version: 1.x
+  css:
+    theme:
+      css/section-page-header.css: {}
+  dependencies:
+    - mybg_radix/style
+
+site_stats_bar:
+  version: 1.x
+  css:
+    theme:
+      css/site-stats-bar.css: {}

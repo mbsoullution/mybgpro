@@ -23,3 +23,17 @@ mybg_admin.create_real_estate:
       class:
         - 'mybg-menu-create'
         - 'mybg-menu-create--real-estate'
+
+mybg_admin.create_job:
+  title: 'Додати вакансію'
+  route_name: node.add
+  route_parameters:
+    node_type: job
+  menu_name: account
+  weight: -18
+  options:
+    attributes:
+      class:
+        - 'mybg-menu-create'
+        - 'mybg-menu-create--job'
+

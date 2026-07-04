@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Documentation search results.
+ */
+#}
+<div class="mybg-help-search">
+  <h1>Пошук по документації</h1>
+  <form action="/dopomoga/poshuk" method="get">
+    <input type="search" name="q" value="{{ query }}" placeholder="Введіть запит..." />
+    <button type="submit">Шукати</button>
+  </form>
+
+  {% if query %}
+    {% if results %}
+      <ul class="mybg-help-search__results">
+        {% for item in results %}
+          <li>
+            <a href="{{ item.url }}"><strong>{{ item.title }}</strong></a>
+            {% if item.summary %}<p>{{ item.summary }}</p>{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Нічого не знайдено за запитом «{{ query }}». Спробуйте <a href="/encyklopediya">енциклопедію</a>.</p>
+    {% endif %}
+  {% endif %}
+</div>

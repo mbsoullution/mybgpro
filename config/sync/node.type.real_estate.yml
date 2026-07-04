@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 name: Нерухомість
 type: real_estate
-description: 'Продаж та оренда нерухомості'
+description: 'Оренда та продаж нерухомості'
 help: null
 new_revision: false
 preview_mode: 1

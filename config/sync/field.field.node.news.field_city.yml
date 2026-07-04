@@ -1,0 +1,21 @@
+uuid: a8dfcf0b-8262-478d-8c23-3d8a51a97a75
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_city
+    - node.type.news
+id: node.news.field_city
+field_name: field_city
+entity_type: node
+bundle: news
+label: Місто
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings: {  }
+field_type: entity_reference

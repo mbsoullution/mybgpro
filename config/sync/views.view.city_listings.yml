@@ -1,0 +1,94 @@
+uuid: 6eff29c4-010f-4956-8507-70f05151f538
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+  module:
+    - node
+    - user
+id: city_listings
+label: Оголошення
+module: node
+description: 'Оголошення — «Мій Богуслав»'
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 0
+    display_options:
+      pager:
+        type: full
+        options:
+          pagination_heading_level: h4
+          items_per_page: 10
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          plugin_id: date
+          order: DESC
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          value: '1'
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: in_operator
+          value:
+            - listing
+            - real_estate
+      style:
+        type: default
+        options:
+          row_class: mybg-list-item
+      row:
+        type: 'entity:node'
+        options:
+          view_mode: teaser
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  page_1:
+    id: page_1
+    display_title: Page
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: ogoloshennya
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }

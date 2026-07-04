@@ -1,0 +1,21 @@
+uuid: 7ee48676-f02f-4ae1-bfe3-834a67869477
+langcode: en
+status: true
+dependencies:
+  module:
+    - mybg_help
+    - system
+  theme:
+    - mybg_radix
+id: mybg_radix_contextualhelp
+theme: mybg_radix
+region: page_bottom
+weight: 0
+provider: null
+plugin: mybg_contextual_help
+settings:
+  id: mybg_contextual_help
+  label: Довідка
+  label_display: '0'
+  provider: mybg_help
+visibility: {  }

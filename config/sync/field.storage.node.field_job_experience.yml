@@ -1,0 +1,21 @@
+uuid: 694d45f5-ab2b-4c3e-b3ee-55d4f14ec932
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_job_experience
+field_name: field_job_experience
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

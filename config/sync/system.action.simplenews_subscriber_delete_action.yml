@@ -1,0 +1,13 @@
+uuid: 38fb25c6-3934-4249-a80b-fc2f8db902e7
+langcode: en
+status: true
+dependencies:
+  module:
+    - simplenews
+_core:
+  default_config_hash: Mdj1SSN_AcTp7SmQ1o1Rxa3zcwg35rySdVZ9K8_d0pQ
+id: simplenews_subscriber_delete_action
+label: 'Delete subscriber'
+type: simplenews_subscriber
+plugin: 'entity:delete_action:simplenews_subscriber'
+configuration: {  }

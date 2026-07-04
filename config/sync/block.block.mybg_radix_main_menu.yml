@@ -1,0 +1,29 @@
+uuid: d1731513-4349-41d5-a78c-8ea97f5cdd59
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - mybg_radix
+id: mybg_radix_main_menu
+theme: mybg_radix
+region: navbar_left
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 2
+  expand_all_items: false
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: "<front>\r\n/novyny\r\n/ogoloshennya\r\n/robota\r\n/biznes\r\n/podii\r\n/karta\r\n/spilnota\r\n/misto"

@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Public product roadmap.
+ */
+#}
+<div class="mybg-help-roadmap">
+  <h1>Roadmap розвитку</h1>
+  <p class="mybg-help-roadmap__lead">Публічний план розвитку «Мій Богуслав». Голосування за функції — у наступних версіях.</p>
+
+  <div class="mybg-help-roadmap__timeline">
+    {% for phase in phases %}
+      <article class="mybg-help-roadmap__phase mybg-help-roadmap__phase--{{ phase.status }}">
+        <span class="mybg-help-roadmap__version">{{ phase.version }}</span>
+        <h2>{{ phase.title }}</h2>
+        <span class="mybg-help-roadmap__status">
+          {% if phase.status == 'done' %}Реалізовано{% elseif phase.status == 'progress' %}В розробці{% else %}Заплановано{% endif %}
+        </span>
+        <ul>
+          {% for item in phase.items %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </article>
+    {% endfor %}
+  </div>
+  <p><a href="/dopomoga">← Центр допомоги</a></p>
+</div>

@@ -1,0 +1,21 @@
+uuid: c52803e7-6bdc-4fce-a88d-22e10e4081eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_geolocation
+    - node.type.event
+  module:
+    - geofield
+id: node.event.field_geolocation
+field_name: field_geolocation
+entity_type: node
+bundle: event
+label: Геолокація
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geofield

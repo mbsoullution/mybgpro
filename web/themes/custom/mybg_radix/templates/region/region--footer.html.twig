@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Footer region — three-column layout + copyright.
+ */
+#}
+{% if content %}
+  <footer{{ attributes.addClass('site-footer', 'page__footer') }} role="contentinfo">
+    <div class="container">
+      <div class="site-footer__grid">
+        {{ content }}
+      </div>
+    </div>
+  </footer>
+{% endif %}

@@ -1,0 +1,307 @@
+<?php
+
+/**
+ * @file
+ * Social matrix hooks for «Мій Богуслав».
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\mybg_matrix\CityContext;
+use Drupal\node\NodeInterface;
+use Drupal\Core\Cache\Cache;
+
+/**
+ * Implements hook_theme().
+ */
+function mybg_matrix_theme(array $existing, string $type, string $theme, string $path): array {
+  return [
+    'mybg_matrix_hero' => [
+      'variables' => [
+        'title' => '',
+        'tagline' => '',
+        'slogan' => '',
+        'logo_url' => NULL,
+        'video_url' => NULL,
+        'poster_url' => NULL,
+        'links' => [],
+        'show_search' => FALSE,
+        'search_action' => NULL,
+        'search_placeholder' => NULL,
+        'search_query' => '',
+      ],
+    ],
+    'mybg_section_page_header' => [
+      'variables' => [
+        'title' => '',
+        'logo_url' => NULL,
+        'poster_url' => NULL,
+        'nav_items' => [],
+        'links' => [],
+        'show_search' => FALSE,
+        'search_action' => NULL,
+        'search_placeholder' => NULL,
+        'search_query' => '',
+        'section_description' => NULL,
+        'add_url' => NULL,
+        'add_label' => '',
+        'section_key' => '',
+        'active_link' => NULL,
+      ],
+    ],
+    'mybg_latest_feed' => [
+      'variables' => [
+        'items' => [],
+      ],
+    ],
+    'mybg_city_map' => [
+      'variables' => [
+        'city_label' => '',
+        'markers' => [],
+        'center' => [],
+      ],
+    ],
+    'mybg_city_search' => [
+      'variables' => [
+        'query' => '',
+        'results' => [],
+      ],
+    ],
+    'mybg_section_header' => [
+      'variables' => [
+        'description' => '',
+        'add_url' => NULL,
+        'add_label' => '',
+        'section_key' => '',
+      ],
+    ],
+    'mybg_site_stats_bar' => [
+      'variables' => [
+        'items' => [],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_init().
+ */
+function mybg_matrix_init(): void {
+  $request = \Drupal::request();
+  if ($request->isXmlHttpRequest()) {
+    return;
+  }
+
+  $route = (string) \Drupal::routeMatch()->getRouteName();
+  if ($route === '' || str_starts_with($route, 'system.') || str_contains($route, '.batch')) {
+    return;
+  }
+  if (\Drupal::service('router.admin_context')->isAdminRoute()) {
+    return;
+  }
+
+  $session = $request->getSession();
+  $isUniqueVisit = $session && !$session->get('mybg_matrix.visit_logged');
+  if ($isUniqueVisit) {
+    $session->set('mybg_matrix.visit_logged', TRUE);
+  }
+
+  /** @var \Drupal\mybg_matrix\SiteStatsService $stats */
+  $stats = \Drupal::service('mybg_matrix.site_stats');
+  $stats->trackRequest((bool) $isUniqueVisit);
+}
+
+/**
+ * Implements hook_entity_presave().
+ *
+ * Attach default city to city-related content.
+ */
+function mybg_matrix_entity_presave(EntityInterface $entity): void {
+  if (!$entity instanceof NodeInterface || !$entity->isNew()) {
+    return;
+  }
+
+  $city_bundles = [
+    'listing', 'real_estate', 'news', 'event', 'organization',
+    'city_page', 'job', 'article',
+  ];
+
+  if (!in_array($entity->bundle(), $city_bundles, TRUE)) {
+    return;
+  }
+
+  if (!$entity->hasField('field_city') || !$entity->get('field_city')->isEmpty()) {
+    return;
+  }
+
+  /** @var \Drupal\mybg_matrix\CityContext $city_context */
+  $city_context = \Drupal::service('mybg_matrix.city_context');
+  $city = $city_context->getDefaultCity();
+  if ($city) {
+    $entity->set('field_city', ['target_id' => $city->id()]);
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function mybg_matrix_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  if ($form_id === 'search_block_form') {
+    $form['#action'] = '/poshuk';
+    if (isset($form['keys'])) {
+      $form['keys']['#name'] = 'q';
+    }
+    return;
+  }
+
+  if ($form_id === 'simplenews_subscriptions_block_footer_newsletter') {
+    if (isset($form['message'])) {
+      $form['message']['#weight'] = -10;
+      $form['message']['#wrapper_attributes']['class'][] = 'site-footer__email-label';
+    }
+    if (isset($form['mail'])) {
+      $form['mail']['#weight'] = 0;
+    }
+    if (isset($form['actions'])) {
+      $form['actions']['#weight'] = 10;
+    }
+    if (isset($form['mail']['widget'][0]['value'])) {
+      $form['mail']['widget'][0]['value']['#title_display'] = 'invisible';
+      $form['mail']['widget'][0]['value']['#placeholder'] = t('email@example.com');
+      $form['mail']['widget'][0]['value']['#description'] = '';
+      $form['mail']['widget'][0]['value']['#description_display'] = 'invisible';
+    }
+    if (isset($form['subscriptions'])) {
+      $form['subscriptions']['#access'] = FALSE;
+    }
+    if (isset($form['langcode'])) {
+      $form['langcode']['#access'] = FALSE;
+    }
+    if (isset($form['actions']['submit'])) {
+      $form['actions']['submit']['#value'] = t('Підписатися');
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function mybg_matrix_preprocess_html(array &$variables): void {
+  /** @var \Drupal\mybg_matrix\SectionRegistry $registry */
+  $registry = \Drupal::service('mybg_matrix.section_registry');
+  $matcher = \Drupal::service('path.matcher');
+
+  if ($matcher->isFrontPage()) {
+    $variables['attributes']['class'][] = 'path-frontpage';
+    $variables['#attached']['library'][] = 'mybg_matrix/city_dashboard';
+  }
+  elseif ($registry->isSectionPage()) {
+    $variables['attributes']['class'][] = 'mybg-section-page';
+    $variables['#attached']['library'][] = 'mybg_matrix/section_page_header';
+    $variables['#attached']['library'][] = 'mybg_matrix/section_header';
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function mybg_matrix_preprocess_page(array &$variables): void {
+  if (!empty($variables['is_front'])) {
+    /** @var \Drupal\mybg_matrix\CityContext $city_context */
+    $city_context = \Drupal::service('mybg_matrix.city_context');
+    $variables['mybg_city_label'] = $city_context->getCityLabel();
+    $variables['mybg_slogan'] = $city_context->getSlogan();
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ */
+function mybg_matrix_preprocess_views_view(array &$variables): void {
+  /** @var \Drupal\mybg_matrix\SectionRegistry $registry */
+  $registry = \Drupal::service('mybg_matrix.section_registry');
+  if (!$registry->getSectionByViewId($variables['view']->id())) {
+    return;
+  }
+
+  // Hide duplicate view title — section hero covers the page header.
+  $variables['title'] = '';
+}
+
+/**
+ * Implements hook_views_query_alter().
+ *
+ * Filter section listing pages by ?q= within the current section only.
+ */
+function mybg_matrix_views_query_alter(\Drupal\views\ViewExecutable $view, \Drupal\views\Plugin\views\query\QueryPluginBase $query): void {
+  /** @var \Drupal\mybg_matrix\SectionRegistry $registry */
+  $registry = \Drupal::service('mybg_matrix.section_registry');
+  if (!$registry->getSectionByViewId($view->id())) {
+    return;
+  }
+
+  $q = trim((string) \Drupal::request()->query->get('q', ''));
+  if ($q === '') {
+    return;
+  }
+
+  $query->addWhere(0, 'node_field_data.title', '%' . \Drupal::database()->escapeLike($q) . '%', 'LIKE');
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function mybg_matrix_preprocess_node(array &$variables): void {
+  $node = $variables['node'];
+  if ($node->bundle() !== 'job') {
+    return;
+  }
+
+  $owner = $node->getOwner();
+  if ($owner && $owner->hasRole('business_owner')) {
+    $variables['attributes']['class'][] = 'mybg-job--business';
+  }
+  else {
+    $variables['attributes']['class'][] = 'mybg-job--resident';
+  }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function mybg_matrix_page_attachments(array &$attachments): void {
+  $base = '/' . \Drupal::service('extension.list.theme')->getPath('mybg_radix') . '/assets/branding';
+  $attachments['#attached']['html_head'][] = [
+    ['#tag' => 'link', '#attributes' => ['rel' => 'icon', 'href' => "$base/favicon.ico", 'sizes' => 'any']],
+    'mybg_favicon_ico',
+  ];
+  $attachments['#attached']['html_head'][] = [
+    ['#tag' => 'link', '#attributes' => ['rel' => 'icon', 'type' => 'image/png', 'href' => "$base/favicon-32.png", 'sizes' => '32x32']],
+    'mybg_favicon_png',
+  ];
+  $attachments['#attached']['html_head'][] = [
+    ['#tag' => 'link', '#attributes' => ['rel' => 'apple-touch-icon', 'href' => "$base/apple-touch-icon.png"]],
+    'mybg_apple_touch',
+  ];
+
+  /** @var \Drupal\mybg_matrix\SectionRegistry $registry */
+  $registry = \Drupal::service('mybg_matrix.section_registry');
+  if (\Drupal::service('path.matcher')->isFrontPage()) {
+    $attachments['#attached']['library'][] = 'mybg_matrix/city_dashboard';
+  }
+  elseif ($registry->isSectionPage()) {
+    $attachments['#attached']['library'][] = 'mybg_matrix/section_page_header';
+    $attachments['#attached']['library'][] = 'mybg_matrix/section_header';
+  }
+
+  $attachments['#attached']['library'][] = 'mybg_matrix/site_stats_bar';
+}
+
+/**
+ * City bundles that support geolocation.
+ */
+function mybg_matrix_geolocated_bundles(): array {
+  return ['organization', 'event', 'city_page'];
+}

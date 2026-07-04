@@ -1,0 +1,14 @@
+uuid: d4ff73e2-1276-4600-8f69-bb577886af05
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.business_owner
+  module:
+    - user
+id: user_add_role_action.business_owner
+label: 'Add the Бізнес role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: business_owner

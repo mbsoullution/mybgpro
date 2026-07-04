@@ -1,0 +1,69 @@
+uuid: 66ef8a00-ddcc-40e8-9c10-c94fbb486525
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_doc_module
+field_name: field_doc_module
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: getting_started
+      label: 'Початок роботи'
+    -
+      value: mission
+      label: Місія
+    -
+      value: news
+      label: Новини
+    -
+      value: listings
+      label: Оголошення
+    -
+      value: jobs
+      label: Робота
+    -
+      value: business
+      label: Бізнес
+    -
+      value: events
+      label: Події
+    -
+      value: map
+      label: Карта
+    -
+      value: community
+      label: Спільнота
+    -
+      value: city
+      label: Місто
+    -
+      value: profile
+      label: Профіль
+    -
+      value: gallery
+      label: Галерея
+    -
+      value: tour360
+      label: 360-місця
+    -
+      value: reputation
+      label: Репутація
+    -
+      value: security
+      label: Безпека
+    -
+      value: faq
+      label: FAQ
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,65 @@
+{#
+/**
+ * @file
+ * Help Center landing page.
+ */
+#}
+<div class="mybg-help-center">
+  <header class="mybg-help-center__hero">
+    <h1>Центр допомоги</h1>
+    <p>Довідка, енциклопедія та підтримка для «Мій Богуслав»</p>
+    <form class="mybg-help-center__search" action="{{ search_url }}" method="get">
+      <input type="search" name="q" placeholder="Пошук по документації..." aria-label="Пошук по довідці" />
+      <button type="submit">Шукати</button>
+    </form>
+  </header>
+
+  <nav class="mybg-help-center__nav">
+    <a href="{{ encyclopedia_url }}" class="mybg-help-card">
+      <span class="mybg-help-card__icon">📚</span>
+      <strong>Енциклопедія</strong>
+      <span>Повний довідник по порталу</span>
+    </a>
+    <a href="{{ mission_url }}" class="mybg-help-card">
+      <span class="mybg-help-card__icon">💚</span>
+      <strong>Місія та цінності</strong>
+      <span>Навіщо існує портал</span>
+    </a>
+    <a href="{{ roadmap_url }}" class="mybg-help-card">
+      <span class="mybg-help-card__icon">🗺</span>
+      <strong>Roadmap</strong>
+      <span>Що вже є і що буде далі</span>
+    </a>
+    <a href="/dopomoga/poshuk" class="mybg-help-card">
+      <span class="mybg-help-card__icon">🔍</span>
+      <strong>Пошук по довідці</strong>
+      <span>Знайти відповідь швидко</span>
+    </a>
+  </nav>
+
+  <section class="mybg-help-center__modules">
+    <h2>Довідка по модулях</h2>
+    <ul class="mybg-help-module-list">
+      {% for key, label in modules %}
+        {% if key not in ['faq', 'security'] %}
+          <li><a href="/dopomoga/modul/{{ key }}">{{ label }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  {% if faq %}
+    <section class="mybg-help-center__faq">
+      <h2>Часті питання</h2>
+      <ul>
+        {% for item in faq %}
+          <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+  <footer class="mybg-help-center__footer">
+    <p>Потрібна допомога? Напишіть на <a href="mailto:admin@mybgpro.local">admin@mybgpro.local</a> або перегляньте <a href="{{ encyclopedia_url }}">енциклопедію</a>.</p>
+  </footer>
+</div>

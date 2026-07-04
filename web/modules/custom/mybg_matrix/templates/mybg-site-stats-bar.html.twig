@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Portal statistics bar below the main footer.
+ *
+ * @var items array<int, array{key: string, label: string, value: int, icon: string}>
+ */
+#}
+<aside class="mybg-stats-bar" aria-label="{{ 'Статистика порталу'|t }}">
+  <div class="mybg-stats-bar__inner">
+    <p class="mybg-stats-bar__stats">
+      {% for item in items %}
+        {% if not loop.first %}<span class="mybg-stats-bar__sep" aria-hidden="true">|</span>{% endif %}
+        <span class="mybg-stats-bar__stat mybg-stats-bar__stat--{{ item.key }}">
+          {{ item.label }}: <strong class="mybg-stats-bar__value" data-stat="{{ item.key }}">{{ item.value|number_format(0, '.', ' ') }}</strong>
+        </span>
+      {% endfor %}
+    </p>
+  </div>
+</aside>

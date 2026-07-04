@@ -1,0 +1,24 @@
+uuid: 7df00c9c-2718-46c9-a417-5d32e1e32d50
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.city_page
+  module:
+    - text
+id: node.city_page.body
+field_name: body
+entity_type: node
+bundle: city_page
+label: Опис
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

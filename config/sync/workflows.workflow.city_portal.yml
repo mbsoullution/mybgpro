@@ -5,6 +5,7 @@ dependencies:
   config:
     - node.type.city_page
     - node.type.event
+    - node.type.job
     - node.type.listing
     - node.type.news
     - node.type.organization
@@ -73,6 +74,7 @@ type_settings:
     node:
       - listing
       - real_estate
+      - job
       - news
       - event
       - organization

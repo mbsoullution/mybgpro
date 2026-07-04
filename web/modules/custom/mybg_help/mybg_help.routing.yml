@@ -1,0 +1,55 @@
+mybg_help.center:
+  path: '/dopomoga'
+  defaults:
+    _controller: '\Drupal\mybg_help\Controller\HelpCenterController::center'
+    _title: 'Центр допомоги'
+  requirements:
+    _permission: 'access content'
+
+mybg_help.encyclopedia:
+  path: '/encyklopediya'
+  defaults:
+    _controller: '\Drupal\mybg_help\Controller\HelpCenterController::encyclopedia'
+    _title: 'Енциклопедія порталу'
+  requirements:
+    _permission: 'access content'
+
+mybg_help.module_help:
+  path: '/dopomoga/modul/{module}'
+  defaults:
+    _controller: '\Drupal\mybg_help\Controller\HelpCenterController::moduleHelp'
+    _title: 'Довідка'
+  requirements:
+    _permission: 'access content'
+    module: '[a-z_]+'
+
+mybg_help.doc_search:
+  path: '/dopomoga/poshuk'
+  defaults:
+    _controller: '\Drupal\mybg_help\Controller\HelpCenterController::docSearch'
+    _title: 'Пошук по довідці'
+  requirements:
+    _permission: 'access content'
+
+mybg_help.roadmap:
+  path: '/roadmap'
+  defaults:
+    _controller: '\Drupal\mybg_help\Controller\HelpCenterController::roadmap'
+    _title: 'Roadmap'
+  requirements:
+    _permission: 'access content'
+
+mybg_help.mission:
+  path: '/misiya'
+  defaults:
+    _controller: '\Drupal\mybg_help\Controller\HelpCenterController::mission'
+    _title: 'Місія та цінності'
+  requirements:
+    _permission: 'access content'
+
+mybg_help.onboarding_complete:
+  path: '/mybg-help/onboarding-complete'
+  defaults:
+    _controller: '\Drupal\mybg_help\Controller\HelpCenterController::completeOnboarding'
+  requirements:
+    _user_is_logged_in: 'TRUE'

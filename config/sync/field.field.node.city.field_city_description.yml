@@ -1,0 +1,22 @@
+uuid: 93ab706f-8bb2-4ef2-83f6-05319e08ecad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_city_description
+    - node.type.city
+  module:
+    - text
+id: node.city.field_city_description
+field_name: field_city_description
+entity_type: node
+bundle: city
+label: Опис
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

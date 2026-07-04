@@ -1,0 +1,64 @@
+uuid: e79baa81-651a-4e7a-bd5f-c95c98359c2a
+langcode: uk
+status: true
+dependencies:
+  config:
+    - config_pages.type.dashboard_settings
+    - field.field.config_pages.dashboard_settings.field_dash_poster
+    - field.field.config_pages.dashboard_settings.field_dash_slogan
+    - field.field.config_pages.dashboard_settings.field_dash_tagline
+    - field.field.config_pages.dashboard_settings.field_dash_title
+    - field.field.config_pages.dashboard_settings.field_dash_video
+  module:
+    - file
+    - image
+id: config_pages.dashboard_settings.default
+targetEntityType: config_pages
+bundle: dashboard_settings
+mode: default
+content:
+  field_dash_poster:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_dash_slogan:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_dash_tagline:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_dash_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_dash_video:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  search_api_excerpt: true

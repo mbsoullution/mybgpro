@@ -1,0 +1,9 @@
+uuid: 0297ed10-486e-4737-9bcf-aba1623dd1f1
+langcode: en
+status: true
+dependencies: {  }
+id: platform_developer
+label: 'Головний розробник'
+weight: 2
+is_admin: true
+permissions: {  }

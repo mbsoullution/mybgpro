@@ -1,0 +1,27 @@
+uuid: 02fa2cac-c362-4259-9c2b-6af4fc312d20
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.dashboard_settings
+    - field.storage.config_pages.field_dash_video
+  module:
+    - file
+id: config_pages.dashboard_settings.field_dash_video
+field_name: field_dash_video
+entity_type: config_pages
+bundle: dashboard_settings
+label: 'Відео-фон (MP4)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'mp4 webm mov'
+  max_filesize: '100 MB'
+  description_field: false
+field_type: file

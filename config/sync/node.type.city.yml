@@ -1,0 +1,11 @@
+uuid: 60434b69-d615-4550-91ec-1c8a98435a68
+langcode: en
+status: true
+dependencies: {  }
+name: Місто
+type: city
+description: 'Сутність міста для масштабування платформи'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

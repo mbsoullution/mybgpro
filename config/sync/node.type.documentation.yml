@@ -1,0 +1,11 @@
+uuid: 359c6c71-0b9c-4c92-b1c9-e2757c7c1376
+langcode: en
+status: true
+dependencies: {  }
+name: Документація
+type: documentation
+description: 'Статті довідкової системи та енциклопедії порталу'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

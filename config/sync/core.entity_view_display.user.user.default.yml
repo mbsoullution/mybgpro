@@ -3,6 +3,7 @@ langcode: uk
 status: true
 dependencies:
   config:
+    - field.field.user.user.field_onboarding_done
     - field.field.user.user.field_profile_bio
     - field.field.user.user.field_profile_district
     - field.field.user.user.field_profile_full_name
@@ -12,7 +13,6 @@ dependencies:
     - image.style.thumbnail
   module:
     - image
-    - taxonomy
     - text
     - user
 _core:
@@ -75,4 +75,5 @@ content:
     weight: 0
     region: content
 hidden:
+  field_onboarding_done: true
   search_api_excerpt: true

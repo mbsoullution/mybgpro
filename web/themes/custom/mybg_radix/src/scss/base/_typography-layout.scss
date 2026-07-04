@@ -13,6 +13,7 @@
 html {
   font-size: $font-size-base;
   -webkit-text-size-adjust: 100%;
+  height: 100%;
 }
 
 body {
@@ -24,6 +25,17 @@ body {
   background: $color-bg;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.dialog-off-canvas-main-canvas {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 h1, .h1 {
@@ -119,6 +131,17 @@ strong, b { font-weight: $font-weight-semibold; }
       padding: $spacing-2xl;
     }
   }
+}
+
+
+// =============================================================================
+// STICKY FOOTER — внизу екрана без зайвого скролу, поки контент короткий
+// =============================================================================
+
+.page {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 

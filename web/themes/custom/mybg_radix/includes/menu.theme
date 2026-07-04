@@ -4,3 +4,21 @@
  * @file
  * Theme and preprocess functions for menus.
  */
+
+declare(strict_types=1);
+
+/**
+ * Implements hook_preprocess_menu().
+ *
+ * On the front page the main menu block is hidden (dashboard quick-nav).
+ */
+function mybg_radix_preprocess_menu(array &$variables): void {
+  // Main menu visibility is controlled via block config on <front>.
+}
+
+/**
+ * Implements hook_preprocess_menu__main().
+ */
+function mybg_radix_preprocess_menu__main(array &$variables): void {
+  mybg_radix_preprocess_menu($variables);
+}

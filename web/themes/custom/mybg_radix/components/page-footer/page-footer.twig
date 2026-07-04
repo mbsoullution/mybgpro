@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Page footer: help «?» above footer, then footer + stats.
+ */
+#}
+{% if page.footer or page.page_bottom or mybg_contextual_help %}
+  <div class="site-footer-stack">
+    {% if mybg_contextual_help %}
+      <div class="site-footer-help">
+        <div class="container">
+          {{ mybg_contextual_help }}
+        </div>
+      </div>
+    {% endif %}
+    {% if page.footer or page.page_bottom %}
+      <div class="site-footer-group">
+        {% if page.footer %}
+          {{ page.footer }}
+        {% endif %}
+        {% if page.page_bottom %}
+          {{ page.page_bottom }}
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

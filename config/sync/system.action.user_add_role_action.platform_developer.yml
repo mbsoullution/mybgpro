@@ -1,0 +1,14 @@
+uuid: 0622d301-569c-4b70-a732-fe0275b3aebb
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.platform_developer
+  module:
+    - user
+id: user_add_role_action.platform_developer
+label: 'Add the Головний розробник role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: platform_developer

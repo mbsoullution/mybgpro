@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Search results page.
+ */
+#}
+<div class="mybg-search-page">
+  <h1>Пошук по місту</h1>
+  <form class="mybg-search-page__form" action="/poshuk" method="get">
+    <input type="search" name="q" value="{{ query }}" placeholder="Введіть запит..." />
+    <button type="submit">Шукати</button>
+  </form>
+
+  {% if query %}
+    {% if results %}
+      <ul class="mybg-search-page__results">
+        {% for item in results %}
+          <li>
+            <a href="{{ item.url }}">{{ item.title }}</a>
+            <span class="mybg-search-page__type">{{ item.type }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>За запитом «{{ query }}» нічого не знайдено. Спробуйте інші слова або <a href="/ogoloshennya">перегляньте оголошення</a>.</p>
+    {% endif %}
+  {% endif %}
+</div>

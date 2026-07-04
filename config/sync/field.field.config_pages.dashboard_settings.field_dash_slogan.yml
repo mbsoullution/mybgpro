@@ -1,0 +1,19 @@
+uuid: dd3ca623-f028-4765-bd13-a05144b5f2cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.dashboard_settings
+    - field.storage.config_pages.field_dash_slogan
+id: config_pages.dashboard_settings.field_dash_slogan
+field_name: field_dash_slogan
+entity_type: config_pages
+bundle: dashboard_settings
+label: Слоган
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

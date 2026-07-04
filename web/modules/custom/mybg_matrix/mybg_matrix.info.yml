@@ -1,0 +1,11 @@
+name: 'MyBG Matrix'
+type: module
+description: 'Соціальна матриця міста «Мій Богуслав»: City-модель, дашборд, карта, секції контенту.'
+package: MyBG
+core_version_requirement: ^10
+dependencies:
+  - drupal:node
+  - drupal:taxonomy
+  - drupal:views
+  - drupal:search_api
+  - geofield:geofield

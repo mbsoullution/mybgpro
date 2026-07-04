@@ -1,0 +1,20 @@
+.mybg-field-with-tip .description {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: #5c7a69;
+}
+
+.mybg-field-with-tip .description::before {
+  content: 'ⓘ';
+  flex-shrink: 0;
+  color: #2a7ab5;
+  font-weight: 700;
+}
+
+fieldset.mybg-field-with-tip legend::after {
+  content: ' ⓘ';
+  color: #2a7ab5;
+  font-size: 0.85em;
+}

@@ -1,0 +1,9 @@
+uuid: d706a1b6-b35c-40de-b818-df2f27db6ab4
+langcode: en
+status: true
+dependencies: {  }
+name: 'Категорії подій'
+vid: event_category
+description: null
+weight: 0
+new_revision: false

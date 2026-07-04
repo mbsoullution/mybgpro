@@ -1,0 +1,10 @@
+name: 'MyBG Help Center'
+type: module
+description: 'Центр допомоги, енциклопедія порталу, контекстна довідка та onboarding для «Мій Богуслав».'
+package: MyBG
+core_version_requirement: ^10
+dependencies:
+  - drupal:node
+  - drupal:taxonomy
+  - drupal:search_api
+  - mybg_matrix:mybg_matrix

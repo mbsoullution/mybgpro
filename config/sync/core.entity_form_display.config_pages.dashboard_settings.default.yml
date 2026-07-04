@@ -1,0 +1,60 @@
+uuid: 4c27bbf8-6594-4c96-8960-5faa5a47cddd
+langcode: uk
+status: true
+dependencies:
+  config:
+    - config_pages.type.dashboard_settings
+    - field.field.config_pages.dashboard_settings.field_dash_poster
+    - field.field.config_pages.dashboard_settings.field_dash_slogan
+    - field.field.config_pages.dashboard_settings.field_dash_tagline
+    - field.field.config_pages.dashboard_settings.field_dash_title
+    - field.field.config_pages.dashboard_settings.field_dash_video
+  module:
+    - file
+    - image
+id: config_pages.dashboard_settings.default
+targetEntityType: config_pages
+bundle: dashboard_settings
+mode: default
+content:
+  field_dash_poster:
+    type: image_image
+    weight: 4
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_dash_slogan:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: 'Найрідніше місто у світі'
+    third_party_settings: {  }
+  field_dash_tagline:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: 'Соціальна матриця міста'
+    third_party_settings: {  }
+  field_dash_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: 'Мій Богуслав'
+    third_party_settings: {  }
+  field_dash_video:
+    type: file_generic
+    weight: 3
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+hidden:
+  label: true

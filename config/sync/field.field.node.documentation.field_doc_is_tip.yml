@@ -1,0 +1,23 @@
+uuid: 72da3471-703a-431f-836c-b82dfd6f1d59
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_doc_is_tip
+    - node.type.documentation
+id: node.documentation.field_doc_is_tip
+field_name: field_doc_is_tip
+entity_type: node
+bundle: documentation
+label: 'Порада дня'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

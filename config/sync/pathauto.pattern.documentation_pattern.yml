@@ -1,0 +1,21 @@
+uuid: 632ed9ed-211c-4ea4-8172-d06004c899ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.documentation
+  module:
+    - node
+id: documentation_pattern
+label: Documentation
+type: 'canonical_entities:node'
+pattern: '/encyklopediya/[node:title]'
+selection_criteria:
+  -
+    id: 'entity_bundle:node'
+    negate: false
+    bundles:
+      documentation: documentation
+selection_logic: and
+weight: 0
+relationships: {  }

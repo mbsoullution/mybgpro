@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.user.compact
+    - field.field.user.user.field_onboarding_done
     - field.field.user.user.field_profile_bio
     - field.field.user.user.field_profile_district
     - field.field.user.user.field_profile_full_name
@@ -33,6 +34,7 @@ content:
     weight: 0
     region: content
 hidden:
+  field_onboarding_done: true
   field_profile_bio: true
   field_profile_district: true
   field_profile_full_name: true

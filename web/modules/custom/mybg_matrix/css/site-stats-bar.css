@@ -1,0 +1,52 @@
+.mybg-stats-bar {
+  background: #1c2b22;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.mybg-stats-bar__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.45rem 0.75rem;
+  max-width: 100%;
+}
+
+.mybg-stats-bar__stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35rem 0.45rem;
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.mybg-stats-bar__stat {
+  white-space: nowrap;
+}
+
+.mybg-stats-bar__value {
+  font-weight: 700;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.mybg-stats-bar__sep {
+  color: rgba(255, 255, 255, 0.28);
+  user-select: none;
+  font-weight: 300;
+}
+
+@media (min-width: 768px) {
+  .mybg-stats-bar__inner {
+    padding: 0.5rem 1rem;
+  }
+
+  .mybg-stats-bar__stats {
+    font-size: 0.8125rem;
+    flex-wrap: nowrap;
+  }
+}

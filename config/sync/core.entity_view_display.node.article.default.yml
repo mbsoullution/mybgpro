@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_display.comment.comment.default
     - field.field.node.article.body
     - field.field.node.article.comment
+    - field.field.node.article.field_city
     - field.field.node.article.field_image
     - field.field.node.article.field_tags
     - image.style.wide
@@ -62,4 +63,6 @@ content:
     third_party_settings: {  }
     weight: 100
     region: content
-hidden: {  }
+hidden:
+  field_city: true
+  search_api_excerpt: true

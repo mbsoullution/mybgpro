@@ -1,0 +1,14 @@
+uuid: 0f38e001-227e-4040-8cce-e2671827956d
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.business_owner
+  module:
+    - user
+id: user_remove_role_action.business_owner
+label: 'Remove the Бізнес role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: business_owner
